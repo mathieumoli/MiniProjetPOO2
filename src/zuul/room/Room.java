@@ -1,5 +1,8 @@
 package zuul.room;
 
+import zuul.Game;
+
+import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.HashMap;
 
@@ -21,6 +24,7 @@ public class Room
 {
     private String description;
     protected HashMap<String, Room> exits;        // stores exits of this room.
+
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
@@ -60,7 +64,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        return description + ".\n" + getExitString();
     }
 
     /**
@@ -68,9 +72,9 @@ public class Room
      * "Exits: north west".
      * @return Details of the room's exits.
      */
-    private String getExitString()
+    protected String getExitString()
     {
-        String returnString = "Exits:";
+        String returnString = Game.res.getString("game.exits");
         Set<String> keys = exits.keySet();
         for(String exit : keys) {
             returnString += " " + exit;
