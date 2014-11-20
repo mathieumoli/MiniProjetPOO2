@@ -2,6 +2,10 @@ package zuul.course;
 
 import java.util.HashMap;
 
+/**
+ * @author Mathieu Molinengo
+ * @version 20/11/2014
+ */
 public class Exam extends Item {
 	private HashMap questions;
 	

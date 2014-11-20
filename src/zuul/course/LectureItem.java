@@ -1,8 +1,8 @@
 package zuul.course;
 
-/*
- * V 0.O.O : Squelet of the class LectureItem
- * 
+/**
+ * @author Mathieu Molinengo
+ * @version 20/11/2014
  */
 public class LectureItem extends Item {
 

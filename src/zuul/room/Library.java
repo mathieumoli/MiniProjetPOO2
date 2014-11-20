@@ -1,7 +1,8 @@
 package zuul.room;
 
 /**
- * Created by Lucas MARTINEZ on 19/11/14.
+ * @author Lucas Martinez
+ * @version 20/11/2014
  */
 public class Library {
 }

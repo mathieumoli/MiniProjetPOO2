@@ -1,5 +1,9 @@
 package zuul.room;
 
+/**
+ * @author Mathieu Molinengo
+ * @version 20/11/2014
+ */
 public class Corridor extends Room {
 	private boolean switchTheLight;
 

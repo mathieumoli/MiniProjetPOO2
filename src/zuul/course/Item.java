@@ -1,8 +1,9 @@
 package zuul.course;
-/*
- * V 0.O.O : Squelet of the superclass Item
- * 
-*/
+
+/**
+ * @author Mathieu Molinengo
+ * @version 20/11/2014
+ */
 public class Item {
 	protected String name;
 	protected String module;
