@@ -15,5 +15,9 @@ public class Student {
 	private String name;
 	private ArrayList<LectureItem> coursSuivi;
 	private ArrayList<LabItem> labsSuivi;
+	
+	public Student(){
+		
+	}
 
 }
