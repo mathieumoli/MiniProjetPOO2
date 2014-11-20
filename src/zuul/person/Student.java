@@ -17,7 +17,17 @@ public class Student {
 	private ArrayList<LabItem> labsSuivi;
 	
 	public Student(){
-		
+		energy=100;
+		name="Jacky";
+		coursSuivi=new ArrayList<LectureItem>()
+		labsSuivi=new ArrayList<LabItem>();
+	}
+	
+	public Student(String nameOfStudent){
+		energy=100;
+		name=nameOfStudent;
+		coursSuivi=new ArrayList<LectureItem>()
+		labsSuivi=new ArrayList<LabItem>();
 	}
 
 }
