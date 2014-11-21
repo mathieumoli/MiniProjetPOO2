@@ -14,4 +14,12 @@ public class Item {
 		module = "default";
 		number = 0;
 	}
+	
+	public Item(String thename,String themodule,int thenumber){
+		name=thename;
+		module=themodule;
+		number=thenumber;
+		}
+	
+	
 }

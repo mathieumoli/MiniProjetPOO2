@@ -6,7 +6,22 @@ package zuul.course;
  */
 public class LectureItem extends Item {
 
-	public LectureItem() {
-		super();
+	@Override
+	public boolean equals(Object object){
+		boolean equality=false;
+		if(object instanceOf LabItem)
+		{
+			if(this.module.equals(object.module))
+			{
+				if(this.name.equals(object.name)
+				{
+					if(this.number==object.number)
+					{
+						return true;
+					}
+				}
+			}
+		}
+		return equality;
 	}
 }

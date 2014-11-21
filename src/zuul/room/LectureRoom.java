@@ -11,7 +11,7 @@ public class LectureRoom extends StudySpace {
 	
 	public LectureRoom(String description) {
 		super(description);
-		//coursInThisRoom=lect;
+		
 	}
 
 	/**

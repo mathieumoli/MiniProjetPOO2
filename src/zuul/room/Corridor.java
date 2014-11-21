@@ -9,9 +9,10 @@ public class Corridor extends Room {
 
 	public Corridor(String description) {
 		super(description);
-		// pour commencer on met la lumiere eteinte on verra par la suite si on
-		// fait un random pour que la lumiere soit ouverte ou éteinte
-		lights = false;
+		if(Math.Random())
+			lights=true;
+		else
+			lights=false;
 	}
 
 	/**
@@ -27,5 +28,9 @@ public class Corridor extends Room {
 	 *
 	 * TO DO : turnLightsOn(),
 	 */
+	
+	public turnLightsOn(){
+		lights=true;
+	}
 
 }

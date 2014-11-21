@@ -29,5 +29,28 @@ public class Student {
 		coursSuivi=new ArrayList<LectureItem>()
 		labsSuivi=new ArrayList<LabItem>();
 	}
+	
+	public void addItem(Item itemListened){
+		if(itemListened instanceOf LabItem)
+			labsSuivi.add(itemListened);
+		else
+			coursSuivi.add(itemListened);
+	}
+	
+	public void decrementEnergy(){
+		energy-=10;
+	}
+	
+	public void incrementEnergy(){
+		energy+=20;
+	}
+	
+	public boolean alreadyListened(Item theItem){
+		if(theItem instanceOf LabItem)
+			return LabItem.contains(theItem);
+		else
+			return LectureItem.contains(theItem);
+	
+	}
 
 }
