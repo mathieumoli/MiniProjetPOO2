@@ -2,6 +2,7 @@ package zuul.person;
 
 import java.util.ArrayList;
 
+import zuul.course.Item;
 import zuul.course.LabItem;
 import zuul.course.LectureItem;
 
@@ -19,22 +20,22 @@ public class Student {
 	public Student(){
 		energy=100;
 		name="Jacky";
-		coursSuivi=new ArrayList<LectureItem>()
+		coursSuivi=new ArrayList<LectureItem>();
 		labsSuivi=new ArrayList<LabItem>();
 	}
 	
 	public Student(String nameOfStudent){
 		energy=100;
 		name=nameOfStudent;
-		coursSuivi=new ArrayList<LectureItem>()
+		coursSuivi=new ArrayList<LectureItem>();
 		labsSuivi=new ArrayList<LabItem>();
 	}
 	
 	public void addItem(Item itemListened){
-		if(itemListened instanceOf LabItem)
-			labsSuivi.add(itemListened);
+		if(itemListened instanceof LabItem)
+			labsSuivi.add((LabItem) itemListened);
 		else
-			coursSuivi.add(itemListened);
+			coursSuivi.add((LectureItem) itemListened);
 	}
 	
 	public void decrementEnergy(){
@@ -46,10 +47,14 @@ public class Student {
 	}
 	
 	public boolean alreadyListened(Item theItem){
-		if(theItem instanceOf LabItem)
-			return LabItem.contains(theItem);
+		if(theItem instanceof LabItem)
+		{
+			return labsSuivi.contains(theItem);
+		}
 		else
-			return LectureItem.contains(theItem);
+		{
+			return coursSuivi.contains(theItem);
+		}
 	
 	}
 
