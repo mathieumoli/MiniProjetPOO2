@@ -9,7 +9,8 @@ public class Corridor extends Room {
 
 	public Corridor(String description) {
 		super(description);
-		if(Math.Random())
+		int bool=(int)Math.random();
+		if(bool==1)
 			lights=true;
 		else
 			lights=false;
@@ -29,7 +30,7 @@ public class Corridor extends Room {
 	 * TO DO : turnLightsOn(),
 	 */
 	
-	public turnLightsOn(){
+	public void turnLightsOn(){
 		lights=true;
 	}
 

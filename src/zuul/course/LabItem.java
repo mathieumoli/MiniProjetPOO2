@@ -10,13 +10,13 @@ public class LabItem extends Item {
 	@Override
 	public boolean equals(Object object){
 		boolean equality=false;
-		if(object instanceOf LabItem)
+		if(object instanceof LabItem)
 		{
-			if(this.module.equals(object.module))
+			if(this.module.equals(((LabItem) object).module))
 			{
-				if(this.name.equals(object.name)
+				if(this.name.equals(((LabItem) object).name))
 				{
-					if(this.number==object.number)
+					if(this.number==((LabItem) object).number)
 					{
 						return true;
 					}
