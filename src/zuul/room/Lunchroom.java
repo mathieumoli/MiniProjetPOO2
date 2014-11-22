@@ -1,5 +1,7 @@
 package zuul.room;
 
+import zuul.person.Student;
+
 /**
  * @author Lucas Martinez
  * @version 20/11/2014
@@ -8,6 +10,11 @@ public class Lunchroom extends Room {
     public Lunchroom(String description){
         super(description);
     }
+
+	public void takeCoffee(Student gamer) {
+		gamer.incrementEnergy();
+		
+	}
 
     /**
      * Lunchroom containing a table football (babyfoot) game. Entering this room, the student has some probability

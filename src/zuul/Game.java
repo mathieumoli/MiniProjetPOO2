@@ -2,6 +2,7 @@ package zuul;
 
 import zuul.commands.*;
 import zuul.course.*;
+import zuul.person.Student;
 import zuul.room.*;
 
 import java.util.Locale;
@@ -30,6 +31,7 @@ public class Game {
 	private Room currentRoom;
 	public static ResourceBundle res;
 	private Locale locale;
+	private Student gamer;
 
 	/**
 	 * Create the game and initialise its internal map.
@@ -39,6 +41,7 @@ public class Game {
 		getLanguage();
 		res = ResourceBundle.getBundle("zuul.intl.Zuul", locale);
 		createRooms();
+		gamer = new Student();
 	}
 
 	/**
@@ -161,6 +164,20 @@ public class Game {
 			goRoom(command);
 		} else if (commandWord.equals("quit")) {
 			wantToQuit = quit(command);
+			// crée des methodes à partir d'ici
+		} else if (commandWord.equals("take")) {
+			if (currentRoom instanceof Lunchroom) {
+				((Lunchroom) currentRoom).takeCoffee(gamer);
+				System.out.println(res.getString("lunchroom.coffee"));
+			}
+		} else if (commandWord.equals("light")) {
+			if (currentRoom instanceof Corridor) {
+				if (command.getSecondWord().equals("on")) {
+					((Corridor) currentRoom).setLights(true);
+					System.out.println(currentRoom.getLongDescription());
+
+				}
+			}
 		}
 		// else command not recognised.
 		return wantToQuit;
@@ -201,25 +218,27 @@ public class Game {
 			System.out.println(res.getString("game.nodoor"));
 		} else {
 			currentRoom = nextRoom;
-			// special case for the library
-			if (nextRoom instanceof Library) {
-				// random if the door is closed
-				if (((Library) nextRoom).getRandomOpening() == false) {
-					System.out.println(res.getString("library.closed"));
-					currentRoom = sauvCurrentRoom;
-				}
-			}
-
-			System.out.println(currentRoom.getLongDescription());
-
 			// if the light is off
 			if (currentRoom instanceof Corridor) {
 
 				if (((Corridor) currentRoom).isLights() == false) {
 					System.out.println(res.getString("corridor.dark"));
-				}
-			}
+				} else
+					System.out.println(currentRoom.getLongDescription());
 
+			} else {
+				// special case for the library
+				if (nextRoom instanceof Library) {
+					// random if the door is closed
+					if (((Library) nextRoom).getRandomOpening() == false) {
+						System.out.println(res.getString("library.closed"));
+						currentRoom = sauvCurrentRoom;
+					}
+				}
+
+				System.out.println(currentRoom.getLongDescription());
+
+			}
 		}
 
 	}
