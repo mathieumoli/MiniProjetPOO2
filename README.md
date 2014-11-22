@@ -7,4 +7,7 @@ j'ai pensé qu'on pourrait faire dans la classe mais tu peux rajouter des trucs 
 
 
 #Third work
-Je me suis chargé de la lumiere pour les couloirs. Lors de la création du couloir la lumiere est activée aléatoirement et l'affichage differe si la lumiere est allumé ou éteinte (US & FR
+Je me suis chargé de la lumiere pour les couloirs. Lors de la création du couloir la lumiere est activée aléatoirement et l'affichage differe si la lumiere est allumé ou éteinte (US & FR)
+
+#Four work
+Je me suis chargé d'ouvrir aleatoirement la bibliotheque. Il y a 7 chances sur 10 qu'elle soit fermée et si elle est on reste dans le couloir 2 (US & FR)

@@ -1,13 +1,21 @@
 package zuul.room;
 
+import java.util.Random;
+
 /**
  * @author Lucas Martinez
  * @version 20/11/2014
  */
 public class Library extends Room {
-    public Library(String description) {
-        super(description);
-    }
+
+
+	boolean open=false;
+	
+	public Library(String description) {
+		super(description);
+
+	}
+
 
     /**
      * Library containing books to read. You can only enter the library when it is open
@@ -16,5 +24,22 @@ public class Library extends Room {
      * Reading the book is equivalent to listening to all the OOP course lectures.
      *
      * TO DO : enter(),
+     * @return 
      */
-}
+    
+    public boolean getRandomOpening(){
+    	
+    	int random = (int)(Math.random() * (10-1)) + 1;
+    	
+    	if(random>7)
+    	{
+    		open=true;
+    	}
+    	else
+    		{
+    		open=false;
+    		}
+    	return open;
+    	}
+    }
+

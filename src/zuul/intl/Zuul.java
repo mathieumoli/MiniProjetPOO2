@@ -16,8 +16,10 @@ public class Zuul extends ListResourceBundle {
             {"corridor2.description", "Vous êtes dans le deuxième couloir"},
             {"library.description", "Vous êtes dans la bibliothèque"},
             {"examroom.description", "Vous êtes dans la salle d'examen"},
-            {"darkcorridor.explication","Ce couloir est d'une obscurité déconcertante, vous pourriez allumer la lumiere pour mieux y voir..."},
+            {"corridor.dark","Ce couloir est d'une obscurité déconcertante, vous pourriez allumer la lumiere pour mieux y voir..."},
+            {"library.closed","La porte est fermée à clé. Il est vrai que la bibliotheque est fermée 7/10. Revenez plus tard !"},
 
+            
             {"game.welcome", "Bienvenue dans Le Monde de Zuul!"},
             {"game.boring", "Le Monde de Zuul est un nouveau jeu d'aventure incroyablement (un peu moins) chiant."},
             {"game.help", "Tapez 'help' si vous avez besoin d'aide."},

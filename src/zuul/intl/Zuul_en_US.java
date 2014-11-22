@@ -16,8 +16,9 @@ public class Zuul_en_US extends ListResourceBundle {
             {"corridor2.description", "You are in the second corridor"},
             {"library.description", "You are in the library"},
             {"examroom.description", "You are in the exam room"},
-            {"darkcorridor.explication","This corridor is very dark, you could switch the light on to see clearly the room."},
-            
+            {"corridor.dark","This corridor is very dark, you could switch the light on to see clearly the room."},
+            {"library.closed","The door is closed. The library is closed 7 out of 10... Come back later !"},
+
             {"game.welcome", "Welcome to the World of Zuul!"},
             {"game.boring", "World of Zuul is a new, incredibly (slightly less) boring adventure game."},
             {"game.help", "Type 'help' if you need help."},
