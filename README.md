@@ -14,3 +14,4 @@ Je me suis chargé d'ouvrir aleatoirement la bibliotheque. Il y a 7 chances sur 
 
 #Five work
 Take coffee OKAY, switch the light on marche. Pensez a creer des méthodes dans "game" (verifier version US version française OK)
+a faire methode switch off and on
