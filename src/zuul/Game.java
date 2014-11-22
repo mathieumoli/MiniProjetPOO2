@@ -194,7 +194,19 @@ public class Game {
             System.out.println(res.getString("game.nodoor"));
         } else {
             currentRoom = nextRoom;
+            
             System.out.println(currentRoom.getLongDescription());
+            
+            //if the light is off
+            if(currentRoom instanceof Corridor)
+            {
+            	Corridor currentCorridor= (Corridor) currentRoom;
+            	if(currentCorridor.isLights()==false)
+            	{
+            		System.out.println(res.getString("darkcorridor.explication"));
+            }
+            	}
+            
         }
     }
 

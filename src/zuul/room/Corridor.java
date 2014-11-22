@@ -1,16 +1,21 @@
 package zuul.room;
 
+import java.util.Random;
+
 /**
  * @author Mathieu Molinengo
  * @version 20/11/2014
  */
 public class Corridor extends Room {
 	private boolean lights;
+	
 
 	public Corridor(String description) {
 		super(description);
-		int bool=(int)Math.random();
-		if(bool==1)
+		 Random random = new Random();
+		 random.nextBoolean();
+		 
+		if(random.nextBoolean()==true)
 			lights=true;
 		else
 			lights=false;
@@ -34,4 +39,21 @@ public class Corridor extends Room {
 		lights=true;
 	}
 
+	/**
+	 * @return the lights
+	 */
+	public boolean isLights() {
+		return lights;
+	}
+
+	/**
+	 * @param lights the lights to set
+	 */
+	public void setLights(boolean lights) {
+		this.lights = lights;
+	}
+	
+
+    
+    
 }

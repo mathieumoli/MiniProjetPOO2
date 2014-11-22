@@ -22,7 +22,7 @@ import java.util.HashMap;
 
 public class Room 
 {
-    private String description;
+    protected String description;
     protected HashMap<String, Room> exits;        // stores exits of this room.
 
     /**
