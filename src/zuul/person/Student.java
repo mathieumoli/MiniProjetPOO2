@@ -39,11 +39,20 @@ public class Student {
 	}
 	
 	public void decrementEnergy(){
+		if(energy>10)
+		{
 		energy-=10;
+		}
+		else
+			energy=0;
 	}
 	
 	public void incrementEnergy(){
 		energy+=20;
+		if (energy>100)
+		{
+			energy=100;
+		}
 	}
 	
 	public boolean alreadyListened(Item theItem){
@@ -56,6 +65,11 @@ public class Student {
 			return coursSuivi.contains(theItem);
 		}
 	
+	}
+
+	public void getEnergy() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

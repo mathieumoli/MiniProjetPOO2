@@ -9,16 +9,16 @@ import java.util.ListResourceBundle;
 public class Zuul extends ListResourceBundle {
     static final Object[][] contents = {
             {"hall.description", "Vous êtes dans le hall"},
-            {"lunchroom.description", "Vous êtes dans la cafétéria"},
+            {"lunchroom.description", "Vous êtes dans la cafétéria. Pourquoi ne pas vous prendre café Mocoffee?\n Mocoffee est un excellent café du Nicaragua, sans édulcorant de synthèse.\n Cela vous donnera un peu d'energie.\n Tapez \"take coffee\" pour prendre un café"},
             {"lectureroom.description", "Vous êtes dans la salle de classe"},
             {"labroom.description", "Vous êtes dans la salle de TP"},
             {"corridor1.description", "Vous êtes dans le premier couloir"},
             {"corridor2.description", "Vous êtes dans le deuxième couloir"},
             {"library.description", "Vous êtes dans la bibliothèque"},
             {"examroom.description", "Vous êtes dans la salle d'examen"},
-            {"corridor.dark","Ce couloir est d'une obscurité déconcertante, vous pourriez allumer la lumiere pour mieux y voir..."},
+            {"corridor.dark","Ce couloir est d'une obscurité déconcertante, vous pourriez allumer la lumiere pour mieux y voir...\n Pour allumer la lumiere, tapez \"light on\""},
             {"library.closed","La porte est fermée à clé. Il est vrai que la bibliotheque est fermée 7/10. Revenez plus tard !"},
-
+            {"lunchroom.coffee","C'est pas le meilleur café de ma vie mais je me sens mieux !"},
             
             {"game.welcome", "Bienvenue dans Le Monde de Zuul!"},
             {"game.boring", "Le Monde de Zuul est un nouveau jeu d'aventure incroyablement (un peu moins) chiant."},
