@@ -1,7 +1,5 @@
 package zuul.room;
 
-import java.util.Random;
-
 /**
  * @author Lucas Martinez
  * @version 20/11/2014
