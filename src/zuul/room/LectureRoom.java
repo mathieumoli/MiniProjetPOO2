@@ -10,23 +10,24 @@ import zuul.person.Student;
  * @version 20/11/2014
  */
 public class LectureRoom extends StudySpace {
-	LectureItem lecture;
 
-	public LectureRoom(String description) {
-		super(description);
-		lecture = new LectureItem();
-
-	}
-
-	public LectureRoom(String description, LectureItem cours) {
-		super(description);
-		lecture = cours;
+	public LectureRoom(String description,ResourceBundle reso) {
+		super(description,reso);
+		coursInThisRoom = new LectureItem();
 
 	}
 
-	public void attendLecture(Student goodStudent,ResourceBundle res) {
-		System.out.println(res.getString("lectureroom.attendlecture.part1") + lecture.getModule() + res.getString("room.attend.part2")
-				+ lecture.getNumber() + res.getString("room.attend.part3"));
+	public LectureRoom(String description, LectureItem cours,ResourceBundle reso) {
+		super(description, cours,reso);
+
+	}
+
+	public void attendLecture(Student goodStudent) {
+		System.out.println(res.getString("lectureroom.attendlecture.part1")
+				+ coursInThisRoom.getModule()
+				+ res.getString("room.attend.part2")
+				+ coursInThisRoom.getNumber()
+				+ res.getString("room.attend.part3"));
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
@@ -38,10 +39,24 @@ public class LectureRoom extends StudySpace {
 		}
 		System.out.println(res.getString("lectureroom.attendlecture.part4"));
 		goodStudent.decrementEnergy();
-		goodStudent.addItem(lecture);
-		
+		goodStudent.addItem(coursInThisRoom);
+
 	}
 
+	/**
+	 * Return a description of the room in the form: You are in the kitchen.
+	 * Exits: north west
+	 * 
+	 * @return A long description of this room
+	 */
+	@Override
+	public String getLongDescription() {
+		return description 
+				+ coursInThisRoom.getModule() + " numero "
+				+ coursInThisRoom.getNumberString()+ ".\n"
+				+ res.getString("lectureroom.description2")
+				+ getExitString();
+	}
 	/**
 	 * Classrooms where a lecture is being taught. If the lecture is on OOP, the
 	 * student must listen to the lecture. Listening to a lecture means not

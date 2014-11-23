@@ -13,7 +13,7 @@ public class Item {
 		number = 0;
 	}
 	
-	public Item(String thename,String themodule,int thenumber){
+	public Item(String themodule,int thenumber){
 		module=themodule;
 		number=thenumber;
 		}

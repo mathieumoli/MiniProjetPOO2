@@ -10,8 +10,10 @@ public class Zuul_en_US extends ListResourceBundle {
     static final Object[][] contents = {
             {"hall.description", "You are in the hall"},
             {"lunchroom.description", "You are in the lunchroom. Why don't you take some of this Mocoffee drink,\n all natural coffee beans from the upper slopes of Mount Nicaragua,\n no artificial sweeteners! It will give you a few energy.\n Type \"take coffee\" to drink a coffee"},
-            {"lectureroom.description", "You are in the classroom"},
-            {"labroom.description", "You are in the computing lab"},
+            {"lectureroom.description1", "You are in the classroom.\nYou can attend to the lecture of "},
+            {"lectureroom.description2", "Type \"attend lecture\" if you want \n" },
+            {"labroom.description1", "You are in the computing lab.\nYou can attend to the lab of "},
+            {"labroom.description2", "Type \"attend lab\" if you want \n" },
             {"corridor1.description", "You are in the first corridor"},
             {"corridor2.description", "You are in the second corridor"},
             {"library.description", "You are in the library"},
@@ -25,6 +27,7 @@ public class Zuul_en_US extends ListResourceBundle {
             {"game.boring", "World of Zuul is a new, incredibly (slightly less) boring adventure game."},
             {"game.help", "Type 'help' if you need help."},
             {"game.idontknow", "I don't know what you mean..."},
+            {"game.attend","Attend what ? lab ? lecture ?"},
             {"game.help2", "You are a student and you need to pass the final POO exam."},
             {"game.help3", "In order to do that, you need to listen lecture, do lab works and pass the exam."},
             {"game.help4", "Your command words are:"},
@@ -42,9 +45,13 @@ public class Zuul_en_US extends ListResourceBundle {
             {"student.addLecture.part1"," participate in this course of "},
             
             {"lectureroom.attendlecture.part1","Lecture of "},
+            {"lectureroom.attendlecture.part4","Thank you for your attention you can do the lab now !"},
             {"room.attend.part2"," number "},
             {"room.attend.part3"," has to begin"},
-            {"lectureroom.attendlecture.part4","Thank you for your attention you can do the lab now !"}
+            {"labroom.attendlab.part1","Lab of "},
+            {"labroom.attendlab.part4","Thank you for your attention. "},
+            {"labroom.noattend1","The professor doesn't want you attend to this lab because you haven't assisted to the lecture of "},
+            {"labroom.noattend2"," number "}
           
 
 

@@ -10,8 +10,10 @@ public class Zuul extends ListResourceBundle {
     static final Object[][] contents = {
             {"hall.description", "Vous êtes dans le hall"},
             {"lunchroom.description", "Vous êtes dans la cafétéria. Pourquoi ne pas vous prendre un café Mocoffee?\n Mocoffee est un excellent café du Nicaragua, sans édulcorant de synthèse.\n Cela vous donnera un peu d'energie.\n Tapez \"take coffee\" pour prendre un café"},
-            {"lectureroom.description", "Vous êtes dans la salle de classe"},
-            {"labroom.description", "Vous êtes dans la salle de TP"},
+            {"lectureroom.description1", "Vous êtes dans la salle de classe.\nVous pouvez assister au cours de "},
+            {"lectureroom.description2", "pour cela Tapez \"attend lecture\" \n" },
+            {"labroom.description1", "Vous êtes dans la salle de TP.\nVous pouvez assister au cours de "},
+            {"labroom.description2", "pour cela Tapez \"attend lab\" \n" },
             {"corridor1.description", "Vous êtes dans le premier couloir"},
             {"corridor2.description", "Vous êtes dans le deuxième couloir"},
             {"library.description", "Vous êtes dans la bibliothèque"},
@@ -25,6 +27,7 @@ public class Zuul extends ListResourceBundle {
             {"game.boring", "Le Monde de Zuul est un nouveau jeu d'aventure incroyablement (un peu moins) chiant."},
             {"game.help", "Tapez 'help' si vous avez besoin d'aide."},
             {"game.idontknow", "Je ne comprends pas..."},
+            {"game.attend","Assister à quoi ? lab ? cours ?"},
             {"game.help2", "Vous êtes un étudiant et vous devez passer l'examen final de POO."},
             {"game.help3", "Pour cela, vous devez suivre des cours, des TP et réussir l'examen."},
             {"game.help4", "Les commandes sont:"},
@@ -42,10 +45,13 @@ public class Zuul extends ListResourceBundle {
             {"student.addLecture.part1"," a suivi avec succès le cours de "},
             
             {"lectureroom.attendlecture.part1","le cours de "},
+            {"lectureroom.attendlecture.part4","Merci d'avoir écouté ce cours vous pouvez donc assister au lab !"},
             {"room.attend.part2"," numero "},
             {"room.attend.part3"," va commencer !"},
-            {"lectureroom.attendlecture.part4","Merci d'avoir écouté ce cours vous pouvez donc assister au lab !"}
-
+            {"labroom.attendlab.part1","le lab de "},
+            {"labroom.attendlab.part4","Merci d'avoir participé à ce lab !"},
+            {"labroom.noattend1","Le professeur ne veut pas de vous car vous n'avez pas assisté au cours concernant le module de "},
+            {"labroom.noattend2"," numero "}
 
     };
 
