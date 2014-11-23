@@ -72,14 +72,16 @@ public class Game {
 	 * Create all the rooms and link their exits together.
 	 */
 	private void createRooms() {
-
+		LabItem lab1 = new LabItem("C", 1);
+		LectureItem lect1 = new LectureItem("C", 1);
 		// create the rooms
 		Room hall = new Room(res.getString("hall.description"));
 		Lunchroom lunchroom = new Lunchroom(
 				res.getString("lunchroom.description"));
 		LectureRoom lectureroom = new LectureRoom(
-				res.getString("lectureroom.description"));
-		LabRoom labroom = new LabRoom(res.getString("labroom.description"));
+				res.getString("lectureroom.description1"), lect1, res);
+		LabRoom labroom = new LabRoom(res.getString("labroom.description1"),
+				lab1, res);
 		Corridor corridor1 = new Corridor(
 				res.getString("corridor1.description"));
 		Corridor corridor2 = new Corridor(
@@ -175,7 +177,11 @@ public class Game {
 			{
 				goCorridor(command);
 			}
+		} else if (commandWord.equals("attend")
+				&& (currentRoom instanceof StudySpace)) {
+			wantAttend(command);
 		}
+
 		// else command not recognised.
 		return wantToQuit;
 	}
@@ -192,6 +198,24 @@ public class Game {
 		System.out.println();
 		System.out.println(res.getString("game.help4"));
 		parser.showCommands();
+	}
+
+	private void wantAttend(Command command) {
+		if (!command.hasSecondWord()) {
+			// if there is no second word, we don't know where to go...
+			System.out.println(res.getString("game.attend"));
+			return;
+		} else if ((command.getSecondWord().equals("lab"))
+				&& (currentRoom instanceof LabRoom)) {
+			((LabRoom) currentRoom).attendLab(gamer);
+			System.out.println(currentRoom.getLongDescription());
+
+		} else if ((command.getSecondWord().equals("lecture"))
+				&& (currentRoom instanceof LectureRoom)) {
+			((LectureRoom) currentRoom).attendLecture(gamer);
+			System.out.println(currentRoom.getLongDescription());
+
+		}
 	}
 
 	private void wantCoffee(Command command) {
@@ -256,19 +280,50 @@ public class Game {
 				} else
 					System.out.println(currentRoom.getLongDescription());
 
-			} else {
-				// special case for the library
-				if (nextRoom instanceof Library) {
-					// random if the door is closed
-					if (((Library) nextRoom).getRandomOpening() == false) {
-						System.out.println(res.getString("library.closed"));
-						currentRoom = sauvCurrentRoom;
-					}
+			} else
+			// special case for the library
+			if (nextRoom instanceof Library) {
+				// random if the door is closed
+				if (((Library) nextRoom).getRandomOpening() == false) {
+					System.out.println(res.getString("library.closed"));
+					currentRoom = sauvCurrentRoom;
 				}
+			} else if (currentRoom instanceof LabRoom) {
+				if (!gamer.alreadyListened(new LectureItem(
+						((LabRoom) currentRoom).getCoursInThisRoom()
+								.getModule(), ((LabRoom) currentRoom)
+								.getCoursInThisRoom().getNumber()))) {
 
-				System.out.println(currentRoom.getLongDescription());
+					System.out.println(res.getString("labroom.noattend1")
+							+ ((LabRoom) currentRoom).getCoursInThisRoom()
+									.getModule()
+							+ res.getString("labroom.noattend2")
+							+ ((LabRoom) currentRoom).getCoursInThisRoom()
+									.getNumberString());
+
+					currentRoom = sauvCurrentRoom;
+					System.out.println(currentRoom.getLongDescription());
+
+				} else if (((LabRoom) currentRoom).getCoursInThisRoom()
+						.getModule().equals("Java")) {
+					((LabRoom) currentRoom).attendLab(gamer);
+					System.out.println(currentRoom.getLongDescription());
+				} else
+					System.out.println(currentRoom.getLongDescription());
 
 			}
+			if (currentRoom instanceof LectureRoom) {
+				if (((LectureRoom) currentRoom).getCoursInThisRoom()
+						.getModule().equals("Java")) {
+					((LectureRoom) currentRoom).attendLecture(gamer);
+					System.out.println(currentRoom.getLongDescription());
+				}
+			}
+
+			else {
+				System.out.println(currentRoom.getLongDescription());
+			}
+
 		}
 
 	}

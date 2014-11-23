@@ -6,6 +6,14 @@ package zuul.course;
  */
 
 public class LabItem extends Item {
+	
+	public LabItem(){
+		super();
+	}
+
+	public LabItem(String module, int number) {
+		super(module, number);
+	}
 
 	@Override
 	public boolean equals(Object object) {

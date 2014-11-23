@@ -36,6 +36,7 @@ public class Student {
 
 	public void addItem(Item itemListened) {
 		if (itemListened instanceof LabItem){
+			if(alreadyListened(new Item(itemListened.getModule(),itemListened.getNumber())))
 			labsSuivi.add((LabItem) itemListened);
 		System.out.println(this.name + res.getString("student.addLab.part1")
 				+ itemListened.getModule() + res.getString("student.add.part2")
@@ -71,11 +72,21 @@ public class Student {
 	}
 
 	public boolean alreadyListened(Item theItem) {
+		boolean listened=false;
+		int i;
+		int size;
 		if (theItem instanceof LabItem) {
-			return labsSuivi.contains(theItem);
-		} else {
-			return coursSuivi.contains(theItem);
+			size=labsSuivi.size();
+			for(i=0;i<size;i++){
+				listened=labsSuivi.get(i).equals(theItem);
+			}
+		} else if (theItem instanceof LectureItem) {
+			size=coursSuivi.size();
+			for(i=0;i<size;i++){
+				listened=coursSuivi.get(i).equals(theItem);
+			}
 		}
+		return listened;
 
 	}
 
