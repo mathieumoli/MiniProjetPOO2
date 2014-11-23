@@ -18,8 +18,8 @@ public class Zuul_en_US extends ListResourceBundle {
             {"examroom.description", "You are in the exam room"},
             {"corridor.dark","This corridor is very dark, you could switch the light on to see clearly the room.\n Type \"light on\" to switch the light on !"},
             {"library.closed","The door is closed. The library is closed 7 out of 10... Come back later !"},
-            {"lunchroom.coffee","It's not the best coffee of my life but I'm feeling better !"},
-
+            {"lunchroom.coffee1","It's not the best coffee of my life but I'm feeling better !"},
+            {"lunchroom.coffee2", "Thank you Mocoffee !"},
             
             {"game.welcome", "Welcome to the World of Zuul!"},
             {"game.boring", "World of Zuul is a new, incredibly (slightly less) boring adventure game."},
@@ -29,10 +29,23 @@ public class Zuul_en_US extends ListResourceBundle {
             {"game.help3", "In order to do that, you need to listen lecture, do lab works and pass the exam."},
             {"game.help4", "Your command words are:"},
             {"game.where", "Go where?"},
+            {"game.take", "take what? A coffee ? Type: take coffee"},
             {"game.nodoor", "There is no door!"},
             {"game.quitwhat", "Quit what?"},
             {"game.exits", "Exits:"},
-            {"game.thankyou", "Thank you for playing.  Good bye."}
+            {"game.thankyou", "Thank you for playing.  Good bye."},
+            
+            {"student.energy.part1", "Energy of "},
+            {"student.energy.part2", " is "},
+            {"student.addLab.part1","  participate in this lab of "},
+            {"student.add.part2"," number "},
+            {"student.addLecture.part1"," participate in this course of "},
+            
+            {"lectureroom.attendlecture.part1","Lecture of "},
+            {"room.attend.part2"," number "},
+            {"room.attend.part3"," has to begin"},
+            {"lectureroom.attendlecture.part4","Thank you for your attention you can do the lab now !"}
+          
 
 
     };

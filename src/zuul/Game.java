@@ -41,7 +41,7 @@ public class Game {
 		getLanguage();
 		res = ResourceBundle.getBundle("zuul.intl.Zuul", locale);
 		createRooms();
-		gamer = new Student();
+		gamer = new Student(res);
 	}
 
 	/**
@@ -165,18 +165,15 @@ public class Game {
 		} else if (commandWord.equals("quit")) {
 			wantToQuit = quit(command);
 			// crée des methodes à partir d'ici
-		} else if (commandWord.equals("take")) {
-			if (currentRoom instanceof Lunchroom) {
-				((Lunchroom) currentRoom).takeCoffee(gamer);
-				System.out.println(res.getString("lunchroom.coffee"));
+		} else if (commandWord.equals("take")
+				&& (currentRoom instanceof Lunchroom)) {
+			{
+				wantCoffee(command);
 			}
-		} else if (commandWord.equals("light")) {
-			if (currentRoom instanceof Corridor) {
-				if (command.getSecondWord().equals("on")) {
-					((Corridor) currentRoom).setLights(true);
-					System.out.println(currentRoom.getLongDescription());
-
-				}
+		} else if (commandWord.equals("light")
+				&& (currentRoom instanceof Corridor)) {
+			{
+				goCorridor(command);
 			}
 		}
 		// else command not recognised.
@@ -195,6 +192,38 @@ public class Game {
 		System.out.println();
 		System.out.println(res.getString("game.help4"));
 		parser.showCommands();
+	}
+
+	private void wantCoffee(Command command) {
+		if (!command.hasSecondWord()) {
+			// if there is no second word, we don't know where to go...
+			System.out.println(res.getString("game.take"));
+			return;
+		} else if (command.getSecondWord().equals("coffee")) {
+			System.out.println(res.getString("lunchroom.coffee1"));
+			((Lunchroom) currentRoom).takeCoffee(gamer);
+			System.out.println(res.getString("lunchroom.coffee2"));
+		} else {
+			System.out.println(res.getString("game.take"));
+		}
+		System.out.println(currentRoom.getExitString());
+
+	}
+
+	private void goCorridor(Command command) {
+		if (!command.hasSecondWord()) {
+			// if there is no second word, we don't know where to go...
+			System.out.println(res.getString("game.where"));
+			return;
+		} else if (command.getSecondWord().equals("on")) {
+			((Corridor) currentRoom).setLights(true);
+			System.out.println(currentRoom.getLongDescription());
+
+		} else if (command.getSecondWord().equals("off")) {
+			((Corridor) currentRoom).setLights(false);
+			System.out.println(res.getString("corridor.dark"));
+
+		}
 	}
 
 	/**
@@ -223,6 +252,7 @@ public class Game {
 
 				if (((Corridor) currentRoom).isLights() == false) {
 					System.out.println(res.getString("corridor.dark"));
+					System.out.println(currentRoom.getExitString());
 				} else
 					System.out.println(currentRoom.getLongDescription());
 
