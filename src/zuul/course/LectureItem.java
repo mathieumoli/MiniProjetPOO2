@@ -13,13 +13,12 @@ public class LectureItem extends Item {
 		{
 			if(this.module.equals(((LabItem) object).module))
 			{
-				if(this.name.equals(((LabItem) object).name))
-				{
+				
 					if(this.number==((LabItem) object).number)
 					{
 						return true;
 					}
-				}
+				
 			}
 		}
 		return equality;

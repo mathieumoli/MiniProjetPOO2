@@ -72,7 +72,7 @@ public class Room
      * "Exits: north west".
      * @return Details of the room's exits.
      */
-    protected String getExitString()
+    public String getExitString()
     {
         String returnString = Game.res.getString("game.exits");
         Set<String> keys = exits.keySet();
