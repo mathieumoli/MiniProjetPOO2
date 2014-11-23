@@ -8,7 +8,6 @@ import java.util.ListResourceBundle;
  */
 public class Zuul_en_US extends ListResourceBundle {
     static final Object[][] contents = {
-            {"hall.description", "You are in the hall"},
             {"lunchroom.description", "You are in the lunchroom. Why don't you take some of this Mocoffee drink,\n all natural coffee beans from the upper slopes of Mount Nicaragua,\n no artificial sweeteners! It will give you a few energy.\n Type \"take coffee\" to drink a coffee"},
             {"lectureroom.description1", "You are in the classroom.\nYou can attend to the lecture of "},
             {"lectureroom.description2", "Type \"attend lecture\" if you want \n" },
@@ -51,7 +50,9 @@ public class Zuul_en_US extends ListResourceBundle {
             {"labroom.attendlab.part1","Lab of "},
             {"labroom.attendlab.part4","Thank you for your attention. "},
             {"labroom.noattend1","The professor doesn't want you attend to this lab because you haven't assisted to the lecture of "},
-            {"labroom.noattend2"," number "}
+            {"labroom.noattend2"," number "},
+
+            {"examroom.cant", "You can't pass the final exam in these conditions..."}
           
 
 

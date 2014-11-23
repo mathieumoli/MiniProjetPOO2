@@ -2,7 +2,9 @@ package zuul.room;
 
 import java.util.ResourceBundle;
 
+import zuul.Game;
 import zuul.course.LabItem;
+import zuul.course.LectureItem;
 import zuul.person.Student;
 
 /**
@@ -11,31 +13,59 @@ import zuul.person.Student;
  */
 public class LabRoom extends StudySpace {
 	
-	public LabRoom(String description,ResourceBundle reso) {
-		super(description,reso);
-		coursInThisRoom=new LabItem();
+	public LabRoom(String description) {
+		super(description);
+		coursInThisRoom = new LabItem();
 	}
 	
-	public LabRoom(String description,LabItem lab,ResourceBundle reso) {
-		super(description,lab,reso);
+	public LabRoom(String description,LabItem lab) {
+		super(description,lab);
 	}
-	
+
+	/**
+	 * the student can't enter if he didn't attend the respective lecture
+	 * @param student
+	 * @return
+	 */
+	@Override
+	public boolean canEnter(Student student){
+		if (!student.alreadyListened(new LectureItem(coursInThisRoom.getModule(), coursInThisRoom.getNumber()))){
+			String string = new String(Game.res.getString("labroom.noattend1")
+							+ coursInThisRoom.getModule()
+							+ Game.res.getString("labroom.noattend2")
+							+ coursInThisRoom.getNumberString());
+			System.out.println(string);
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean enter(Student student){
+		if(canEnter(student)){
+			/**
+			 * @todo real implementation about the labroom
+			 */
+			System.out.println(getLongDescription());
+			return true;
+		}
+		return false;
+	}
+
 	public void attendLab(Student goodStudent) {
-		System.out.println(res.getString("labroom.attendlab.part1") + coursInThisRoom.getModule() + res.getString("room.attend.part2")
-				+ coursInThisRoom.getNumber() + res.getString("room.attend.part3"));
+		System.out.println(Game.res.getString("labroom.attendlab.part1") + coursInThisRoom.getModule() + Game.res.getString("room.attend.part2")
+				+ coursInThisRoom.getNumber() + Game.res.getString("room.attend.part3"));
 		try {
 			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-		}
-		System.out.println("...");
-		try {
+			System.out.println("...");
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-		System.out.println(res.getString("labroom.attendlab.part4"));
+
+		System.out.println(Game.res.getString("labroom.attendlab.part4"));
 		goodStudent.decrementEnergy();
 		goodStudent.addItem(coursInThisRoom);
-		
 	}
 	
 	/**
@@ -49,7 +79,7 @@ public class LabRoom extends StudySpace {
 		return description
 				+ coursInThisRoom.getModule() + " numero "
 				+ coursInThisRoom.getNumberString()+ ".\n"
-				+ res.getString("labroom.description2") + "\n"
+				+ Game.res.getString("labroom.description2") + "\n"
 				+ getExitString();
 	}
 
@@ -65,6 +95,4 @@ public class LabRoom extends StudySpace {
 	 *
 	 * TO DO : enter()
 	 */
-
-
 }

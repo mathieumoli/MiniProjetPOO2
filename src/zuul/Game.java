@@ -41,7 +41,7 @@ public class Game {
 		getLanguage();
 		res = ResourceBundle.getBundle("zuul.intl.Zuul", locale);
 		createRooms();
-		gamer = new Student(res);
+		gamer = new Student();
 	}
 
 	/**
@@ -75,13 +75,12 @@ public class Game {
 		LabItem lab1 = new LabItem("C", 1);
 		LectureItem lect1 = new LectureItem("C", 1);
 		// create the rooms
-		Room hall = new Room(res.getString("hall.description"));
 		Lunchroom lunchroom = new Lunchroom(
 				res.getString("lunchroom.description"));
 		LectureRoom lectureroom = new LectureRoom(
-				res.getString("lectureroom.description1"), lect1, res);
+				res.getString("lectureroom.description1"), lect1);
 		LabRoom labroom = new LabRoom(res.getString("labroom.description1"),
-				lab1, res);
+				lab1);
 		Corridor corridor1 = new Corridor(
 				res.getString("corridor1.description"));
 		Corridor corridor2 = new Corridor(
@@ -90,9 +89,7 @@ public class Game {
 		ExamRoom examroom = new ExamRoom(res.getString("examroom.description"));
 
 		// initialise room exits
-		hall.setExit("north", corridor1);
 
-		corridor1.setExit("south", hall);
 		corridor1.setExit("west", labroom);
 		corridor1.setExit("east", lunchroom);
 		corridor1.setExit("north", corridor2);
@@ -112,7 +109,7 @@ public class Game {
 
 		examroom.setExit("south", corridor2);
 
-		currentRoom = hall; // start game in the hall
+		currentRoom = corridor1; // start game in the hall
 	}
 
 	/**
@@ -169,14 +166,10 @@ public class Game {
 			// crée des methodes à partir d'ici
 		} else if (commandWord.equals("take")
 				&& (currentRoom instanceof Lunchroom)) {
-			{
 				wantCoffee(command);
-			}
 		} else if (commandWord.equals("light")
 				&& (currentRoom instanceof Corridor)) {
-			{
 				goCorridor(command);
-			}
 		} else if (commandWord.equals("attend")
 				&& (currentRoom instanceof StudySpace)) {
 			wantAttend(command);
@@ -214,7 +207,6 @@ public class Game {
 				&& (currentRoom instanceof LectureRoom)) {
 			((LectureRoom) currentRoom).attendLecture(gamer);
 			System.out.println(currentRoom.getLongDescription());
-
 		}
 	}
 
@@ -231,7 +223,6 @@ public class Game {
 			System.out.println(res.getString("game.take"));
 		}
 		System.out.println(currentRoom.getExitString());
-
 	}
 
 	private void goCorridor(Command command) {
@@ -246,7 +237,6 @@ public class Game {
 		} else if (command.getSecondWord().equals("off")) {
 			((Corridor) currentRoom).setLights(false);
 			System.out.println(res.getString("corridor.dark"));
-
 		}
 	}
 
@@ -265,30 +255,17 @@ public class Game {
 
 		// Try to leave current room.
 		Room nextRoom = currentRoom.getExit(direction);
-		Room sauvCurrentRoom = currentRoom;
 
 		if (nextRoom == null) {
 			System.out.println(res.getString("game.nodoor"));
-		} else {
+		} else if (nextRoom.enter(gamer)) {
 			currentRoom = nextRoom;
-			// if the light is off
-			if (currentRoom instanceof Corridor) {
+		} else {
+			System.out.println(currentRoom.getLongDescription());
+		}
 
-				if (((Corridor) currentRoom).isLights() == false) {
-					System.out.println(res.getString("corridor.dark"));
-					System.out.println(currentRoom.getExitString());
-				} else
-					System.out.println(currentRoom.getLongDescription());
+			/*} else if (currentRoom instanceof LabRoom) {
 
-			} else
-			// special case for the library
-			if (nextRoom instanceof Library) {
-				// random if the door is closed
-				if (((Library) nextRoom).getRandomOpening() == false) {
-					System.out.println(res.getString("library.closed"));
-					currentRoom = sauvCurrentRoom;
-				}
-			} else if (currentRoom instanceof LabRoom) {
 				if (!gamer.alreadyListened(new LectureItem(
 						((LabRoom) currentRoom).getCoursInThisRoom()
 								.getModule(), ((LabRoom) currentRoom)
@@ -311,20 +288,8 @@ public class Game {
 				} else
 					System.out.println(currentRoom.getLongDescription());
 
-			}
-			if (currentRoom instanceof LectureRoom) {
-				if (((LectureRoom) currentRoom).getCoursInThisRoom()
-						.getModule().equals("Java")) {
-					((LectureRoom) currentRoom).attendLecture(gamer);
-					System.out.println(currentRoom.getLongDescription());
-				}
-			}
+			} */
 
-			else {
-				System.out.println(currentRoom.getLongDescription());
-			}
-
-		}
 
 	}
 
@@ -338,8 +303,8 @@ public class Game {
 		if (command.hasSecondWord()) {
 			System.out.println(res.getString("game.quitwhat"));
 			return false;
-		} else {
-			return true; // signal that we want to quit
 		}
+
+		return true; // signal that we want to quit
 	}
 }

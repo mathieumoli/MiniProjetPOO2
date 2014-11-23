@@ -1,5 +1,8 @@
 package zuul.room;
 
+import zuul.Game;
+import zuul.person.Student;
+
 import java.util.Random;
 
 /**
@@ -14,11 +17,24 @@ public class Corridor extends Room {
 		super(description);
 		 Random random = new Random();
 		 random.nextBoolean();
-		 
-		if(random.nextBoolean()==true)
-			lights=true;
-		else
-			lights=false;
+
+		lights = (random.nextBoolean()) ? true : false;
+	}
+
+	@Override
+	public boolean canEnter(Student student){
+		return true;
+	}
+
+	@Override
+	public boolean enter(Student student){
+		if (isLights()) {
+			System.out.println(getLongDescription());
+		} else {
+			System.out.println(Game.res.getString("corridor.dark"));
+			System.out.println(getExitString());
+		}
+		return true;
 	}
 
 	/**
@@ -52,8 +68,4 @@ public class Corridor extends Room {
 	public void setLights(boolean lights) {
 		this.lights = lights;
 	}
-	
-
-    
-    
 }

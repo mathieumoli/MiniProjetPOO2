@@ -2,6 +2,7 @@ package zuul.room;
 
 import java.util.ResourceBundle;
 
+import zuul.Game;
 import zuul.course.LectureItem;
 import zuul.person.Student;
 
@@ -11,36 +12,57 @@ import zuul.person.Student;
  */
 public class LectureRoom extends StudySpace {
 
-	public LectureRoom(String description,ResourceBundle reso) {
-		super(description,reso);
+	public LectureRoom(String description) {
+		super(description);
 		coursInThisRoom = new LectureItem();
 
 	}
 
-	public LectureRoom(String description, LectureItem cours,ResourceBundle reso) {
-		super(description, cours,reso);
+	public LectureRoom(String description, LectureItem cours) {
+		super(description, cours);
 
 	}
 
+	@Override
+	public boolean canEnter(Student student){
+		return true;
+	}
+
+	public boolean mustEnter(Student student){
+		if (coursInThisRoom.getModule().equals("Java")) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean enter(Student student){
+		if (mustEnter(student)){
+			attendLecture(student);
+			System.out.println(getLongDescription());
+		} else {
+			System.out.println(getLongDescription());
+		}
+		return true;
+	}
+
 	public void attendLecture(Student goodStudent) {
-		System.out.println(res.getString("lectureroom.attendlecture.part1")
+		System.out.println(Game.res.getString("lectureroom.attendlecture.part1")
 				+ coursInThisRoom.getModule()
-				+ res.getString("room.attend.part2")
+				+ Game.res.getString("room.attend.part2")
 				+ coursInThisRoom.getNumber()
-				+ res.getString("room.attend.part3"));
+				+ Game.res.getString("room.attend.part3"));
 		try {
 			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-		}
-		System.out.println("...");
-		try {
+			System.out.println("...");
 			Thread.sleep(3000);
+
 		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-		System.out.println(res.getString("lectureroom.attendlecture.part4"));
+		System.out.println(Game.res.getString("lectureroom.attendlecture.part4"));
 		goodStudent.decrementEnergy();
 		goodStudent.addItem(coursInThisRoom);
-
 	}
 
 	/**
@@ -54,7 +76,7 @@ public class LectureRoom extends StudySpace {
 		return description 
 				+ coursInThisRoom.getModule() + " numero "
 				+ coursInThisRoom.getNumberString()+ ".\n"
-				+ res.getString("lectureroom.description2")
+				+ Game.res.getString("lectureroom.description2")
 				+ getExitString();
 	}
 	/**
@@ -68,5 +90,4 @@ public class LectureRoom extends StudySpace {
 	 *
 	 * TO DO : enter(),
 	 */
-
 }

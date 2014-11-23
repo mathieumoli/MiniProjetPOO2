@@ -1,6 +1,7 @@
 package zuul.room;
 
 import zuul.Game;
+import zuul.person.Student;
 
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -20,10 +21,25 @@ import java.util.HashMap;
  * @version 2011.08.10
  */
 
-public class Room 
+public abstract class Room
 {
     protected String description;
     protected HashMap<String, Room> exits;        // stores exits of this room.
+
+    /**
+     * Abstract method which will be overriden in each class
+     * @param student
+     * @return
+     */
+    public abstract boolean enter(Student student);
+
+    /**
+     * Abstract method which will determine if the student can enter
+     * @param student
+     * @return
+     */
+    public abstract boolean canEnter(Student student);
+
 
     /**
      * Create a room described "description". Initially, it has
@@ -92,5 +108,6 @@ public class Room
     {
         return exits.get(direction);
     }
+
 }
 

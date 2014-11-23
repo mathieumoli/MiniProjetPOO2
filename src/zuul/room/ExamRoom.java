@@ -1,5 +1,8 @@
 package zuul.room;
 
+import zuul.Game;
+import zuul.person.Student;
+
 /**
  * @author Lucas Martinez
  * @version 20/11/2014
@@ -20,4 +23,27 @@ public class ExamRoom extends Room {
      *
      * TO DO : enter() , startExam()
      */
+
+    @Override
+    public boolean canEnter(Student student){
+        /**
+         * @todo add the real condition for the exam
+         */
+
+        if (student.getEnergy() >= 50){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean enter(Student student){
+        if(canEnter(student)){
+            System.out.println(getLongDescription());
+            return true;
+        } else {
+            System.out.println(Game.res.getString("examroom.cant"));
+            return false;
+        }
+    }
 }
