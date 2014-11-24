@@ -36,6 +36,10 @@ public class Zuul_en_US extends ListResourceBundle {
             {"game.quitwhat", "Quit what?"},
             {"game.exits", "Exits:"},
             {"game.thankyou", "Thank you for playing.  Good bye."},
+            {"game.askname", "What's your name ?"},
+            {"game.welcomename1", "Welcome "},
+            {"game.welcomename2", " ! But I think that this name isn't really for you...I'll call you "},
+            {"game.welcomename3", " the badass !"},
             
             {"student.energy.part1", "Energy of "},
             {"student.energy.part2", " is "},

@@ -1,13 +1,12 @@
 package zuul;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import zuul.commands.*;
 import zuul.course.*;
 import zuul.person.Student;
 import zuul.room.*;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * This class is the main class of the "World of Zuul" application.
@@ -32,6 +31,9 @@ public class Game {
 	public static ResourceBundle res;
 	private Locale locale;
 	private Student gamer;
+	private static final int NB_COURSES = 4;
+	private List<LabItem> labs = new ArrayList<LabItem>();
+	private List<LectureItem> lectures = new ArrayList<LectureItem>();
 
 	/**
 	 * Create the game and initialise its internal map.
@@ -40,8 +42,6 @@ public class Game {
 		parser = new Parser();
 		getLanguage();
 		res = ResourceBundle.getBundle("zuul.intl.Zuul", locale);
-		createRooms();
-		gamer = new Student();
 	}
 
 	/**
@@ -72,19 +72,13 @@ public class Game {
 	 * Create all the rooms and link their exits together.
 	 */
 	private void createRooms() {
-		LabItem lab1 = new LabItem("C", 1);
-		LectureItem lect1 = new LectureItem("C", 1);
+
 		// create the rooms
-		Lunchroom lunchroom = new Lunchroom(
-				res.getString("lunchroom.description"));
-		LectureRoom lectureroom = new LectureRoom(
-				res.getString("lectureroom.description1"), lect1);
-		LabRoom labroom = new LabRoom(res.getString("labroom.description1"),
-				lab1);
-		Corridor corridor1 = new Corridor(
-				res.getString("corridor1.description"));
-		Corridor corridor2 = new Corridor(
-				res.getString("corridor2.description"));
+		Lunchroom lunchroom = new Lunchroom(res.getString("lunchroom.description"));
+		LectureRoom lectureroom = new LectureRoom(res.getString("lectureroom.description1"), lectures.get(0));
+		LabRoom labroom = new LabRoom(res.getString("labroom.description1"), labs.get(0));	// get(0) uniquement pour les tests
+		Corridor corridor1 = new Corridor(res.getString("corridor1.description"));
+		Corridor corridor2 = new Corridor(res.getString("corridor2.description"));
 		Library library = new Library(res.getString("library.description"));
 		ExamRoom examroom = new ExamRoom(res.getString("examroom.description"));
 
@@ -109,14 +103,19 @@ public class Game {
 
 		examroom.setExit("south", corridor2);
 
-		currentRoom = corridor1; // start game in the hall
+		currentRoom = corridor1; // start game in the first corridor
 	}
+
 
 	/**
 	 * Main play routine. Loops until end of play.
 	 */
 	public void play() {
 		printWelcome();
+		createCourses();
+		createRooms();
+		createGamer();
+		printGamer();
 
 		// Enter the main command loop. Here we repeatedly read commands and
 		// execute them until the game is over.
@@ -138,7 +137,38 @@ public class Game {
 		System.out.println(res.getString("game.boring"));
 		System.out.println(res.getString("game.help"));
 		System.out.println();
+	}
+
+	/**
+	 * Create the player based on the given name
+	 */
+
+	private void createGamer() {
+		System.out.println(res.getString("game.askname"));
+		Scanner scanner = new Scanner(System.in);
+		String name = scanner.nextLine();
+		gamer = new Student(name);
+
+	}
+
+	private void printGamer() {
+		String string = new String(res.getString("game.welcomename1") + gamer.getName() +
+				res.getString("game.welcomename2") + gamer.getName() +
+				res.getString("game.welcomename3"));
+		System.out.println(string);
+		System.out.println();
 		System.out.println(currentRoom.getLongDescription());
+	}
+
+	/**
+	 * This method creates the labs and lectures (4 each) for 4 subjects
+	 */
+	private void createCourses(){
+		String courses[] = {"OOP", "C", "ALGO", "SSII"};
+		for(int i = 0; i < NB_COURSES; ++i){
+			labs.add(new LabItem(courses[i], i+1));
+			lectures.add(new LectureItem(courses[i], i+1));
+		}
 	}
 
 	/**
@@ -263,34 +293,6 @@ public class Game {
 		} else {
 			System.out.println(currentRoom.getLongDescription());
 		}
-
-			/*} else if (currentRoom instanceof LabRoom) {
-
-				if (!gamer.alreadyListened(new LectureItem(
-						((LabRoom) currentRoom).getCoursInThisRoom()
-								.getModule(), ((LabRoom) currentRoom)
-								.getCoursInThisRoom().getNumber()))) {
-
-					System.out.println(res.getString("labroom.noattend1")
-							+ ((LabRoom) currentRoom).getCoursInThisRoom()
-									.getModule()
-							+ res.getString("labroom.noattend2")
-							+ ((LabRoom) currentRoom).getCoursInThisRoom()
-									.getNumberString());
-
-					currentRoom = sauvCurrentRoom;
-					System.out.println(currentRoom.getLongDescription());
-
-				} else if (((LabRoom) currentRoom).getCoursInThisRoom()
-						.getModule().equals("Java")) {
-					((LabRoom) currentRoom).attendLab(gamer);
-					System.out.println(currentRoom.getLongDescription());
-				} else
-					System.out.println(currentRoom.getLongDescription());
-
-			} */
-
-
 	}
 
 	/**

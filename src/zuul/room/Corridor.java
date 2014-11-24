@@ -34,6 +34,8 @@ public class Corridor extends Room {
 			System.out.println(Game.res.getString("corridor.dark"));
 			System.out.println(getExitString());
 		}
+
+
 		return true;
 	}
 
@@ -52,7 +54,7 @@ public class Corridor extends Room {
 	 */
 	
 	public void turnLightsOn(){
-		lights=true;
+		lights = true;
 	}
 
 	/**

@@ -1,8 +1,11 @@
 package zuul.room;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import zuul.Game;
+import zuul.course.LabItem;
 import zuul.course.LectureItem;
 import zuul.person.Student;
 
@@ -29,7 +32,7 @@ public class LectureRoom extends StudySpace {
 	}
 
 	public boolean mustEnter(Student student){
-		if (coursInThisRoom.getModule().equals("Java")) {
+		if (coursInThisRoom.getModule().equals("OOP")) {
 			return true;
 		}
 		return false;
@@ -45,6 +48,7 @@ public class LectureRoom extends StudySpace {
 		}
 		return true;
 	}
+
 
 	public void attendLecture(Student goodStudent) {
 		System.out.println(Game.res.getString("lectureroom.attendlecture.part1")

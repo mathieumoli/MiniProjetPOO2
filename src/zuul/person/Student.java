@@ -19,12 +19,6 @@ public class Student {
 	private ArrayList<LectureItem> coursSuivi;
 	private ArrayList<LabItem> labsSuivi;
 
-	public Student() {
-		energy = 100;
-		name = "Jacky";
-		coursSuivi = new ArrayList<LectureItem>();
-		labsSuivi = new ArrayList<LabItem>();
-	}
 
 	public Student(String nameOfStudent) {
 		energy = 100;
