@@ -42,6 +42,7 @@ public class LabRoom extends StudySpace {
 
 	@Override
 	public boolean enter(Student student){
+		randomizeCourses();
 		if(canEnter(student)){
 			/**
 			 * @todo real implementation about the labroom
@@ -50,6 +51,14 @@ public class LabRoom extends StudySpace {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public void randomizeCourses(){
+		int rand = (int) (Math.random() * Game.NB_COURSES);
+
+		LabItem lab = Game.labs.get(rand);
+		coursInThisRoom = lab;
 	}
 
 	public void attendLab(Student goodStudent) {

@@ -21,6 +21,8 @@ public abstract class StudySpace extends Room {
 		coursInThisRoom = itemInThisRoom;
 	}
 
+	public abstract void randomizeCourses();
+
 	/**
 	 * @return the coursInThisRoom
 	 */

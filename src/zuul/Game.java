@@ -30,9 +30,9 @@ public class Game {
 	public static ResourceBundle res;
 	private Locale locale;
 	private Student gamer;
-	private static final int NB_COURSES = 4;
-	private List<LabItem> labs = new ArrayList<LabItem>();
-	private List<LectureItem> lectures = new ArrayList<LectureItem>();
+	public static final int NB_COURSES = 4;
+	public static List<LabItem> labs = new ArrayList<LabItem>();
+	public static List<LectureItem> lectures = new ArrayList<LectureItem>();
 
 	/**
 	 * Create the game and initialise its internal map.
@@ -74,8 +74,8 @@ public class Game {
 
 		// create the rooms
 		Lunchroom lunchroom = new Lunchroom(res.getString("lunchroom.description"));
-		LectureRoom lectureroom = new LectureRoom(res.getString("lectureroom.description1"), lectures.get(0));
-		LabRoom labroom = new LabRoom(res.getString("labroom.description1"), labs.get(0));	// get(0) uniquement pour les tests
+		LectureRoom lectureroom = new LectureRoom(res.getString("lectureroom.description1"));
+		LabRoom labroom = new LabRoom(res.getString("labroom.description1"));	// get(0) uniquement pour les tests
 		Corridor corridor1 = new Corridor(res.getString("corridor1.description"));
 		Corridor corridor2 = new Corridor(res.getString("corridor2.description"));
 		Library library = new Library(res.getString("library.description"));

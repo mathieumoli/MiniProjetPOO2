@@ -1,6 +1,6 @@
 package zuul.room;
 
-import java.util.ArrayList;
+import 	java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -40,6 +40,7 @@ public class LectureRoom extends StudySpace {
 
 	@Override
 	public boolean enter(Student student){
+		randomizeCourses();
 		if (mustEnter(student)){
 			attendLecture(student);
 			System.out.println(getLongDescription());
@@ -47,6 +48,14 @@ public class LectureRoom extends StudySpace {
 			System.out.println(getLongDescription());
 		}
 		return true;
+	}
+
+	@Override
+	public void randomizeCourses(){
+		int rand = (int) (Math.random() * Game.NB_COURSES);
+
+		LectureItem lecture = Game.lectures.get(rand);
+		coursInThisRoom = lecture;
 	}
 
 
