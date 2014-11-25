@@ -73,11 +73,19 @@ public class Game {
 	private void createRooms() {
 
 		// create the rooms
-		Lunchroom lunchroom = new Lunchroom(res.getString("lunchroom.description"));
-		LectureRoom lectureroom = new LectureRoom(res.getString("lectureroom.description1"));
-		LabRoom labroom = new LabRoom(res.getString("labroom.description1"));	// get(0) uniquement pour les tests
-		Corridor corridor1 = new Corridor(res.getString("corridor1.description"));
-		Corridor corridor2 = new Corridor(res.getString("corridor2.description"));
+		Lunchroom lunchroom = new Lunchroom(
+				res.getString("lunchroom.description"));
+		LectureRoom lectureroom = new LectureRoom(
+				res.getString("lectureroom.description1"));
+		LabRoom labroom = new LabRoom(res.getString("labroom.description1")); // get(0)
+																				// uniquement
+																				// pour
+																				// les
+																				// tests
+		Corridor corridor1 = new Corridor(
+				res.getString("corridor1.description"));
+		Corridor corridor2 = new Corridor(
+				res.getString("corridor2.description"));
 		Library library = new Library(res.getString("library.description"));
 		ExamRoom examroom = new ExamRoom(res.getString("examroom.description"));
 
@@ -104,7 +112,6 @@ public class Game {
 
 		currentRoom = corridor1; // start game in the first corridor
 	}
-
 
 	/**
 	 * Main play routine. Loops until end of play.
@@ -151,9 +158,9 @@ public class Game {
 	}
 
 	private void printGamer() {
-		String string = new String(res.getString("game.welcomename1") + gamer.getName() +
-				res.getString("game.welcomename2") + gamer.getName() +
-				res.getString("game.welcomename3"));
+		String string = new String(res.getString("game.welcomename1")
+				+ gamer.getName() + res.getString("game.welcomename2")
+				+ gamer.getName() + res.getString("game.welcomename3"));
 		System.out.println(string);
 		System.out.println();
 		System.out.println(currentRoom.getLongDescription());
@@ -162,11 +169,11 @@ public class Game {
 	/**
 	 * This method creates the labs and lectures (4 each) for 4 subjects
 	 */
-	private void createCourses(){
-		String courses[] = {"OOP", "C", "ALGO", "SSII"};
-		for(int i = 0; i < NB_COURSES; ++i){
-			labs.add(new LabItem(courses[i], i+1));
-			lectures.add(new LectureItem(courses[i], i+1));
+	private void createCourses() {
+		String courses[] = { "OOP", "C", "ALGO", "SSII" };
+		for (int i = 0; i < NB_COURSES; ++i) {
+			labs.add(new LabItem(courses[i], i + 1));
+			lectures.add(new LectureItem(courses[i], i + 1));
 		}
 	}
 
@@ -195,13 +202,17 @@ public class Game {
 			// crée des methodes à partir d'ici
 		} else if (commandWord.equals("take")
 				&& (currentRoom instanceof Lunchroom)) {
-				wantCoffee(command);
+			wantCoffee(command);
 		} else if (commandWord.equals("light")
 				&& (currentRoom instanceof Corridor)) {
-				goCorridor(command);
+			goCorridor(command);
 		} else if (commandWord.equals("attend")
 				&& (currentRoom instanceof StudySpace)) {
 			wantAttend(command);
+		} else if (commandWord.equals("read")
+				&& (currentRoom instanceof Library)) {
+			wantRead(command);
+
 		}
 
 		// else command not recognised.
@@ -254,6 +265,17 @@ public class Game {
 		System.out.println(currentRoom.getExitString());
 	}
 
+	private void wantRead(Command command) {
+		if (!command.hasSecondWord()) {
+			// if there is no second word, we don't know where to go...
+			System.out.println(res.getString("game.read"));
+			return;
+		} else if (command.getSecondWord().equals("book")) {
+			((Library) currentRoom).learnPOO(gamer);
+		}
+
+	}
+
 	private void goCorridor(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
@@ -279,12 +301,9 @@ public class Game {
 			System.out.println(res.getString("game.where"));
 			return;
 		}
-
 		String direction = command.getSecondWord();
-
 		// Try to leave current room.
 		Room nextRoom = currentRoom.getExit(direction);
-
 		if (nextRoom == null) {
 			System.out.println(res.getString("game.nodoor"));
 		} else if (nextRoom.enter(gamer)) {

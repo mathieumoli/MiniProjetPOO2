@@ -15,7 +15,7 @@ public class Zuul extends ListResourceBundle {
             {"labroom.description2", "pour cela Tapez \"attend lab\" \n" },
             {"corridor1.description", "Vous êtes dans le premier couloir"},
             {"corridor2.description", "Vous êtes dans le deuxième couloir"},
-            {"library.description", "Vous êtes dans la bibliothèque"},
+            {"library.description", "Vous êtes dans la bibliothèque. Dans la bibliotheque, vous trouvez le livre de POO2 renfermant l'ensemble des cours de la matiere.\n Pour lire le livre et acquerir l'ensemble des cours, Tapez \"read book\""},
             {"examroom.description", "Vous êtes dans la salle d'examen"},
             {"corridor.dark","Ce couloir est d'une obscurité déconcertante, vous pourriez allumer la lumiere pour mieux y voir...\n Pour allumer la lumiere, tapez \"light on\""},
             {"library.closed","La porte est fermée à clé. Il est vrai que la bibliotheque est fermée 7/10. Revenez plus tard !"},
@@ -40,6 +40,9 @@ public class Zuul extends ListResourceBundle {
             {"game.welcomename1", "Bienvenue "},
             {"game.welcomename2", " ! Mais je trouve que ce prénom ne vous va pas très bien...je vais vous appeler "},
             {"game.welcomename3", " la brutasse !"},
+			{"game.read","Lire quoi ? "},
+
+
             
             {"student.energy.part1", "L'énergie de "},
             {"student.energy.part2", " est de "},
