@@ -21,3 +21,8 @@ Obligé d'assister au cours de JAVA OKAY
 On ne peut pas assister à un lab si on a pas le cours correspondant OKAY
 On perd de l'energie (-10) pendant un lab ou un cours OKAY
 On gagne de l'energie (+20) à la machine a café OKAY
+
+#7 work
+createCourses(), createStudent() OK
+randomizeCourses() à revoir : les cours se randomizent bien mais la probabilité est peut être trop petite
++ peut être faire uniquement les cours numéro 1, puis si on attend le 1, faire le cours 2...

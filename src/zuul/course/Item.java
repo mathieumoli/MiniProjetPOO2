@@ -13,10 +13,10 @@ public class Item {
 		number = 0;
 	}
 	
-	public Item(String themodule,int thenumber){
-		module=themodule;
-		number=thenumber;
-		}
+	public Item(String themodule, int thenumber){
+		module = themodule;
+		number = thenumber;
+	}
 
 	/**
 	 * @return the module

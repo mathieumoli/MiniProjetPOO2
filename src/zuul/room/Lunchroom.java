@@ -16,6 +16,17 @@ public class Lunchroom extends Room {
 		
 	}
 
+    @Override
+    public boolean canEnter(Student student){
+        return true;
+    }
+
+    @Override
+    public boolean enter(Student student){
+        System.out.println(getLongDescription());
+        return true;
+    }
+
     /**
      * Lunchroom containing a table football (babyfoot) game. Entering this room, the student has some probability
      * of playing table football; playing table football makes the student forget one (random) lecture.

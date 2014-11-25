@@ -24,7 +24,6 @@ public class LabItem extends Item {
 				if (this.number == ((LabItem) object).number) {
 					return true;
 				}
-
 			}
 		}
 		return equality;

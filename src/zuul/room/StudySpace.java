@@ -8,21 +8,20 @@ import zuul.course.Item;
  * @author Mathieu Molinengo
  * @version 20/11/2014
  */
-public abstract class StudySpace extends Room{
+public abstract class StudySpace extends Room {
 	protected Item coursInThisRoom;
-	protected ResourceBundle res;
 	
-	public StudySpace(String description,ResourceBundle reso) {
+	public StudySpace(String description) {
 		super(description);
-		coursInThisRoom= new Item();
-		res=reso;
+		coursInThisRoom = new Item();
 	}
 	
-	public StudySpace(String description,Item itemInThisRoom,ResourceBundle reso) {
+	public StudySpace(String description,Item itemInThisRoom) {
 		super(description);
-		coursInThisRoom= itemInThisRoom;
-		res=reso;
+		coursInThisRoom = itemInThisRoom;
 	}
+
+	public abstract void randomizeCourses();
 
 	/**
 	 * @return the coursInThisRoom
