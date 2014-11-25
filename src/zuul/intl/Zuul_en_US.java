@@ -47,6 +47,8 @@ public class Zuul_en_US extends ListResourceBundle {
             {"student.addLab.part1","  participate in this lab of "},
             {"student.add.part2"," number "},
             {"student.addLecture.part1"," participate in this course of "},
+            {"student.removeLecture1","You forget the lecture of "},
+            {"student.removeLecture2"," number "},
             
             {"lectureroom.attendlecture.part1","Lecture of "},
             {"lectureroom.attendlecture.part4","Thank you for your attention you can do the lab now !"},
@@ -56,7 +58,7 @@ public class Zuul_en_US extends ListResourceBundle {
             {"labroom.attendlab.part4","Thank you for your attention. "},
             {"labroom.noattend1","The professor doesn't want you attend to this lab because you haven't assisted to the lecture of "},
             {"labroom.noattend2"," number "},
-
+            {"lunchroom.babyFoot","You're in the lunchroom. Salah and Fanfan la tulipe says to you : \"It's babyfoot time !\" You can't refuse"},
             {"examroom.cant", "You can't pass the final exam in these conditions..."}
           
 

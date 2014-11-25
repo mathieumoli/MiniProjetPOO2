@@ -87,5 +87,7 @@ public class Library extends Room {
 				goodStudent.addItem(poo2Book.get(i));
 			}
 		}
+		System.out.println(getExitString());
+
 	}
 }

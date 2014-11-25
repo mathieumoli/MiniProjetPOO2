@@ -29,3 +29,7 @@ randomizeCourses() √† revoir : les cours se randomizent bien mais la probabilit√
 
 #8 work
 Read POO book 0KAY
+
+#9 work
+play babyfoot OKAY
+et tu perds un cours 
