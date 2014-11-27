@@ -26,3 +26,10 @@ On gagne de l'energie (+20) à la machine a café OKAY
 createCourses(), createStudent() OK
 randomizeCourses() à revoir : les cours se randomizent bien mais la probabilité est peut être trop petite
 + peut être faire uniquement les cours numéro 1, puis si on attend le 1, faire le cours 2...
+
+#8 work
+Read POO book 0KAY
+
+#9 work
+play babyfoot OKAY
+et tu perds un cours 

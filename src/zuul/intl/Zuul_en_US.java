@@ -15,7 +15,8 @@ public class Zuul_en_US extends ListResourceBundle {
             {"labroom.description2", "Type \"attend lab\" if you want \n" },
             {"corridor1.description", "You are in the first corridor"},
             {"corridor2.description", "You are in the second corridor"},
-            {"library.description", "You are in the library"},
+            {"library.description", "You are in the library.In the Library you can see the POO2 book. This book contains all lecture you can learn about POO2. If you want read it, just type \"read book\""},
+            
             {"examroom.description", "You are in the exam room"},
             {"corridor.dark","This corridor is very dark, you could switch the light on to see clearly the room.\n Type \"light on\" to switch the light on !"},
             {"library.closed","The door is closed. The library is closed 7 out of 10... Come back later !"},
@@ -46,6 +47,8 @@ public class Zuul_en_US extends ListResourceBundle {
             {"student.addLab.part1","  participate in this lab of "},
             {"student.add.part2"," number "},
             {"student.addLecture.part1"," participate in this course of "},
+            {"student.removeLecture1","You forget the lecture of "},
+            {"student.removeLecture2"," number "},
             
             {"lectureroom.attendlecture.part1","Lecture of "},
             {"lectureroom.attendlecture.part4","Thank you for your attention you can do the lab now !"},
@@ -55,7 +58,7 @@ public class Zuul_en_US extends ListResourceBundle {
             {"labroom.attendlab.part4","Thank you for your attention. "},
             {"labroom.noattend1","The professor doesn't want you attend to this lab because you haven't assisted to the lecture of "},
             {"labroom.noattend2"," number "},
-
+            {"lunchroom.babyFoot","You're in the lunchroom. Salah and Fanfan la tulipe says to you : \"It's babyfoot time !\" You can't refuse"},
             {"examroom.cant", "You can't pass the final exam in these conditions..."}
           
 
