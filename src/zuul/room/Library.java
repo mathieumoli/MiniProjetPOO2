@@ -22,9 +22,9 @@ public class Library extends Room {
 		super(description);
 		poo2Book=new ArrayList<LectureItem>();
 
-		LectureItem poo2BookPage1 = new LectureItem("POO", 1);
-		LectureItem poo2BookPage2 = new LectureItem("POO", 2);
-		LectureItem poo2BookPage3 = new LectureItem("POO", 3);
+		LectureItem poo2BookPage1 = new LectureItem("OOP", 1);
+		LectureItem poo2BookPage2 = new LectureItem("OOP", 2);
+		LectureItem poo2BookPage3 = new LectureItem("OOP", 3);
 		poo2Book.add(poo2BookPage1);
 		poo2Book.add(poo2BookPage2);
 		poo2Book.add(poo2BookPage3);
@@ -83,7 +83,7 @@ public class Library extends Room {
 		int i = 0;
 		int sizeBook = poo2Book.size();
 		for (i = 0; i < sizeBook; i++) {
-			if (!goodStudent.alreadyListened(poo2Book.get(i))) {
+			if (!goodStudent.alreadyListenedLecture(poo2Book.get(i))) {
 				goodStudent.addItem(poo2Book.get(i));
 			}
 		}
