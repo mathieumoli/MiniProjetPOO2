@@ -23,6 +23,12 @@ public class Zuul extends ListResourceBundle {
             {"lunchroom.coffee1","C'est pas le meilleur café de ma vie mais je me sens mieux !"},
             {"lunchroom.coffee2", "Merci Mocoffee !"},
 
+            {"oop.lecture", "Il faut savoir...blabla"},
+            {"oop.lecture1", "...les développeurs souhaitent une cohésion élevée et un couplage faible..."},
+            {"oop.lecture2", "...les interfaces n'ont pas besoin de constructeur..."},
+            {"oop.lecture3", "...une sous-classe doit obligatoirement faire appel à 'super' dans son constructeur..."},
+            {"oop.lectureend", "Voilà, c'est tout pour aujourd'hui. Apprenez bien votre cours pour la prochaine fois."},
+
             {"oop.exam.description", "Vous allez passer un examen, veuillez répondre par VRAI ou FAUX."},
             {"oop.exam.question1", "Un constructeur est-il nécessaire dans une interface ?"},
             {"oop.exam.question2", "Est-il vrai que les développeurs veulent une cohésion faible et un couplage élevé ?"},

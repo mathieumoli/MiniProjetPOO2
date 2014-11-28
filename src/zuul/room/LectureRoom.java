@@ -14,14 +14,7 @@ import zuul.person.Student;
  * @version 20/11/2014
  */
 public class LectureRoom extends StudySpace {
-
-	int nbRoom;
-
-	public LectureRoom(String description) {
-		super(description);
-		coursInThisRoom = new LectureItem();
-
-	}
+	private int nbRoom;
 
 	public LectureRoom(String description, int nbRoom) {
 		super(description);
@@ -66,6 +59,16 @@ public class LectureRoom extends StudySpace {
 		coursInThisRoom = lecture;
 	}
 
+	private void doLecture(){
+		if (nbRoom == 1){
+			System.out.println(Game.res.getString("oop.lecture1"));
+		} else if (nbRoom == 2) {
+			System.out.println(Game.res.getString("oop.lecture2"));
+		} else {
+			System.out.println(Game.res.getString("oop.lecture3"));
+		}
+	}
+
 
 	public void attendLecture(Student goodStudent) {
 		System.out.println(Game.res.getString("lectureroom.attendlecture.part1")
@@ -74,9 +77,11 @@ public class LectureRoom extends StudySpace {
 				+ coursInThisRoom.getNumber()
 				+ Game.res.getString("room.attend.part3"));
 		try {
+			System.out.println(Game.res.getString("oop.lecture"));
 			Thread.sleep(3000);
-			System.out.println("...");
+			doLecture();
 			Thread.sleep(3000);
+			System.out.println(Game.res.getString("oop.lectureend"));
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
