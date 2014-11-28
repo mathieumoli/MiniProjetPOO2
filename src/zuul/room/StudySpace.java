@@ -10,6 +10,7 @@ import zuul.course.Item;
  */
 public abstract class StudySpace extends Room {
 	protected Item coursInThisRoom;
+	protected boolean isAttend;
 	
 	public StudySpace(String description) {
 		super(description);

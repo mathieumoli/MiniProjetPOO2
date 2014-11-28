@@ -30,7 +30,7 @@ public class Game {
 	public static ResourceBundle res;
 	private Locale locale;
 	private Student gamer;
-	public static final int NB_COURSES = 4;
+	public static final int NB_COURSES = 3;
 	public static List<LabItem> labs = new ArrayList<LabItem>();
 	public static List<LectureItem> lectures = new ArrayList<LectureItem>();
 
@@ -170,7 +170,7 @@ public class Game {
 	 * This method creates the labs and lectures (4 each) for 4 subjects
 	 */
 	private void createCourses() {
-		String courses[] = { "OOP", "C", "ALGO", "SSII" };
+		String courses[] = { "OOP", "C", "ALGO" };
 		for (int i = 0; i < NB_COURSES; ++i) {
 			labs.add(new LabItem(courses[i], i + 1));
 			lectures.add(new LectureItem(courses[i], i + 1));

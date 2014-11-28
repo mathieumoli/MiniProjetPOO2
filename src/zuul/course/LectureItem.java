@@ -19,11 +19,11 @@ public class LectureItem extends Item {
 		boolean equality = false;
 		if(object instanceof LectureItem)
 		{
-			if(this.module.equals(((LectureItem) object).module))
+			if(this.module.equals(((LectureItem) object).getModule()))
 			{
-				if(this.number==((LectureItem) object).number)
+				if(this.number==((LectureItem) object).getNumber())
 				{
-					return true;
+					equality=true;
 				}
 			}
 		}
