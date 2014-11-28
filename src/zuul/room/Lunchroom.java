@@ -16,7 +16,7 @@ public class Lunchroom extends Room {
 	}
 
 	public void takeCoffee(Student gamer) {
-		gamer.incrementEnergy();
+		gamer.incrementEnergy(20);
 
 	}
 
@@ -32,8 +32,8 @@ public class Lunchroom extends Room {
 		playBabyFoot = (random > 7) ? true : false;
 		
 		if (playBabyFoot) {
-			System.out
-					.println(Game.res.getString("lunchroom.babyFoot"));
+			System.out.println(Game.res.getString("lunchroom.babyFoot"));
+			student.decrementEnergy(30);
 			student.removeItem();
 			System.out.println(getExitString());
 		}

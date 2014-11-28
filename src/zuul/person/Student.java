@@ -48,9 +48,9 @@ public class Student {
 		}
 	}
 
-	public void decrementEnergy() {
+	public void decrementEnergy(int theEnergy) {
 		if (energy > 10) {
-			energy -= 10;
+			energy -= theEnergy;
 		} else {
 			energy = 0;
 		}
@@ -59,8 +59,8 @@ public class Student {
 				+ this.getEnergyString());
 	}
 
-	public void incrementEnergy() {
-		energy += 20;
+	public void incrementEnergy(int theEnergy) {
+		energy += theEnergy;
 		if (energy > 100) {
 			energy = 100;
 		}
