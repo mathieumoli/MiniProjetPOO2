@@ -30,7 +30,8 @@ public class Game {
 	public static ResourceBundle res;
 	private Locale locale;
 	private Student gamer;
-	public static final int NB_COURSES = 4;
+	public static final int NB_COURSES = 3;
+	public static final String COURSES[] = {"OOP", "C", "ALGO"};
 	public static List<LabItem> labs = new ArrayList<LabItem>();
 	public static List<LectureItem> lectures = new ArrayList<LectureItem>();
 
@@ -75,17 +76,19 @@ public class Game {
 		// create the rooms
 		Lunchroom lunchroom = new Lunchroom(
 				res.getString("lunchroom.description"));
-		LectureRoom lectureroom = new LectureRoom(
-				res.getString("lectureroom.description1"));
-		LabRoom labroom = new LabRoom(res.getString("labroom.description1")); // get(0)
-																				// uniquement
-																				// pour
-																				// les
-																				// tests
+		LectureRoom lectureroom1 = new LectureRoom(
+				res.getString("lectureroom.description1"), 1);
+		LectureRoom lectureroom2 = new LectureRoom(
+				res.getString("lectureroom.description1"), 2);
+		LectureRoom lectureroom3 = new LectureRoom(
+				res.getString("lectureroom.description1"), 3);
+		LabRoom labroom = new LabRoom(res.getString("labroom.description1"));
 		Corridor corridor1 = new Corridor(
 				res.getString("corridor1.description"));
 		Corridor corridor2 = new Corridor(
 				res.getString("corridor2.description"));
+		Corridor corridor3 = new Corridor(
+				res.getString("corridor3.description"));
 		Library library = new Library(res.getString("library.description"));
 		ExamRoom examroom = new ExamRoom(res.getString("examroom.description"));
 
@@ -96,19 +99,26 @@ public class Game {
 		corridor1.setExit("north", corridor2);
 
 		corridor2.setExit("south", corridor1);
-		corridor2.setExit("west", library);
-		corridor2.setExit("east", lectureroom);
-		corridor2.setExit("north", examroom);
+		corridor2.setExit("west", lectureroom2);
+		corridor2.setExit("east", lectureroom1);
+		corridor2.setExit("north", corridor3);
+
+		corridor3.setExit("south", corridor2);
+		corridor3.setExit("west", library);
+		corridor3.setExit("east", lectureroom3);
+		corridor3.setExit("north", examroom);
 
 		labroom.setExit("east", corridor1);
 
 		lunchroom.setExit("west", corridor1);
 
-		library.setExit("east", corridor2);
+		library.setExit("east", corridor3);
 
-		lectureroom.setExit("west", corridor2);
+		lectureroom1.setExit("west", corridor2);
+		lectureroom2.setExit("east", corridor2);
+		lectureroom3.setExit("west", corridor3);
 
-		examroom.setExit("south", corridor2);
+		examroom.setExit("south", corridor3);
 
 		currentRoom = corridor1; // start game in the first corridor
 	}
@@ -170,10 +180,11 @@ public class Game {
 	 * This method creates the labs and lectures (4 each) for 4 subjects
 	 */
 	private void createCourses() {
-		String courses[] = { "OOP", "C", "ALGO", "SSII" };
 		for (int i = 0; i < NB_COURSES; ++i) {
-			labs.add(new LabItem(courses[i], i + 1));
-			lectures.add(new LectureItem(courses[i], i + 1));
+			for(int j = 0; j < COURSES.length; ++j) {
+				labs.add(new LabItem(COURSES[j], i + 1));
+				lectures.add(new LectureItem(COURSES[j], i + 1));
+			}
 		}
 	}
 

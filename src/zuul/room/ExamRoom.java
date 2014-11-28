@@ -1,13 +1,19 @@
 package zuul.room;
 
 import zuul.Game;
+import zuul.course.Item;
+import zuul.course.LectureItem;
 import zuul.person.Student;
+
+import java.util.Scanner;
 
 /**
  * @author Lucas Martinez
  * @version 20/11/2014
  */
 public class ExamRoom extends Room {
+    public static final int NB_QUESTIONS = 3;
+    private String exam;
 
     public ExamRoom(String description) {
         super(description);
@@ -26,11 +32,9 @@ public class ExamRoom extends Room {
 
     @Override
     public boolean canEnter(Student student){
-        /**
-         * @todo add the real condition for the exam
-         */
+        //vérifier qu'il a tous les cours et tous les labs
 
-        if (student.getEnergy() >= 50){
+        if (exam.equals("OOP") && student.getEnergy() >= 50){
             return true;
         }
         return false;
@@ -38,12 +42,52 @@ public class ExamRoom extends Room {
 
     @Override
     public boolean enter(Student student){
+        randomizeExams();
         if(canEnter(student)){
-            System.out.println(getLongDescription());
+            System.out.println(Game.res.getString("examroom.description"));
+            System.out.println(Game.res.getString("oop.exam.description"));
+            startExam();
             return true;
         } else {
             System.out.println(Game.res.getString("examroom.cant"));
             return false;
         }
+    }
+
+    private void randomizeExams(){
+        int rand = (int) (Math.random() * Game.NB_COURSES);
+
+        //exam = Game.COURSES[rand];
+        //test
+        exam = Game.COURSES[0];
+    }
+
+    private void startExam() {
+        int questionsRight = 0;
+        String answer;
+        Scanner scanner = new Scanner(System.in);
+
+        for (int i = 1; i <= NB_QUESTIONS; ++i){
+            System.out.println(Game.res.getString("oop.exam.question" + i));
+            answer = scanner.nextLine();
+            String rightAnswer = Game.res.getString("oop.exam.answer"+ i);
+            if (answer.toUpperCase().equals(rightAnswer)) {
+                ++questionsRight;
+            }
+
+            System.out.println(Game.res.getString("oop.exam.rightanswer") + rightAnswer);
+            System.out.println();
+        }
+
+        System.out.println(Game.res.getString("student.youhave")
+                        + questionsRight + "/" + NB_QUESTIONS + Game.res.getString("student.answers"));
+        if (questionsRight > (NB_QUESTIONS/2)) {
+            System.out.println(Game.res.getString("game.win"));
+        } else {
+            System.out.println(Game.res.getString("game.lose"));
+        }
+        System.out.println(Game.res.getString("game.thankyou"));
+
+        System.exit(1);
     }
 }

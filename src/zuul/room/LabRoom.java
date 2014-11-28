@@ -73,7 +73,7 @@ public class LabRoom extends StudySpace {
 		}
 
 		System.out.println(Game.res.getString("labroom.attendlab.part4"));
-		goodStudent.decrementEnergy();
+		goodStudent.decrementEnergy(10);
 		goodStudent.addItem(coursInThisRoom);
 	}
 	
