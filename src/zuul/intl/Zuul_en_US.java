@@ -69,6 +69,8 @@ public class Zuul_en_US extends ListResourceBundle {
             {"student.addLecture.part1"," participate in this course of "},
             {"student.removeLecture1","You forget the lecture of "},
             {"student.removeLecture2"," number "},
+            {"student.removeLab1","You forget the lab of "},
+            {"student.removeLab2"," number "},
             
             {"lectureroom.attendlecture.part1","Lecture of "},
             {"lectureroom.attendlecture.part4","Thank you for your attention you can do the lab now !"},

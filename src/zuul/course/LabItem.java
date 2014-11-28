@@ -19,10 +19,10 @@ public class LabItem extends Item {
 	public boolean equals(Object object) {
 		boolean equality = false;
 		if (object instanceof LabItem) {
-			if (this.module.equals(((LabItem) object).module)) {
+			if (this.module.equals(((LabItem) object).getModule())) {
 
-				if (this.number == ((LabItem) object).number) {
-					return true;
+				if (this.number == ((LabItem) object).getNumber()) {
+					equality=true;
 				}
 			}
 		}

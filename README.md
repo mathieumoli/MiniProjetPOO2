@@ -33,3 +33,7 @@ Read POO book 0KAY
 #9 work
 play babyfoot OKAY
 et tu perds un cours 
+
+#10work
+remove lab when babyfoot okay
+must assist POO lab okay
