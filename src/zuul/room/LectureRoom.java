@@ -1,6 +1,6 @@
 package zuul.room;
 
-import java.util.ArrayList;
+import 	java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -14,24 +14,21 @@ import zuul.person.Student;
  * @version 20/11/2014
  */
 public class LectureRoom extends StudySpace {
+	private int nbRoom;
 
-	public LectureRoom(String description) {
+	public LectureRoom(String description, int nbRoom) {
 		super(description);
 		coursInThisRoom = new LectureItem();
-
-	}
-
-	public LectureRoom(String description, LectureItem cours) {
-		super(description, cours);
+		this.nbRoom = nbRoom;
 
 	}
 
 	@Override
-	public boolean canEnter(Student student) {
+	public boolean canEnter(Student student){
 		return true;
 	}
 
-	public boolean mustEnter(Student student) {
+	public boolean mustEnter(Student student){
 		if (coursInThisRoom.getModule().equals("OOP")) {
 			return true;
 		}
@@ -39,10 +36,14 @@ public class LectureRoom extends StudySpace {
 	}
 
 	@Override
-	public boolean enter(Student student) {
-		randomizeCourses();
+	public boolean enter(Student student){
+		//test
+		if (nbRoom == 1) coursInThisRoom = Game.lectures.get(0);
+		else if (nbRoom == 2) coursInThisRoom = Game.lectures.get(3);
+		else coursInThisRoom = Game.lectures.get(6);
+
 		isAttend = false;
-		if (mustEnter(student)) {
+		if (mustEnter(student)){
 			attendLecture(student);
 			System.out.println(getLongDescription());
 		} else {
@@ -52,39 +53,50 @@ public class LectureRoom extends StudySpace {
 	}
 
 	@Override
-	public void randomizeCourses() {
+	public void randomizeCourses(){
 		int rand = (int) (Math.random() * Game.NB_COURSES);
 
 		LectureItem lecture = Game.lectures.get(rand);
 		coursInThisRoom = lecture;
 	}
 
+	private void doLecture(){
+		if (nbRoom == 1){
+			System.out.println(Game.res.getString("oop.lecture1"));
+		} else if (nbRoom == 2) {
+			System.out.println(Game.res.getString("oop.lecture2"));
+		} else {
+			System.out.println(Game.res.getString("oop.lecture3"));
+		}
+	}
+
+
 	public void attendLecture(Student goodStudent) {
-		System.out.println(Game.res
-				.getString("lectureroom.attendlecture.part1")
+		System.out.println(Game.res.getString("lectureroom.attendlecture.part1")
 				+ coursInThisRoom.getModule()
 				+ Game.res.getString("room.attend.part2")
 				+ coursInThisRoom.getNumber()
 				+ Game.res.getString("room.attend.part3"));
 		try {
+			System.out.println(Game.res.getString("oop.lecture"));
 			Thread.sleep(3000);
-			System.out.println("...");
+			doLecture();
 			Thread.sleep(3000);
+			System.out.println(Game.res.getString("oop.lectureend"));
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		isAttend = true;
-		System.out.println(Game.res
-				.getString("lectureroom.attendlecture.part4"));
-		goodStudent.decrementEnergy();
+		System.out.println(Game.res.getString("lectureroom.attendlecture.part4"));
+		goodStudent.decrementEnergy(10);
 		goodStudent.addItem(coursInThisRoom);
 	}
 
 	/**
 	 * Return a description of the room in the form: You are in the kitchen.
 	 * Exits: north west
-	 * 
+	 *
 	 * @return A long description of this room
 	 */
 	@Override
