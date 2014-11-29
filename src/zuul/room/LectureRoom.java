@@ -35,28 +35,25 @@ public class LectureRoom extends StudySpace {
 	@Override
 	public boolean enter(Student student){
 
-		//test
-		if (nbRoom == 1) coursInThisRoom = Game.lectures.get(0);
-		else if (nbRoom == 2) coursInThisRoom = Game.lectures.get(3);
-		else coursInThisRoom = Game.lectures.get(6);
-
+		randomizeCourses();
 		isAttend = false;
 		if (mustEnter(student)){
 			attendLecture(student);
-			//randomizeCourses();
+			
 			System.out.println(getLongDescription());
 		} else {
 			System.out.println(getLongDescription());
 		}
+		randomizeCourses();
 		return true;
 	}
 
 	@Override
 	public void randomizeCourses(){
-		int rand = (int) (Math.random() * Game.NB_COURSES);
+		if (nbRoom == 1) coursInThisRoom = Game.lectures.get((int) (Math.random() * 2));
+		else if (nbRoom == 2) coursInThisRoom = Game.lectures.get((int)(Math.random() * (5-3) + 3));
 
-		LectureItem lecture = Game.lectures.get(rand);
-		coursInThisRoom = lecture;
+		else coursInThisRoom = Game.lectures.get((int)(Math.random() * (8-6) + 6));
 	}
 
 	
@@ -92,7 +89,7 @@ public class LectureRoom extends StudySpace {
 	 */
 	@Override
 	public String getLongDescription() {
-		if (isAttend = true) {
+		if (isAttend ==true) {
 			return getExitString();
 		} else
 			return description + coursInThisRoom.getModule() + " numero "

@@ -52,3 +52,6 @@ Delete redundant code in lectureroom and labroom
 
 #15 work
 examroom, decrementenergy, oop lectures, when energy = 0, cheatsheet, foundobject
+
+#16 work
+corrections of some bugs

@@ -62,7 +62,6 @@ public class Game {
 			locale = Locale.getDefault();
 			break;
 
-		case 2:
 		default:
 			locale = new Locale("en", "US");
 			break;
@@ -199,7 +198,6 @@ public class Game {
 				labs.add(new LabItem(COURSES[j], i + 1));
 				lectures.add(new LectureItem(COURSES[j], i + 1,COURSESBUNDLEKEY[k]));
 				k+=3;
-			
 			}
 		}
 	}
@@ -226,7 +224,6 @@ public class Game {
 			goRoom(command);
 		} else if (commandWord.equals("quit")) {
 			wantToQuit = quit(command);
-			// crée des methodes à partir d'ici
 		} else if (commandWord.equals("take")
 				&& (currentRoom instanceof Lunchroom)) {
 			wantCoffee(command);
