@@ -12,14 +12,14 @@ import java.util.*;
  * "World of Zuul" is a very simple, text based adventure game. Users can walk
  * around some scenery. That's all. It should really be extended to make it more
  * interesting!
- * 
+ *
  * To play this game, create an instance of this class and call the "play"
  * method.
- * 
+ *
  * This main class creates and initialises all the others: it creates all rooms,
  * creates the parser and starts the game. It also evaluates and executes the
  * commands that the parser returns.
- * 
+ *
  * @author Michael Kölling and David J. Barnes
  * @version 2011.08.08
  */
@@ -31,6 +31,7 @@ public class Game {
 	private Locale locale;
 	private Student gamer;
 	public static final int NB_COURSES = 3;
+	public static final String COURSES[] = {"OOP", "C", "ALGO"};
 	public static List<LabItem> labs = new ArrayList<LabItem>();
 	public static List<LectureItem> lectures = new ArrayList<LectureItem>();
 
@@ -56,14 +57,14 @@ public class Game {
 		int value = scanner.nextInt();
 
 		switch (value) {
-		case 1:
-			locale = Locale.getDefault();
-			break;
+			case 1:
+				locale = Locale.getDefault();
+				break;
 
-		case 2:
-		default:
-			locale = new Locale("en", "US");
-			break;
+			case 2:
+			default:
+				locale = new Locale("en", "US");
+				break;
 		}
 	}
 
@@ -75,40 +76,60 @@ public class Game {
 		// create the rooms
 		Lunchroom lunchroom = new Lunchroom(
 				res.getString("lunchroom.description"));
-		LectureRoom lectureroom = new LectureRoom(
-				res.getString("lectureroom.description1"));
-		LabRoom labroom = new LabRoom(res.getString("labroom.description1")); // get(0)
-																				// uniquement
-																				// pour
-																				// les
-																				// tests
+		LectureRoom lectureroom1 = new LectureRoom(
+				res.getString("lectureroom.description1"), 1);
+		LectureRoom lectureroom2 = new LectureRoom(
+				res.getString("lectureroom.description1"), 2);
+		LectureRoom lectureroom3 = new LectureRoom(
+				res.getString("lectureroom.description1"), 3);
+		LabRoom labroom1 = new LabRoom(res.getString("labroom.description1"),1);
+		LabRoom labroom2 = new LabRoom(res.getString("labroom.description1"),2);
+		LabRoom labroom3 = new LabRoom(res.getString("labroom.description1"),3);
 		Corridor corridor1 = new Corridor(
 				res.getString("corridor1.description"));
 		Corridor corridor2 = new Corridor(
 				res.getString("corridor2.description"));
+		Corridor corridor3 = new Corridor(
+				res.getString("corridor3.description"));
+		Corridor corridor4 = new Corridor(
+				res.getString("corridor4.description"));
 		Library library = new Library(res.getString("library.description"));
 		ExamRoom examroom = new ExamRoom(res.getString("examroom.description"));
 
 		// initialise room exits
 
-		corridor1.setExit("west", labroom);
+		corridor1.setExit("west", labroom1);
 		corridor1.setExit("east", lunchroom);
 		corridor1.setExit("north", corridor2);
 
 		corridor2.setExit("south", corridor1);
-		corridor2.setExit("west", library);
-		corridor2.setExit("east", lectureroom);
-		corridor2.setExit("north", examroom);
+		corridor2.setExit("west", lectureroom2);
+		corridor2.setExit("east", lectureroom1);
+		corridor2.setExit("north", corridor3);
+		
+		corridor3.setExit("south", corridor2);
+		corridor3.setExit("west", labroom2);
+		corridor3.setExit("east", labroom3);
+		corridor3.setExit("north", corridor4);
 
-		labroom.setExit("east", corridor1);
+		corridor4.setExit("south", corridor3);
+		corridor4.setExit("west", library);
+		corridor4.setExit("east", lectureroom3);
+		corridor4.setExit("north", examroom);
+
+		labroom1.setExit("east", corridor1);
+		labroom2.setExit("east", corridor3);
+		labroom3.setExit("west", corridor4);
 
 		lunchroom.setExit("west", corridor1);
 
-		library.setExit("east", corridor2);
+		library.setExit("east", corridor3);
 
-		lectureroom.setExit("west", corridor2);
+		lectureroom1.setExit("west", corridor2);
+		lectureroom2.setExit("east", corridor2);
+		lectureroom3.setExit("west", corridor3);
 
-		examroom.setExit("south", corridor2);
+		examroom.setExit("south", corridor3);
 
 		currentRoom = corridor1; // start game in the first corridor
 	}
@@ -170,16 +191,17 @@ public class Game {
 	 * This method creates the labs and lectures (4 each) for 4 subjects
 	 */
 	private void createCourses() {
-		String courses[] = { "OOP", "C", "ALGO" };
 		for (int i = 0; i < NB_COURSES; ++i) {
-			labs.add(new LabItem(courses[i], i + 1));
-			lectures.add(new LectureItem(courses[i], i + 1));
+			for(int j = 0; j < COURSES.length; ++j) {
+				labs.add(new LabItem(COURSES[j], i + 1));
+				lectures.add(new LectureItem(COURSES[j], i + 1));
+			}
 		}
 	}
 
 	/**
 	 * Given a command, process (that is: execute) the command.
-	 * 
+	 *
 	 * @param command
 	 *            The command to be processed.
 	 * @return true If the command ends the game, false otherwise.
@@ -316,7 +338,7 @@ public class Game {
 	/**
 	 * "Quit" was entered. Check the rest of the command to see whether we
 	 * really quit the game.
-	 * 
+	 *
 	 * @return true, if this command quits the game, false otherwise.
 	 */
 	private boolean quit(Command command) {

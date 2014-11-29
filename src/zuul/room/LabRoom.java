@@ -13,9 +13,10 @@ import zuul.person.Student;
  */
 public class LabRoom extends StudySpace {
 
-	public LabRoom(String description) {
-		super(description);
+	public LabRoom(String description, int nbRoom) {
+		super(description,nbRoom);
 		coursInThisRoom = new LabItem();
+		
 	}
 
 	public LabRoom(String description, LabItem lab) {
@@ -51,7 +52,10 @@ public class LabRoom extends StudySpace {
 
 	@Override
 	public boolean enter(Student student) {
-		randomizeCourses();
+		if (nbRoom == 1) coursInThisRoom = Game.labs.get(0);
+		else if (nbRoom == 2) coursInThisRoom = Game.labs.get(3);
+		else coursInThisRoom = Game.labs.get(6);
+		
 		isAttend = false;
 		if (canEnter(student)) {
 			if (mustEnter(student)) {
@@ -88,7 +92,7 @@ public class LabRoom extends StudySpace {
 
 		isAttend = true;
 		System.out.println(Game.res.getString("labroom.attendlab.part4"));
-		goodStudent.decrementEnergy();
+		goodStudent.decrementEnergy(10);
 		goodStudent.addItem(coursInThisRoom);
 
 	}
