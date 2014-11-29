@@ -7,7 +7,8 @@ import java.util.ListResourceBundle;
  * @version 20/11/2014
  */
 public class Zuul extends ListResourceBundle {
-    static final Object[][] contents = {
+    static final Object[][] contents = {    	
+    	
             {"lunchroom.description", "Vous êtes dans la cafétéria. Pourquoi ne pas vous prendre un café Mocoffee?\n Mocoffee est un excellent café du Nicaragua, sans édulcorant de synthèse.\n Cela vous donnera un peu d'energie.\n Tapez \"take coffee\" pour prendre un café"},
             {"lectureroom.description1", "Vous êtes dans une salle de classe.\nVous pouvez assister au cours de "},
             {"lectureroom.description2", "pour cela Tapez \"attend lecture\" \n" },
@@ -17,6 +18,8 @@ public class Zuul extends ListResourceBundle {
             {"corridor2.description", "Vous êtes dans le deuxième couloir"},
             {"corridor3.description", "Vous êtes dans le troisième couloir"},
             {"corridor4.description", "Vous êtes dans le quatrième couloir"},
+            {"corridor.tablet", "Vous trouvez une tablette dans le couloir. Pour l'utilisez tapez \"use tablet\""},
+            {"corridor.notablet", "Quelle tablette ?"},
             {"library.description", "Vous êtes dans la bibliothèque. Dans la bibliotheque, vous trouvez le livre de POO2 renfermant l'ensemble des cours de la matière.\n Pour lire le livre et acquérir l'ensemble des cours, Tapez \"read book\""},
             {"examroom.description", "Vous êtes dans la salle d'examen"},
             {"corridor.dark","Ce couloir est d'une obscurité déconcertante, vous pourriez allumer la lumiere pour mieux y voir...\n Pour allumer la lumiere, tapez \"light on\""},
@@ -43,6 +46,7 @@ public class Zuul extends ListResourceBundle {
             {"game.boring", "Le Monde de Zuul est un nouveau jeu d'aventure incroyablement (un peu moins) chiant."},
             {"game.help", "Tapez 'help' si vous avez besoin d'aide."},
             {"game.idontknow", "Je ne comprends pas..."},
+            {"game.use","Utiliser quoi ? une tablette peut être ?"},
             {"game.attend","Assister à quoi ? lab ? cours ?"},
             {"game.help2", "Vous êtes un étudiant et vous devez passer l'examen final de POO."},
             {"game.help3", "Pour cela, vous devez suivre des cours, des TP et réussir l'examen."},
@@ -83,8 +87,12 @@ public class Zuul extends ListResourceBundle {
             {"labroom.noattend1","Le professeur ne veut pas de vous car vous n'avez pas assisté au cours concernant le module de "},
             {"labroom.noattend2"," numero "},
             {"lunchroom.babyFoot","Tu es dans la cafétéria. Salah et Fanfan la tulipe t'attrapent au passage : C'est l'heure du baby ! Vous ne pouvez refuser."},
-            {"examroom.cant", "Vous ne pouvez pas passer l'examen dans ces conditions..."}
+            {"examroom.cant", "Vous ne pouvez pas passer l'examen dans ces conditions..."},
 
+            {"tablet.lecture","Vous constatez que l'étudiant qui a laissé la tablette à enregistrer un cours dessus. Pourquoi ne pas l'apprendre ?"},
+            {"tablet.zuul","Oh non! Vous avez vu le monde de Zuul sur la tablette vous vous lancez dans une partie"},
+        	{"tablet.on","$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$__$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$_______________$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$___________________$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$____$$$_________$$$____$$$$$$$$$$$$$\n$$$$$$$$$$$$$_____$$$_________$$$_____$$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$_____$$$____________________________$$$____$$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$______$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$$___$$$$____________________________$$$___$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n La tablette Android est allumée!"}
+            
     };
 
 
