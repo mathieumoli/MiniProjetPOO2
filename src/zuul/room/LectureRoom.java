@@ -43,6 +43,7 @@ public class LectureRoom extends StudySpace {
 		isAttend = false;
 		if (mustEnter(student)){
 			attendLecture(student);
+			//randomizeCourses();
 			System.out.println(getLongDescription());
 		} else {
 			System.out.println(getLongDescription());
