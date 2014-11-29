@@ -34,12 +34,10 @@ public class LectureRoom extends StudySpace {
 
 	@Override
 	public boolean enter(Student student){
-
 		randomizeCourses();
 		isAttend = false;
 		if (mustEnter(student)){
 			attendLecture(student);
-			
 			System.out.println(getLongDescription());
 		} else {
 			System.out.println(getLongDescription());
@@ -50,6 +48,7 @@ public class LectureRoom extends StudySpace {
 
 	@Override
 	public void randomizeCourses(){
+
 		if (nbRoom == 1) coursInThisRoom = Game.lectures.get((int) (Math.random() * 2));
 		else if (nbRoom == 2) coursInThisRoom = Game.lectures.get((int)(Math.random() * (5-3) + 3));
 
@@ -97,6 +96,8 @@ public class LectureRoom extends StudySpace {
 					+ Game.res.getString("lectureroom.description2")
 					+ getExitString();
 	}
+
+
 	/**
 	 * Classrooms where a lecture is being taught. If the lecture is on OOP, the
 	 * student must listen to the lecture. Listening to a lecture means not

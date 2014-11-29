@@ -117,6 +117,14 @@ public class Student {
 		return name;
 	}
 
+	public ArrayList<LectureItem> getCoursSuivi() {
+		return coursSuivi;
+	}
+
+	public ArrayList<LabItem> getLabsSuivi() {
+		return labsSuivi;
+	}
+
 	public void removeItem() {
 		LabItem lab;
 		if (!coursSuivi.isEmpty()) {
