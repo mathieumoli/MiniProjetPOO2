@@ -34,12 +34,15 @@ Read POO book 0KAY
 play babyfoot OKAY
 et tu perds un cours 
 
-#10work
+#10 work
 remove lab when babyfoot okay
 must assist POO lab okay
 
-#11work
+#11 work
 create another corridor with two labroom (to do lab number 2 and lab number 3) it will be more easier to do all the lab
 
-#12work
+#12 work
 Tablet OKAY !
+
+#13 work
+Tablet correction with game of Zuul and another game, add the key of a lecture in the object Lecture

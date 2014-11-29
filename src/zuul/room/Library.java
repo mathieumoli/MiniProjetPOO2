@@ -22,9 +22,9 @@ public class Library extends Room {
 		super(description);
 		poo2Book=new ArrayList<LectureItem>();
 
-		LectureItem poo2BookPage1 = new LectureItem("OOP", 1);
-		LectureItem poo2BookPage2 = new LectureItem("OOP", 2);
-		LectureItem poo2BookPage3 = new LectureItem("OOP", 3);
+		LectureItem poo2BookPage1 = new LectureItem("OOP", 1,"oop.lecture1");
+		LectureItem poo2BookPage2 = new LectureItem("OOP", 2,"oop.lecture2");
+		LectureItem poo2BookPage3 = new LectureItem("OOP", 3,"oop.lecture3");
 		poo2Book.add(poo2BookPage1);
 		poo2Book.add(poo2BookPage2);
 		poo2Book.add(poo2BookPage3);
@@ -85,6 +85,13 @@ public class Library extends Room {
 		for (i = 0; i < sizeBook; i++) {
 			if (!goodStudent.alreadyListenedLecture(poo2Book.get(i))) {
 				goodStudent.addItem(poo2Book.get(i));
+				System.out.println(Game.res.getString(poo2Book.get(i).getBundleKey())+"\n");
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		System.out.println(getExitString());

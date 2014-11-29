@@ -60,13 +60,7 @@ public class LectureRoom extends StudySpace {
 	}
 
 	private void doLecture(){
-		if (nbRoom == 1){
-			System.out.println(Game.res.getString("oop.lecture1"));
-		} else if (nbRoom == 2) {
-			System.out.println(Game.res.getString("oop.lecture2"));
-		} else {
-			System.out.println(Game.res.getString("oop.lecture3"));
-		}
+			System.out.println(Game.res.getString(((LectureItem) coursInThisRoom).getBundleKey()));
 	}
 
 
