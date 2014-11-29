@@ -20,6 +20,8 @@ public class Zuul_en_US extends ListResourceBundle {
             {"corridor4.description", "You are in the fourth corridor"},
             {"corridor.tablet", "You find a tablet in the corridor. To use it type \"use tablet\""},
             {"corridor.notablet", "Which tablet?"},
+            {"corridor.cheatsheet", "A piece of paper exceeds behind the printer...To check it type \"search printer \""},
+            {"corridor.nocheatsheet", "Which printer ?"},
             {"library.description", "You are in the library.In the Library you can see the OOP2 book. This book contains all lecture you can learn about OOP2. If you want to read it, just type \"read book\""},
             
             {"examroom.description", "You are in the exam room"},
@@ -33,6 +35,14 @@ public class Zuul_en_US extends ListResourceBundle {
             {"oop.lecture2", "...interfaces don't need a constructor..."},
             {"oop.lecture3", "...a sub-class must have a 'super' call in its constructor..."},
             {"oop.lectureend", "Voilà, c'est tout pour aujourd'hui. Apprenez bien votre cours pour la prochaine fois."},
+            
+            {"c.lecture1", "... C programming isn't an oriented object programming..."},
+            {"c.lecture2", "...Declaration of table is like : int [] tab..."},
+            {"c.lecture3", "...Declaration of pointer is like : int *p..."},
+            
+            {"algo.lecture1", "...we use the Gauss' hub to get  an upper triangular matrix..."},
+            {"algo.lecture2", "...Using the divided differences is the most simple method to get the nearest polynom of a fonction..."},
+            {"algo.lecture3", "...If the determinant of a matrix is different of 0 so the matrix has an inverse matrice..."},
 
             {"oop.exam.description", "You are going to take an exam, please answer with TRUE or FALSE."},
             {"oop.exam.question1", "Does an interface need a constructor ?"},
@@ -92,7 +102,10 @@ public class Zuul_en_US extends ListResourceBundle {
             {"tablet.lecture","You find a lecture on the tablet. Why could you not learn it ?"},
             {"tablet.appli","Oh no! You have seen \"Candy Crush Forget your lectures and play with me\" on the tablet ... and now you launch the application !"},
             {"tablet.zuul","Oh yes! You have seen \"World of Zuul\" on the tablet ... and now you launch the application !"},
-        	{"tablet.on","$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$__$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$_______________$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$___________________$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$____$$$_________$$$____$$$$$$$$$$$$$\n$$$$$$$$$$$$$_____$$$_________$$$_____$$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$_____$$$____________________________$$$____$$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$______$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$$___$$$$____________________________$$$___$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\nThe Android Tablet is ON !"}
+        	{"tablet.on","$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$__$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$_______________$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$___________________$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$____$$$_________$$$____$$$$$$$$$$$$$\n$$$$$$$$$$$$$_____$$$_________$$$_____$$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$_____$$$____________________________$$$____$$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$______$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$$___$$$$____________________________$$$___$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\nThe Android Tablet is ON !"},
+
+            {"cheatsheet.description1", "You just found a paper, and there is something written on it..."},
+            {"cheatsheet.description2", "Answers to the OOP exam : "}
 
 
     };

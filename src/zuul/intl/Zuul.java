@@ -18,8 +18,10 @@ public class Zuul extends ListResourceBundle {
             {"corridor2.description", "Vous êtes dans le deuxième couloir"},
             {"corridor3.description", "Vous êtes dans le troisième couloir"},
             {"corridor4.description", "Vous êtes dans le quatrième couloir"},
-            {"corridor.tablet", "Vous trouvez une tablette dans le couloir. Pour l'utilisez tapez \"use tablet\""},
+            {"corridor.tablet", "Vous trouvez une tablette dans le couloir. Pour l'utiliser tapez \"use tablet\""},
             {"corridor.notablet", "Quelle tablette ?"},
+            {"corridor.cheatsheet", "Un bout de papier dépasse de l'imprimante...Pour aller voir, tapez \"search printer\""},
+            {"corridor.nocheatsheet", "Quelle imprimante ?"},
             {"library.description", "Vous êtes dans la bibliothèque. Dans la bibliotheque, vous trouvez le livre de POO2 renfermant l'ensemble des cours de la matière.\n Pour lire le livre et acquérir l'ensemble des cours, Tapez \"read book\""},
             {"examroom.description", "Vous êtes dans la salle d'examen"},
             {"corridor.dark","Ce couloir est d'une obscurité déconcertante, vous pourriez allumer la lumiere pour mieux y voir...\n Pour allumer la lumiere, tapez \"light on\""},
@@ -33,6 +35,15 @@ public class Zuul extends ListResourceBundle {
             {"oop.lecture3", "...une sous-classe doit obligatoirement faire appel à 'super' dans son constructeur..."},
             {"oop.lectureend", "Voilà, c'est tout pour aujourd'hui. Apprenez bien votre cours pour la prochaine fois."},
 
+            {"c.lecture1", "... la programmation C n'est pas une programmation orienté objet..."},
+            {"c.lecture2", "...on declare un tableau avec des [] exemple int [] tab..."},
+            {"c.lecture3", "...un pointeur se declare comme suit : int *p..."},
+            
+            {"algo.lecture1", "...on utilise le pivot de gauss pour obtenir une matrice triangulaire superieur..."},
+            {"algo.lecture2", "...Utiliser les differences divisées est la méthode la plus simple pour obtenir le polynome le plus proche d'une fonction..."},
+            {"algo.lecture3", "...si le determinant d'une matrice est different de 0 la matrice est inversible..."},
+            
+            
             {"oop.exam.description", "Vous allez passer un examen, veuillez répondre par VRAI ou FAUX."},
             {"oop.exam.question1", "Un constructeur est-il nécessaire dans une interface ?"},
             {"oop.exam.question2", "Est-il vrai que les développeurs veulent une cohésion faible et un couplage élevé ?"},
@@ -92,7 +103,10 @@ public class Zuul extends ListResourceBundle {
             {"tablet.lecture","Vous constatez que l'étudiant qui a laissé la tablette à enregistrer un cours dessus. Pourquoi ne pas l'apprendre ?"},
             {"tablet.zuul","Oh oui! Vous avez vu le monde de Zuul sur la tablette. Vous vous lancez dans une partie"},
             {"tablet.appli","Oh non! Vous avez vu \"Candy Crush Oubliez vos cours et jouez avec moi\" sur la tablette. Vous vous lancez dans une partie"},
-        	{"tablet.on","$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$__$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$_______________$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$___________________$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$____$$$_________$$$____$$$$$$$$$$$$$\n$$$$$$$$$$$$$_____$$$_________$$$_____$$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$_____$$$____________________________$$$____$$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$______$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$$___$$$$____________________________$$$___$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n La tablette Android est allumée!"}
+        	{"tablet.on","$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$__$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$_______________$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$___________________$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$____$$$_________$$$____$$$$$$$$$$$$$\n$$$$$$$$$$$$$_____$$$_________$$$_____$$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$_____$$$____________________________$$$____$$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$______$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$$___$$$$____________________________$$$___$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n La tablette Android est allumée!"},
+
+            {"cheatsheet.description1", "Vous venez de trouver une feuille avec quelque chose d'écrit dessus..."},
+            {"cheatsheet.description2", "Réponses à l'examen de POO : "}
             
     };
 

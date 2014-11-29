@@ -7,7 +7,22 @@ package zuul.course;
 public class Item {
 	protected String module;
 	protected int number;
+	protected String bundleKey;
 	
+	/**
+	 * @return the bundleKey
+	 */
+	public String getBundleKey() {
+		return bundleKey;
+	}
+
+	/**
+	 * @param bundleKey the bundleKey to set
+	 */
+	public void setBundleKey(String bundleKey) {
+		this.bundleKey = bundleKey;
+	}
+
 	public Item() {
 		module = "default";
 		number = 0;
@@ -18,6 +33,12 @@ public class Item {
 		number = thenumber;
 	}
 
+	public Item(String themodule, int thenumber, String key){
+		module = themodule;
+		number = thenumber;
+		bundleKey=key;
+	} 
+	
 	/**
 	 * @return the module
 	 */

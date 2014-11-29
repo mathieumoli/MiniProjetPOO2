@@ -32,6 +32,7 @@ public class Game {
 	private Student gamer;
 	public static final int NB_COURSES = 3;
 	public static final String COURSES[] = { "OOP", "C", "ALGO" };
+	public static final String COURSESBUNDLEKEY[] = { "oop.lecture1", "oop.lecture2", "oop.lecture3","c.lecture1","c.lecture2","c.lecture3","algo.lecture1","algo.lecture2","algo.lecture3" };
 	public static List<LabItem> labs = new ArrayList<LabItem>();
 	public static List<LectureItem> lectures = new ArrayList<LectureItem>();
 
@@ -119,15 +120,15 @@ public class Game {
 
 		labroom1.setExit("east", corridor1);
 		labroom2.setExit("east", corridor3);
-		labroom3.setExit("west", corridor4);
+		labroom3.setExit("west", corridor3);
 
 		lunchroom.setExit("west", corridor1);
 
-		library.setExit("east", corridor3);
+		library.setExit("east", corridor4);
 
 		lectureroom1.setExit("west", corridor2);
 		lectureroom2.setExit("east", corridor2);
-		lectureroom3.setExit("west", corridor3);
+		lectureroom3.setExit("west", corridor4);
 
 		examroom.setExit("south", corridor3);
 
@@ -188,13 +189,17 @@ public class Game {
 	}
 
 	/**
-	 * This method creates the labs and lectures (4 each) for 4 subjects
+	 * This method creates the labs and lectures (3 each) for 3 subjects
 	 */
 	private void createCourses() {
+		int k=0;
 		for (int i = 0; i < NB_COURSES; ++i) {
+			k=i;
 			for (int j = 0; j < COURSES.length; ++j) {
 				labs.add(new LabItem(COURSES[j], i + 1));
-				lectures.add(new LectureItem(COURSES[j], i + 1));
+				lectures.add(new LectureItem(COURSES[j], i + 1,COURSESBUNDLEKEY[k]));
+				k+=3;
+			
 			}
 		}
 	}
@@ -238,6 +243,9 @@ public class Game {
 		} else if (commandWord.equals("use")
 				&& (currentRoom instanceof Corridor)) {
 			wantUse(command);
+		} else if (commandWord.equals("search")
+				&& (currentRoom instanceof Corridor)) {
+			wantSearch(command);
 		}
 
 		// else command not recognised.
@@ -267,6 +275,19 @@ public class Game {
 			((Corridor)currentRoom).useTablet(gamer);
 		}
 		
+	}
+
+	private void wantSearch(Command command) {
+		if (!command.hasSecondWord()) {
+			// if there is no second word, we don't know where to go...
+			System.out.println(res.getString("game.search"));
+			return;
+		} else if (command.getSecondWord().equals("printer")) {
+			System.out.println(Game.res.getString("cheatsheet.description1"));
+			System.out.println(Game.res.getString("cheatsheet.description2"));
+			((Corridor)currentRoom).useCheatsheet(gamer);
+		}
+
 	}
 	
 

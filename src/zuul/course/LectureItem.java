@@ -5,7 +5,6 @@ package zuul.course;
  * @version 20/11/2014
  */
 public class LectureItem extends Item {
-	private String bundleKey;
 	
 	public LectureItem(){
 		super();
@@ -17,8 +16,7 @@ public class LectureItem extends Item {
 	}
 	
 	public LectureItem(String module, int number, String key) {
-		super(module, number);
-		bundleKey=key;
+		super(module, number,key);
 	}
 
 	@Override
@@ -37,18 +35,4 @@ public class LectureItem extends Item {
 		return equality;
 	}
 	
-	
-	/**
-	 * @return the bundleKey
-	 */
-	public String getBundleKey() {
-		return bundleKey;
-	}
-
-	/**
-	 * @param bundleKey the bundleKey to set
-	 */
-	public void setBundleKey(String bundleKey) {
-		this.bundleKey = bundleKey;
-	}
 }
