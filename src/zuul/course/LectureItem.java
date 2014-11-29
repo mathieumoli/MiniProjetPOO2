@@ -34,5 +34,10 @@ public class LectureItem extends Item {
 		}
 		return equality;
 	}
+
+	@Override
+	public String toString() {
+		return module + number;
+	}
 	
 }

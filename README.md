@@ -52,3 +52,7 @@ Delete redundant code in lectureroom and labroom
 
 #15 work
 examroom, decrementenergy, oop lectures, when energy = 0, cheatsheet, foundobject
+
+#16 work
+check tous les cours et les labs de POO avant de passer l'exam OKAY
+random cours suivant les salles OKAY (je pense)

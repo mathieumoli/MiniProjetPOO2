@@ -2,9 +2,12 @@ package zuul.room;
 
 import zuul.Game;
 import zuul.course.Item;
+import zuul.course.LabItem;
 import zuul.course.LectureItem;
 import zuul.person.Student;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -32,10 +35,34 @@ public class ExamRoom extends Room {
 
     @Override
     public boolean canEnter(Student student){
-        //vérifier qu'il a tous les cours et tous les labs
+        return true;
+    }
 
-        if (exam.equals("OOP") && student.getEnergy() >= 50){
-            return true;
+    public boolean mustEnter(Student student){
+        //vérifier qu'il a tous les cours et tous les labs
+        boolean allCourses = false;
+        boolean allLabs = false;
+        List<LectureItem> lectureOOP = new ArrayList<LectureItem>();
+        List<LabItem> labOOP = new ArrayList<LabItem>();
+        for (int i = 0; i < Game.NB_COURSES; ++i){
+            lectureOOP.add(new LectureItem("OOP", i + 1));
+            labOOP.add(new LabItem("OOP", i + 1));
+            if (!student.getCoursSuivi().contains(lectureOOP.get(i))) {
+                allCourses = false;
+            } else {
+                allCourses = true;
+            }
+            if (!student.getLabsSuivi().contains(labOOP.get(i))) {
+                allLabs = false;
+            } else {
+                allLabs = true;
+            }
+        }
+
+        if (allCourses && allLabs) {
+            if (exam.equals("OOP") && student.getEnergy() >= 50){
+                return true;
+            }
         }
         return false;
     }
@@ -43,7 +70,7 @@ public class ExamRoom extends Room {
     @Override
     public boolean enter(Student student){
         randomizeExams();
-        if(canEnter(student)){
+        if(mustEnter(student)){
             System.out.println(Game.res.getString("examroom.description"));
             System.out.println(Game.res.getString("oop.exam.description"));
             startExam();

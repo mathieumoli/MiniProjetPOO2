@@ -62,7 +62,6 @@ public class Game {
 			locale = Locale.getDefault();
 			break;
 
-		case 2:
 		default:
 			locale = new Locale("en", "US");
 			break;
