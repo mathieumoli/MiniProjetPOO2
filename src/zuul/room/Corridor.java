@@ -1,6 +1,7 @@
 package zuul.room;
 
 import zuul.Game;
+import zuul.foundobject.Cheatsheet;
 import zuul.foundobject.Tablet;
 import zuul.person.Student;
 
@@ -11,9 +12,9 @@ import java.util.Random;
  * @version 20/11/2014
  */
 public class Corridor extends Room {
-	private boolean lights;
-	private boolean tablet;
+	private boolean lights, tablet, cheatsheet;
 	private Tablet tabletInTheCorridor;
+	private Cheatsheet cheatsheetInTheCorridor;
 
 	public Corridor(String description) {
 		super(description);
@@ -24,9 +25,11 @@ public class Corridor extends Room {
 
 	}
 
-	public void appearTablet() {
-		int chance= (int) (Math.random() * 10);
-		tablet = (chance>7) ? true : false;
+	public void appearObject() {
+		int chance1 = (int) (Math.random() * 20);
+		tablet = (chance1 > 14) ? true : false;
+		int chance2 = (int) (Math.random() * 20);
+		cheatsheet = (chance2 > 17) ? true : false;
 
 	}
 
@@ -38,10 +41,14 @@ public class Corridor extends Room {
 	@Override
 	public boolean enter(Student student) {
 		if (isLights()) {
-			appearTablet();
+			appearObject();
 			if (tablet) {
 				tabletInTheCorridor = new Tablet();
 				System.out.println(Game.res.getString("corridor.tablet"));
+			}
+			if (cheatsheet) {
+				cheatsheetInTheCorridor = new Cheatsheet();
+				System.out.println(Game.res.getString("corridor.cheatsheet"));
 			}
 			System.out.println(getLongDescription());
 		} else {
@@ -53,11 +60,22 @@ public class Corridor extends Room {
 	}
 
 	public void useTablet(Student student) {
-		if(tablet==true){
-		tabletInTheCorridor.useTablet(student);
-		tablet=false;
+		if(tablet){
+			tabletInTheCorridor.useObject(student);
+			tablet = false;
+		} else {
+			System.out.println(Game.res.getString("corridor.notablet"));
 		}
-		else{System.out.println(Game.res.getString("corridor.notablet"));}
+		System.out.println(this.getLongDescription());
+	}
+
+	public void useCheatsheet(Student student) {
+		if(cheatsheet){
+			cheatsheetInTheCorridor.useObject(student);
+			cheatsheet = false;
+		} else{
+			System.out.println(Game.res.getString("corridor.nocheatsheet"));
+		}
 		System.out.println(this.getLongDescription());
 	}
 

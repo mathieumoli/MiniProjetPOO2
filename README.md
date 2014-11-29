@@ -48,4 +48,7 @@ Tablet OKAY !
 Tablet correction with game of Zuul and another game, add the key of a lecture in the object Lecture
 
 #14 work
-Delete redundant code in lectureroom and labroom 
+Delete redundant code in lectureroom and labroom
+
+#15 work
+examroom, decrementenergy, oop lectures, when energy = 0, cheatsheet, foundobject

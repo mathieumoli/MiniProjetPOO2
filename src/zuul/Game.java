@@ -238,6 +238,9 @@ public class Game {
 		} else if (commandWord.equals("use")
 				&& (currentRoom instanceof Corridor)) {
 			wantUse(command);
+		} else if (commandWord.equals("search")
+				&& (currentRoom instanceof Corridor)) {
+			wantSearch(command);
 		}
 
 		// else command not recognised.
@@ -267,6 +270,19 @@ public class Game {
 			((Corridor)currentRoom).useTablet(gamer);
 		}
 		
+	}
+
+	private void wantSearch(Command command) {
+		if (!command.hasSecondWord()) {
+			// if there is no second word, we don't know where to go...
+			System.out.println(res.getString("game.search"));
+			return;
+		} else if (command.getSecondWord().equals("printer")) {
+			System.out.println(Game.res.getString("cheatsheet.description1"));
+			System.out.println(Game.res.getString("cheatsheet.description2"));
+			((Corridor)currentRoom).useCheatsheet(gamer);
+		}
+
 	}
 	
 
