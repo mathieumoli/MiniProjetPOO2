@@ -1,11 +1,6 @@
 package zuul.room;
 
-import 	java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-
 import zuul.Game;
-import zuul.course.LabItem;
 import zuul.course.LectureItem;
 import zuul.person.Student;
 
@@ -23,6 +18,11 @@ public class LectureRoom extends StudySpace {
 
 	}
 
+	/**
+	 * This function determines if the student can enter the lectureroom or not
+	 * @param student
+	 * @return
+	 */
 	@Override
 	public boolean canEnter(Student student){
 		return true;
@@ -48,7 +48,6 @@ public class LectureRoom extends StudySpace {
 
 	@Override
 	public void randomizeCourses(){
-
 		if (nbRoom == 1) coursInThisRoom = Game.lectures.get((int) (Math.random() * 2));
 		else if (nbRoom == 2) coursInThisRoom = Game.lectures.get((int)(Math.random() * (5-3) + 3));
 
@@ -67,7 +66,7 @@ public class LectureRoom extends StudySpace {
 		try {
 			System.out.println(Game.res.getString("oop.lecture"));
 			Thread.sleep(3000);
-			System.out.println(Game.res.getString(((LectureItem) coursInThisRoom).getBundleKey()));
+			System.out.println(Game.res.getString(coursInThisRoom.getBundleKey()));
 			Thread.sleep(3000);
 			System.out.println(Game.res.getString("oop.lectureend"));
 
@@ -88,7 +87,7 @@ public class LectureRoom extends StudySpace {
 	 */
 	@Override
 	public String getLongDescription() {
-		if (isAttend ==true) {
+		if (isAttend) {
 			return getExitString();
 		} else
 			return description + coursInThisRoom.getModule() + " numero "

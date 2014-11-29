@@ -1,7 +1,5 @@
 package zuul.room;
 
-import java.util.ResourceBundle;
-
 import zuul.Game;
 import zuul.course.LabItem;
 import zuul.course.LectureItem;
@@ -19,11 +17,8 @@ public class LabRoom extends StudySpace {
 
 	}
 
-	public LabRoom(String description, LabItem lab) {
-		super(description, lab);
-	}
-
 	/**
+	 * This function determines if the student can enter the labroom or not
 	 * the student can't enter if he didn't attend the respective lecture
 	 * 
 	 * @param student
@@ -72,8 +67,7 @@ public class LabRoom extends StudySpace {
 	public void randomizeCourses() {
 		int rand = (int) (Math.random() * Game.NB_COURSES);
 
-		LabItem lab = Game.labs.get(rand);
-		coursInThisRoom = lab;
+		coursInThisRoom = Game.labs.get(rand);
 	}
 
 	public void attendLab(Student goodStudent) {
@@ -105,7 +99,7 @@ public class LabRoom extends StudySpace {
 	 */
 	@Override
 	public String getLongDescription() {
-		if (isAttend = true) {
+		if (isAttend) {
 			return getExitString();
 		} else
 			return description + coursInThisRoom.getModule() + " numero "
