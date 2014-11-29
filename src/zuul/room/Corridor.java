@@ -25,9 +25,8 @@ public class Corridor extends Room {
 	}
 
 	public void appearTablet() {
-		Random randomTablet = new Random();
-		randomTablet.nextBoolean();
-		tablet = (randomTablet.nextBoolean()) ? true : false;
+		int chance= (int) (Math.random() * 10);
+		tablet = (chance>7) ? true : false;
 
 	}
 

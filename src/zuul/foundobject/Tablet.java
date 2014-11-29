@@ -25,16 +25,23 @@ public class Tablet {
 	public void useTablet(Student student){
 		System.out.println(Game.res.getString("tablet.on"));
 		int chance= (int) (Math.random() * 10);
-		if(chance > 5)
+		if(chance > 7)
 			playZuul(student);
-		else
+		else if(chance<=7 && chance>3)
 			learnLecture(student);
+		else
+			playAppli(student);
 		
+	}
+
+	private void playAppli(Student student) {
+		System.out.println(Game.res.getString("tablet.appli"));
+		student.removeItem();		
 	}
 
 	public void playZuul(Student student) {
 		System.out.println(Game.res.getString("tablet.zuul"));
-		student.removeItem();
+		
 
 	}
 
