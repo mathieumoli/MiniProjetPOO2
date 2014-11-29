@@ -8,6 +8,7 @@ import java.util.ListResourceBundle;
  */
 public class Zuul_en_US extends ListResourceBundle {
     static final Object[][] contents = {
+
             {"lunchroom.description", "You are in the lunchroom. Why don't you take some of this Mocoffee drink,\n all natural coffee beans from the upper slopes of Mount Nicaragua,\n no artificial sweeteners! It will give you a few energy.\n Type \"take coffee\" to drink a coffee"},
             {"lectureroom.description1", "You are in a classroom.\nYou can attend to the lecture of "},
             {"lectureroom.description2", "Type \"attend lecture\" if you want \n" },
@@ -17,6 +18,8 @@ public class Zuul_en_US extends ListResourceBundle {
             {"corridor2.description", "You are in the second corridor"},
             {"corridor3.description", "You are in the third corridor"},
             {"corridor4.description", "You are in the fourth corridor"},
+            {"corridor.tablet", "You find a tablet in the corridor. To use it type \"use tablet\""},
+            {"corridor.notablet", "Which tablet?"},
             {"library.description", "You are in the library.In the Library you can see the OOP2 book. This book contains all lecture you can learn about OOP2. If you want to read it, just type \"read book\""},
             
             {"examroom.description", "You are in the exam room"},
@@ -44,6 +47,7 @@ public class Zuul_en_US extends ListResourceBundle {
             {"game.boring", "World of Zuul is a new, incredibly (slightly less) boring adventure game."},
             {"game.help", "Type 'help' if you need help."},
             {"game.idontknow", "I don't know what you mean..."},
+            {"game.use","Use what ? tablet maybe ?"},
             {"game.attend","Attend what ? lab ? lecture ?"},
             {"game.help2", "You are a student and you need to pass the final POO exam."},
             {"game.help3", "In order to do that, you need to listen lecture, do lab works and pass the exam."},
@@ -83,8 +87,11 @@ public class Zuul_en_US extends ListResourceBundle {
             {"labroom.noattend1","The professor doesn't want you attend to this lab because you haven't assisted to the lecture of "},
             {"labroom.noattend2"," number "},
             {"lunchroom.babyFoot","You're in the lunchroom. Salah and Fanfan la tulipe say to you : \"It's babyfoot time !\" You can't refuse."},
-            {"examroom.cant", "You can't pass the final exam in these conditions..."}
+            {"examroom.cant", "You can't pass the final exam in these conditions..."},
           
+            {"tablet.lecture","You find a lecture on the tablet. Why could you not learn it ?"},
+            {"tablet.zuul","Oh no! You have seen \"World of Zuul\" on the tablet ... and now you launch the application !"},
+        	{"tablet.on","$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$__$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$_______________$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$___________________$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$____$$$_________$$$____$$$$$$$$$$$$$\n$$$$$$$$$$$$$_____$$$_________$$$_____$$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$_____$$$____________________________$$$____$$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$______$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$$___$$$$____________________________$$$___$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\nThe Android Tablet is ON !"}
 
 
     };

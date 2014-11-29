@@ -31,7 +31,7 @@ public class Game {
 	private Locale locale;
 	private Student gamer;
 	public static final int NB_COURSES = 3;
-	public static final String COURSES[] = {"OOP", "C", "ALGO"};
+	public static final String COURSES[] = { "OOP", "C", "ALGO" };
 	public static List<LabItem> labs = new ArrayList<LabItem>();
 	public static List<LectureItem> lectures = new ArrayList<LectureItem>();
 
@@ -57,14 +57,14 @@ public class Game {
 		int value = scanner.nextInt();
 
 		switch (value) {
-			case 1:
-				locale = Locale.getDefault();
-				break;
+		case 1:
+			locale = Locale.getDefault();
+			break;
 
-			case 2:
-			default:
-				locale = new Locale("en", "US");
-				break;
+		case 2:
+		default:
+			locale = new Locale("en", "US");
+			break;
 		}
 	}
 
@@ -82,9 +82,9 @@ public class Game {
 				res.getString("lectureroom.description1"), 2);
 		LectureRoom lectureroom3 = new LectureRoom(
 				res.getString("lectureroom.description1"), 3);
-		LabRoom labroom1 = new LabRoom(res.getString("labroom.description1"),1);
-		LabRoom labroom2 = new LabRoom(res.getString("labroom.description1"),2);
-		LabRoom labroom3 = new LabRoom(res.getString("labroom.description1"),3);
+		LabRoom labroom1 = new LabRoom(res.getString("labroom.description1"), 1);
+		LabRoom labroom2 = new LabRoom(res.getString("labroom.description1"), 2);
+		LabRoom labroom3 = new LabRoom(res.getString("labroom.description1"), 3);
 		Corridor corridor1 = new Corridor(
 				res.getString("corridor1.description"));
 		Corridor corridor2 = new Corridor(
@@ -106,7 +106,7 @@ public class Game {
 		corridor2.setExit("west", lectureroom2);
 		corridor2.setExit("east", lectureroom1);
 		corridor2.setExit("north", corridor3);
-		
+
 		corridor3.setExit("south", corridor2);
 		corridor3.setExit("west", labroom2);
 		corridor3.setExit("east", labroom3);
@@ -192,7 +192,7 @@ public class Game {
 	 */
 	private void createCourses() {
 		for (int i = 0; i < NB_COURSES; ++i) {
-			for(int j = 0; j < COURSES.length; ++j) {
+			for (int j = 0; j < COURSES.length; ++j) {
 				labs.add(new LabItem(COURSES[j], i + 1));
 				lectures.add(new LectureItem(COURSES[j], i + 1));
 			}
@@ -235,6 +235,9 @@ public class Game {
 				&& (currentRoom instanceof Library)) {
 			wantRead(command);
 
+		} else if (commandWord.equals("use")
+				&& (currentRoom instanceof Corridor)) {
+			wantUse(command);
 		}
 
 		// else command not recognised.
@@ -254,6 +257,18 @@ public class Game {
 		System.out.println(res.getString("game.help4"));
 		parser.showCommands();
 	}
+	
+	private void wantUse(Command command) {
+		if (!command.hasSecondWord()) {
+			// if there is no second word, we don't know where to go...
+			System.out.println(res.getString("game.use"));
+			return;
+		} else if (command.getSecondWord().equals("tablet")) {
+			((Corridor)currentRoom).useTablet(gamer);
+		}
+		
+	}
+	
 
 	private void wantAttend(Command command) {
 		if (!command.hasSecondWord()) {
@@ -305,7 +320,7 @@ public class Game {
 			return;
 		} else if (command.getSecondWord().equals("on")) {
 			((Corridor) currentRoom).setLights(true);
-			System.out.println(currentRoom.getLongDescription());
+			((Corridor) currentRoom).enter(gamer);
 
 		} else if (command.getSecondWord().equals("off")) {
 			((Corridor) currentRoom).setLights(false);
