@@ -34,6 +34,7 @@ public class LectureRoom extends StudySpace {
 
 	@Override
 	public boolean enter(Student student){
+
 		//test
 		if (nbRoom == 1) coursInThisRoom = Game.lectures.get(0);
 		else if (nbRoom == 2) coursInThisRoom = Game.lectures.get(3);
@@ -42,6 +43,7 @@ public class LectureRoom extends StudySpace {
 		isAttend = false;
 		if (mustEnter(student)){
 			attendLecture(student);
+			//randomizeCourses();
 			System.out.println(getLongDescription());
 		} else {
 			System.out.println(getLongDescription());
