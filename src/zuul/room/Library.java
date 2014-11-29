@@ -32,19 +32,7 @@ public class Library extends Room {
 	}
 
 	/**
-	 * Library containing books to read. You can only enter the library when it
-	 * is open (determined randomly according to some probability). An OOP book,
-	 * eg, Objects first, may be taken out from the library and read. Reading
-	 * the book is equivalent to listening to all the OOP course lectures.
-	 *
-	 * TO DO : enter(),
-	 * 
-	 * @return
-	 */
-
-
-	/**
-	 *
+	 * This function determines if the student can enter the library or not
 	 * @param student
 	 * @return
 	 */
@@ -62,7 +50,6 @@ public class Library extends Room {
 			System.out.println(Game.res.getString("library.description"));
 			System.out.println();
 
-
 			return true;
 		}
 		System.out.println(Game.res.getString("library.closed"));
@@ -73,16 +60,15 @@ public class Library extends Room {
     public boolean isOpen(){
     	int random = (int)(Math.random() * 10);
 
-	    isOpen = (random > 7) ? true : false;
+	    isOpen = random > 7;
 		return isOpen;
     }
 
 
 
 	public void learnPOO(Student goodStudent) {
-		int i = 0;
 		int sizeBook = poo2Book.size();
-		for (i = 0; i < sizeBook; i++) {
+		for (int i = 0; i < sizeBook; i++) {
 			if (!goodStudent.alreadyListenedLecture(poo2Book.get(i))) {
 				goodStudent.addItem(poo2Book.get(i));
 				System.out.println(Game.res.getString(poo2Book.get(i).getBundleKey())+"\n");

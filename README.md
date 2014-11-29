@@ -59,3 +59,8 @@ random cours suivant les salles OKAY (je pense)
 
 #17 work
 corrections of some bugs
+
+#18 work
+all exams done
+no more error when choosing the language
+new ending

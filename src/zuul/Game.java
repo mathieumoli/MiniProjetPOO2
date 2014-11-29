@@ -37,7 +37,7 @@ public class Game {
 	public static List<LectureItem> lectures = new ArrayList<LectureItem>();
 
 	/**
-	 * Create the game and initialise its internal map.
+	 * Create the game and initialize its internal map.
 	 */
 	public Game() {
 		parser = new Parser();
@@ -49,22 +49,18 @@ public class Game {
 	 * Ask to the user his prefered language and set it
 	 */
 	private void getLanguage() {
-		System.out
-				.println("Voulez-vous jouer en français ? Si oui, appuyez sur 1.");
-		System.out
-				.println("Or do you prefer playing in English ? If so, press 2.");
+		System.out.println("Voulez-vous jouer en français ? Si oui, appuyez sur 1.");
+		System.out.println("Or do you prefer playing in English ? If so, press 2.");
 
 		Scanner scanner = new Scanner(System.in);
-		int value = scanner.nextInt();
+		String choice = scanner.nextLine();
 
-		switch (value) {
-		case 1:
+		if (choice.equals("1")) {
 			locale = Locale.getDefault();
-			break;
-
-		default:
+		} else if (choice.equals("2")) {
 			locale = new Locale("en", "US");
-			break;
+		} else {
+			getLanguage();
 		}
 	}
 
@@ -129,7 +125,7 @@ public class Game {
 		lectureroom2.setExit("east", corridor2);
 		lectureroom3.setExit("west", corridor4);
 
-		examroom.setExit("south", corridor3);
+		examroom.setExit("south", corridor4);
 
 		currentRoom = corridor1; // start game in the first corridor
 	}
@@ -178,6 +174,10 @@ public class Game {
 
 	}
 
+	/**
+	 * Print a welcoming message to the gamer
+	 */
+
 	private void printGamer() {
 		String string = new String(res.getString("game.welcomename1")
 				+ gamer.getName() + res.getString("game.welcomename2")
@@ -191,13 +191,13 @@ public class Game {
 	 * This method creates the labs and lectures (3 each) for 3 subjects
 	 */
 	private void createCourses() {
-		int k=0;
+		int k;
 		for (int i = 0; i < NB_COURSES; ++i) {
-			k=i;
+			k = i;
 			for (int j = 0; j < COURSES.length; ++j) {
 				labs.add(new LabItem(COURSES[j], i + 1));
 				lectures.add(new LectureItem(COURSES[j], i + 1,COURSESBUNDLEKEY[k]));
-				k+=3;
+				k += 3;
 			}
 		}
 	}
@@ -227,7 +227,7 @@ public class Game {
 		} else if (commandWord.equals("take")
 				&& (currentRoom instanceof Lunchroom)) {
 			wantCoffee(command);
-		} else if (commandWord.equals("light")
+		} else if (commandWord.equals("lights")
 				&& (currentRoom instanceof Corridor)) {
 			goCorridor(command);
 		} else if (commandWord.equals("attend")
@@ -243,6 +243,9 @@ public class Game {
 		} else if (commandWord.equals("search")
 				&& (currentRoom instanceof Corridor)) {
 			wantSearch(command);
+		} else if (commandWord.equals("start")
+				&& (currentRoom instanceof ExamRoom)) {
+			wantStart(command);
 		}
 
 		// else command not recognised.
@@ -262,23 +265,46 @@ public class Game {
 		System.out.println(res.getString("game.help4"));
 		parser.showCommands();
 	}
-	
+
+	/**
+	 * Try to start the exam, if it's incomplete, display an error message
+	 * @param command
+	 */
+	private void wantStart(Command command) {
+		if (!command.hasSecondWord()) {
+			// if there is no second word, we don't know where to go...
+			System.out.println(res.getString("game.start"));
+		} else if ((command.getSecondWord().equals("exam"))
+				&& (currentRoom instanceof ExamRoom)) {
+			((ExamRoom) currentRoom).startExam(gamer);
+			System.out.println(currentRoom.getLongDescription());
+
+		}
+	}
+
+	/**
+	 * Try to use the tablet, if it's incomplete display an error message
+	 * @param command
+	 */
 	private void wantUse(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
 			System.out.println(res.getString("game.use"));
-			return;
 		} else if (command.getSecondWord().equals("tablet")) {
 			((Corridor)currentRoom).useTablet(gamer);
 		}
 		
 	}
 
+	/**
+	 * Try to search near the printer, if it's incomplete display an error message
+	 * Then, display the answers available on the cheatsheet
+	 * @param command
+	 */
 	private void wantSearch(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
 			System.out.println(res.getString("game.search"));
-			return;
 		} else if (command.getSecondWord().equals("printer")) {
 			System.out.println(Game.res.getString("cheatsheet.description1"));
 			System.out.println(Game.res.getString("cheatsheet.description2"));
@@ -286,13 +312,15 @@ public class Game {
 		}
 
 	}
-	
 
+	/**
+	 * Try to attend a lab or a lecture, if it's incomplete display an error message
+	 * @param command
+	 */
 	private void wantAttend(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
 			System.out.println(res.getString("game.attend"));
-			return;
 		} else if ((command.getSecondWord().equals("lab"))
 				&& (currentRoom instanceof LabRoom)) {
 			((LabRoom) currentRoom).attendLab(gamer);
@@ -305,6 +333,10 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Try to take and drink a coffee, if it's incomplete display an error message
+	 * @param command
+	 */
 	private void wantCoffee(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
@@ -320,25 +352,31 @@ public class Game {
 		System.out.println(currentRoom.getExitString());
 	}
 
+	/**
+	 * Try to read the book in the library, if it's incomplete display an error message
+	 * @param command
+	 */
 	private void wantRead(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
 			System.out.println(res.getString("game.read"));
-			return;
 		} else if (command.getSecondWord().equals("book")) {
 			((Library) currentRoom).learnPOO(gamer);
 		}
 
 	}
 
+	/**
+	 * Try to turn the lights on, if it's incomplete display an error message
+	 * @param command
+	 */
 	private void goCorridor(Command command) {
 		if (!command.hasSecondWord()) {
-			// if there is no second word, we don't know where to go...
-			System.out.println(res.getString("game.where"));
-			return;
+			// if there is no second word, we don't know what to do...
+			System.out.println(res.getString("game.idontknow"));
 		} else if (command.getSecondWord().equals("on")) {
 			((Corridor) currentRoom).setLights(true);
-			((Corridor) currentRoom).enter(gamer);
+			(currentRoom).enter(gamer);
 
 		} else if (command.getSecondWord().equals("off")) {
 			((Corridor) currentRoom).setLights(false);
