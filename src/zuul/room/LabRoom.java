@@ -14,9 +14,9 @@ import zuul.person.Student;
 public class LabRoom extends StudySpace {
 
 	public LabRoom(String description, int nbRoom) {
-		super(description,nbRoom);
+		super(description, nbRoom);
 		coursInThisRoom = new LabItem();
-		
+
 	}
 
 	public LabRoom(String description, LabItem lab) {
@@ -44,18 +44,18 @@ public class LabRoom extends StudySpace {
 	}
 
 	public boolean mustEnter(Student student) {
-		if (coursInThisRoom.getModule().equals("OOP")) {
-			return true;
-		}
-		return false;
+		return super.mustEnter(student);
 	}
 
 	@Override
 	public boolean enter(Student student) {
-		if (nbRoom == 1) coursInThisRoom = Game.labs.get(0);
-		else if (nbRoom == 2) coursInThisRoom = Game.labs.get(3);
-		else coursInThisRoom = Game.labs.get(6);
-		
+		if (nbRoom == 1)
+			coursInThisRoom = Game.labs.get(0);
+		else if (nbRoom == 2)
+			coursInThisRoom = Game.labs.get(3);
+		else
+			coursInThisRoom = Game.labs.get(6);
+
 		isAttend = false;
 		if (canEnter(student)) {
 			if (mustEnter(student)) {
