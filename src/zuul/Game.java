@@ -82,19 +82,23 @@ public class Game {
 				res.getString("lectureroom.description1"), 2);
 		LectureRoom lectureroom3 = new LectureRoom(
 				res.getString("lectureroom.description1"), 3);
-		LabRoom labroom = new LabRoom(res.getString("labroom.description1"));
+		LabRoom labroom1 = new LabRoom(res.getString("labroom.description1"),1);
+		LabRoom labroom2 = new LabRoom(res.getString("labroom.description1"),2);
+		LabRoom labroom3 = new LabRoom(res.getString("labroom.description1"),3);
 		Corridor corridor1 = new Corridor(
 				res.getString("corridor1.description"));
 		Corridor corridor2 = new Corridor(
 				res.getString("corridor2.description"));
 		Corridor corridor3 = new Corridor(
 				res.getString("corridor3.description"));
+		Corridor corridor4 = new Corridor(
+				res.getString("corridor4.description"));
 		Library library = new Library(res.getString("library.description"));
 		ExamRoom examroom = new ExamRoom(res.getString("examroom.description"));
 
 		// initialise room exits
 
-		corridor1.setExit("west", labroom);
+		corridor1.setExit("west", labroom1);
 		corridor1.setExit("east", lunchroom);
 		corridor1.setExit("north", corridor2);
 
@@ -102,13 +106,20 @@ public class Game {
 		corridor2.setExit("west", lectureroom2);
 		corridor2.setExit("east", lectureroom1);
 		corridor2.setExit("north", corridor3);
-
+		
 		corridor3.setExit("south", corridor2);
-		corridor3.setExit("west", library);
-		corridor3.setExit("east", lectureroom3);
-		corridor3.setExit("north", examroom);
+		corridor3.setExit("west", labroom2);
+		corridor3.setExit("east", labroom3);
+		corridor3.setExit("north", corridor4);
 
-		labroom.setExit("east", corridor1);
+		corridor4.setExit("south", corridor3);
+		corridor4.setExit("west", library);
+		corridor4.setExit("east", lectureroom3);
+		corridor4.setExit("north", examroom);
+
+		labroom1.setExit("east", corridor1);
+		labroom2.setExit("east", corridor3);
+		labroom3.setExit("west", corridor4);
 
 		lunchroom.setExit("west", corridor1);
 

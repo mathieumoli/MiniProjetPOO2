@@ -37,3 +37,6 @@ et tu perds un cours
 #10work
 remove lab when babyfoot okay
 must assist POO lab okay
+
+#11work
+create another corridor with two labroom (to do lab number 2 and lab number 3) it will be more easier to do all the lab

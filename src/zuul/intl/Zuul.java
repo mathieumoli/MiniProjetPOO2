@@ -16,6 +16,7 @@ public class Zuul extends ListResourceBundle {
             {"corridor1.description", "Vous êtes dans le premier couloir"},
             {"corridor2.description", "Vous êtes dans le deuxième couloir"},
             {"corridor3.description", "Vous êtes dans le troisième couloir"},
+            {"corridor4.description", "Vous êtes dans le quatrième couloir"},
             {"library.description", "Vous êtes dans la bibliothèque. Dans la bibliotheque, vous trouvez le livre de POO2 renfermant l'ensemble des cours de la matière.\n Pour lire le livre et acquérir l'ensemble des cours, Tapez \"read book\""},
             {"examroom.description", "Vous êtes dans la salle d'examen"},
             {"corridor.dark","Ce couloir est d'une obscurité déconcertante, vous pourriez allumer la lumiere pour mieux y voir...\n Pour allumer la lumiere, tapez \"light on\""},

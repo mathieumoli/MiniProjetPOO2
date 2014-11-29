@@ -17,7 +17,7 @@ public class LectureRoom extends StudySpace {
 	private int nbRoom;
 
 	public LectureRoom(String description, int nbRoom) {
-		super(description);
+		super(description,nbRoom);
 		coursInThisRoom = new LectureItem();
 		this.nbRoom = nbRoom;
 

@@ -15,7 +15,8 @@ public class Zuul_en_US extends ListResourceBundle {
             {"labroom.description2", "Type \"attend lab\" if you want \n" },
             {"corridor1.description", "You are in the first corridor"},
             {"corridor2.description", "You are in the second corridor"},
-            {"corridor2.description", "You are in the third corridor"},
+            {"corridor3.description", "You are in the third corridor"},
+            {"corridor4.description", "You are in the fourth corridor"},
             {"library.description", "You are in the library.In the Library you can see the OOP2 book. This book contains all lecture you can learn about OOP2. If you want to read it, just type \"read book\""},
             
             {"examroom.description", "You are in the exam room"},
