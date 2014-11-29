@@ -64,6 +64,7 @@ public class Zuul extends ListResourceBundle {
             {"student.answers", " réponses justes."},
             {"student.energy.part1", "L'énergie de "},
             {"student.energy.part2", " est de "},
+            {"student.energy0", "Vous n'avez plus d'énergie ! Vous vous endormez sur place...Jojo la menace vous voit et décide de vous renvoyer...Faites attention la prochaine fois."},
             {"student.addLab.part1"," a suivi avec succès le lab de "},
             {"student.add.part2"," numero "},
             {"student.addLecture.part1"," a suivi avec succès le cours de "},

@@ -49,14 +49,17 @@ public class Student {
 	}
 
 	public void decrementEnergy(int theEnergy) {
-		if (energy > 10) {
+		if (energy > theEnergy) {
 			energy -= theEnergy;
+			System.out.println(Game.res.getString("student.energy.part1")
+					+ this.name + Game.res.getString("student.energy.part2")
+					+ this.getEnergyString());
 		} else {
 			energy = 0;
+			System.out.println(Game.res.getString("student.energy0"));
+			System.out.println(Game.res.getString("game.thankyou"));
+			System.exit(1);
 		}
-		System.out.println(Game.res.getString("student.energy.part1")
-				+ this.name + Game.res.getString("student.energy.part2")
-				+ this.getEnergyString());
 	}
 
 	public void incrementEnergy(int theEnergy) {
