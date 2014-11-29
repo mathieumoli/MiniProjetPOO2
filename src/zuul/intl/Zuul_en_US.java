@@ -62,6 +62,7 @@ public class Zuul_en_US extends ListResourceBundle {
 
             {"student.youhave", "You have "},
             {"student.answers", " right answers."},
+            {"student.energy0", "You don't have any energy left ! You fall asleep right there... Jojo la menace sees you and decides to expel you...Be careful next time."},
             {"student.energy.part1", "Energy of "},
             {"student.energy.part2", " is "},
             {"student.addLab.part1","  participate in this lab of "},
