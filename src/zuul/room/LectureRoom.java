@@ -28,10 +28,7 @@ public class LectureRoom extends StudySpace {
 	}
 
 	public boolean mustEnter(Student student){
-		if (coursInThisRoom.getModule().equals("OOP")) {
-			return true;
-		}
-		return false;
+		return super.mustEnter(student);
 	}
 
 	@Override
@@ -59,9 +56,7 @@ public class LectureRoom extends StudySpace {
 		coursInThisRoom = lecture;
 	}
 
-	private void doLecture(){
-			System.out.println(Game.res.getString(((LectureItem) coursInThisRoom).getBundleKey()));
-	}
+	
 
 
 	public void attendLecture(Student goodStudent) {
@@ -73,7 +68,7 @@ public class LectureRoom extends StudySpace {
 		try {
 			System.out.println(Game.res.getString("oop.lecture"));
 			Thread.sleep(3000);
-			doLecture();
+			System.out.println(Game.res.getString(((LectureItem) coursInThisRoom).getBundleKey()));
 			Thread.sleep(3000);
 			System.out.println(Game.res.getString("oop.lectureend"));
 

@@ -46,3 +46,6 @@ Tablet OKAY !
 
 #13 work
 Tablet correction with game of Zuul and another game, add the key of a lecture in the object Lecture
+
+#14 work
+Delete redundant code in lectureroom and labroom 

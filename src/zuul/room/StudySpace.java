@@ -3,6 +3,7 @@ package zuul.room;
 import java.util.ResourceBundle;
 
 import zuul.course.Item;
+import zuul.person.Student;
 
 /**
  * @author Mathieu Molinengo
@@ -38,6 +39,13 @@ public abstract class StudySpace extends Room {
 	 */
 	public void setCoursInThisRoom(Item coursInThisRoom) {
 		this.coursInThisRoom = coursInThisRoom;
+	}
+	
+	public boolean mustEnter(Student student) {
+		if (coursInThisRoom.getModule().equals("OOP")) {
+			return true;
+		}
+		return false;
 	}
 
 }
