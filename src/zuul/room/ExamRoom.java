@@ -75,15 +75,14 @@ public class ExamRoom extends Room {
 			lectureOOP.add(new LectureItem("OOP", i + 1));
 			labOOP.add(new LabItem("OOP", i + 1));
 		}
-		allCourses = (student.getCoursSuivi().contains(lectureOOP.get(0))
-				&& student.getCoursSuivi().contains(lectureOOP.get(1)) && student
-				.getCoursSuivi().contains(lectureOOP.get(2)));
-		allLabs = (student.getLabsSuivi().contains(labOOP.get(0))
-				&& student.getLabsSuivi().contains(labOOP.get(1)) && student
-				.getLabsSuivi().contains(labOOP.get(2)));
+		allCourses = ((student.getCoursSuivi().contains(lectureOOP.get(0)))
+				&& (student.getCoursSuivi().contains(lectureOOP.get(1))) && (student
+				.getCoursSuivi().contains(lectureOOP.get(2))));
+		allLabs = ((student.getLabsSuivi().contains(labOOP.get(0)))
+				&& (student.getLabsSuivi().contains(labOOP.get(1))) && (student
+				.getLabsSuivi().contains(labOOP.get(2))));
 
-		return allCourses && allLabs;
-
+		return (allCourses && allLabs);
 	}
 
 	/***
