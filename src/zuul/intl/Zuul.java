@@ -4,7 +4,10 @@ import java.util.ListResourceBundle;
 
 /**
  * @author Lucas Martinez
- * @version 20/11/2014
+  * @version 2014.11.30
+ * 
+ *          Zuul is a class that manages resources strings for the game
+ *          when the user want a French game
  */
 public class Zuul extends ListResourceBundle {
     static final Object[][] contents = {    	
@@ -134,7 +137,14 @@ public class Zuul extends ListResourceBundle {
             
     };
 
-
+    /***
+     * 
+     * 
+	 * @return an array in which each item is a pair of objects in an Object
+	 *         array. The first element of each pair is the key, which must be a
+	 *         String, and the second element is the string associated with that
+	 *         key.
+	 */
     @Override
     public Object[][] getContents() {
         return contents;

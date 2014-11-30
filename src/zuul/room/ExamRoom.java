@@ -11,7 +11,9 @@ import java.util.Scanner;
 
 /**
  * @author Lucas Martinez
- * @version 20/11/2014
+ * @version 2014.11.30
+ * 
+ *          Class to create an ExamRoom
  */
 public class ExamRoom extends Room {
 	public static final int NB_QUESTIONS = 3;
@@ -19,6 +21,12 @@ public class ExamRoom extends Room {
 	private List<LectureItem> lectureOOP = new ArrayList<LectureItem>();
 	private List<LabItem> labOOP = new ArrayList<LabItem>();
 
+	/***
+	 * 
+	 * Constructor to create an ExamRoom
+	 * @param description the description of the examroom
+	 * 
+	 ***/
 	public ExamRoom(String description) {
 		super(description);
 	}
@@ -29,7 +37,8 @@ public class ExamRoom extends Room {
 	 * didn't attend the oop lectures and the oop labs for an OOP exam
 	 *
 	 * @param student
-	 * @return
+	 *            the student who wants to do the exam
+	 * @return true if the student can enter and false if he can't
 	 */
 	@Override
 	public boolean canEnter(Student student) {
@@ -50,6 +59,15 @@ public class ExamRoom extends Room {
 		return false;
 	}
 
+	/***
+	 *
+	 * Method to know if the student did all OOP lectures and courses
+	 *
+	 * @param student
+	 *            the student who wants to do the exam
+	 * @return true if the student did all OOP lectures and courses and false if
+	 *         he didn't
+	 */
 	public boolean doAllCourses(Student student) {
 		boolean allCourses = false;
 		boolean allLabs = false;
@@ -68,6 +86,13 @@ public class ExamRoom extends Room {
 
 	}
 
+	/***
+	 * 
+	 * Method to enter in this examroom
+	 * @param student the student who wants to go in
+	 * @return true if he can go in and false if he can't
+	 * 
+	 ***/
 	@Override
 	public boolean enter(Student student) {
 		randomizeExams();
@@ -98,7 +123,12 @@ public class ExamRoom extends Room {
 		}
 		return true;
 	}
-
+	
+	/***
+	 * 
+	 * Method to randomize the exam in the examroom (it will have no exam too)
+	 * 
+	 ***/
 	private void randomizeExams() {
 		int rand = (int) (Math.random() * Game.NB_COURSES);
 		exam = Game.COURSES[rand];
@@ -110,6 +140,12 @@ public class ExamRoom extends Room {
 
 	}
 
+	/***
+	 * 
+	 * Method to start an exam
+	 * @param student the student who passes it
+	 * 
+	 ***/
 	public void startExam(Student student) {
 		if (!exam.equals("noexam")) {
 
@@ -159,7 +195,8 @@ public class ExamRoom extends Room {
 	}
 
 	/**
-	 * @param exam the exam to set
+	 * @param exam
+	 *            the exam to set
 	 */
 	public void setExam(String exam) {
 		this.exam = exam;

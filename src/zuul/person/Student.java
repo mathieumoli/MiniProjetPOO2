@@ -10,24 +10,42 @@ import zuul.course.LectureItem;
 
 /**
  * @author Mathieu Molinengo
- * @version 20/11/2014
+ * @version 2014.11.30
+ * 
+ *          Class to create a Student
  */
 public class Student {
-	
+
 	private ArrayList<LectureItem> oopBook;
 	private int energy;
 	private String name;
 	private ArrayList<LectureItem> coursSuivi;
 	private ArrayList<LabItem> labsSuivi;
 
+	/***
+	 * 
+	 * Constructor to create a Student
+	 * 
+	 * @param nameOfStudent
+	 *            the name of created student
+	 * 
+	 ***/
 	public Student(String nameOfStudent) {
 		energy = 100;
 		name = nameOfStudent;
 		coursSuivi = new ArrayList<LectureItem>();
 		labsSuivi = new ArrayList<LabItem>();
-		oopBook=new ArrayList<LectureItem>();
+		oopBook = new ArrayList<LectureItem>();
 	}
 
+	/***
+	 * 
+	 * Method to add an item (lab or lecture) which is learned by the student
+	 * 
+	 * @param itemListened
+	 *            the item which must be added
+	 * 
+	 ***/
 	public void addItem(Item itemListened) {
 		if (itemListened instanceof LabItem) {
 			if (!alreadyListenedLab(new LabItem(itemListened.getModule(),
@@ -52,6 +70,14 @@ public class Student {
 		}
 	}
 
+	/***
+	 * 
+	 * Method to decrement the energy of the student
+	 * 
+	 * @param theEnergy
+	 *            the number of energy which must be removed
+	 * 
+	 ***/
 	public void decrementEnergy(int theEnergy) {
 
 		if (energy > theEnergy) {
@@ -67,6 +93,14 @@ public class Student {
 		}
 	}
 
+	/***
+	 * 
+	 * Method to increment the energy of the student
+	 * 
+	 * @param theEnergy
+	 *            the number of energy which must be added
+	 * 
+	 ***/
 	public void incrementEnergy(int theEnergy) {
 		energy += theEnergy;
 		if (energy > 100) {
@@ -78,6 +112,16 @@ public class Student {
 				+ this.getEnergyString() + ".");
 	}
 
+	/***
+	 * 
+	 * Method to check if a lab is already listened
+	 * 
+	 * @param theItem
+	 *            the LabItem which must be checked
+	 * 
+	 * @return true if theItem was alreadyListened and false if it's not
+	 * 
+	 ***/
 	public boolean alreadyListenedLab(LabItem theItem) {
 		boolean listened = false;
 		int i;
@@ -91,16 +135,32 @@ public class Student {
 		return listened;
 
 	}
-	
-	public void readTakenBook(){
-		for(int i=0;i<oopBook.size();i++)
-		{
+
+	/***
+	 * 
+	 * Method to add lectures of the taken OOP Book to the ArrayList coursSuivi
+	 * 
+	 * 
+	 ***/
+	public void readTakenBook() {
+		for (int i = 0; i < oopBook.size(); i++) {
 			this.addItem(oopBook.get(i));
-			System.out.println(Game.res.getString(oopBook.get(i).getBundleKey()));
+			System.out.println(Game.res
+					.getString(oopBook.get(i).getBundleKey()));
 		}
 		this.decrementEnergy(35);
 	}
 
+	/***
+	 * 
+	 * Method to check if a lecture is already listened
+	 * 
+	 * @param theItem
+	 *            the LectureItem which must be checked
+	 * 
+	 * @return true if theItem was alreadyListened and false if it's not
+	 * 
+	 ***/
 	public boolean alreadyListenedLecture(LectureItem theItem) {
 		boolean listened = false;
 		int i;
@@ -115,28 +175,62 @@ public class Student {
 
 	}
 
+	/***
+	 * 
+	 * Method to get the energy of the student
+	 * 
+	 * @return the energy of the student
+	 * 
+	 */
 	public int getEnergy() {
 		return energy;
 
 	}
 
+	/***
+	 * 
+	 * Method to get the energy of the student with a string format
+	 * 
+	 * @return the energy of the student with a string format
+	 */
 	public String getEnergyString() {
 		return Integer.toString(energy);
 	}
 
+	/***
+	 * 
+	 * Method to get the name of the student
+	 * 
+	 * @return the name of the student
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/***
+	 * 
+	 * Method to get the ArrayList of learned lectures
+	 * 
+	 * @return coursSuivi the ArrayList of learned lectures
+	 */
 	public ArrayList<LectureItem> getCoursSuivi() {
 		return coursSuivi;
 	}
 
+	/***
+	 * 
+	 * Method to get the ArrayList of labs
+	 * 
+	 * @return labsSuivi the ArrayList of labs
+	 */
 	public ArrayList<LabItem> getLabsSuivi() {
 		return labsSuivi;
 	}
-	
+
 	/**
+	 * Method to get the ArrayList which contains the taken OOP Book if a OOP
+	 * Book was taken
+	 * 
 	 * @return the oOPbook
 	 */
 	public ArrayList<LectureItem> getOOPbook() {
@@ -144,12 +238,21 @@ public class Student {
 	}
 
 	/**
-	 * @param oOPbook the oOPbook to set
+	 * Method to set an ArrayList of LectureItem in the variable oopBook
+	 * 
+	 * @param book
+	 *            the oOPbook to set
 	 */
 	public void setOOPbook(ArrayList<LectureItem> book) {
 		oopBook = book;
 	}
 
+	/***
+	 * 
+	 * Method to remove an item (lab or lecture) which is learned by the student
+	 * 
+	 * 
+	 ***/
 	public void removeItem() {
 		LabItem lab;
 		if (!coursSuivi.isEmpty()) {

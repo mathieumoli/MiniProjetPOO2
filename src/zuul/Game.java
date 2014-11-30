@@ -20,8 +20,9 @@ import java.util.*;
  * creates the parser and starts the game. It also evaluates and executes the
  * commands that the parser returns.
  *
- * @author Michael Kölling and David J. Barnes
- * @version 2011.08.08
+ * @author Michael Kölling, David J. Barnes (original version) Martinez Lucas
+ *         and Molinengo Mathieu (updated version)
+ * @version 2014.11.30
  */
 
 public class Game {
@@ -260,19 +261,6 @@ public class Game {
 		return wantToQuit;
 	}
 
-	private void wantBook(Command command) {
-		if (!command.hasSecondWord()) {
-			// if there is no second word, we don't know where to go...
-			System.out.println(res.getString("game.take"));
-			return;
-		} else if (command.getSecondWord().equals("book")) {
-			((Library) currentRoom).takeBook(gamer);
-		} else {
-			System.out.println(currentRoom.getLongDescription());
-		}
-
-	}
-
 	/**
 	 * Print out some help information. Here we print some stupid, cryptic
 	 * message and a list of the command words.
@@ -289,6 +277,7 @@ public class Game {
 	 * Try to start the exam, if it's incomplete, display an error message
 	 * 
 	 * @param command
+	 *            The command to be processed.
 	 */
 	private void wantStart(Command command) {
 		if (!command.hasSecondWord()) {
@@ -314,6 +303,7 @@ public class Game {
 	 * Try to use the tablet, if it's incomplete display an error message
 	 * 
 	 * @param command
+	 *            The command to be processed.
 	 */
 	private void wantUse(Command command) {
 		if (!command.hasSecondWord()) {
@@ -330,6 +320,7 @@ public class Game {
 	 * message Then, display the answers available on the cheatsheet
 	 * 
 	 * @param command
+	 *            The command to be processed.
 	 */
 	private void wantSearch(Command command) {
 		if (!command.hasSecondWord()) {
@@ -348,6 +339,7 @@ public class Game {
 	 * message
 	 * 
 	 * @param command
+	 *            The command to be processed.
 	 */
 	private void wantAttend(Command command) {
 		if (!command.hasSecondWord()) {
@@ -370,6 +362,7 @@ public class Game {
 	 * message
 	 * 
 	 * @param command
+	 *            The command to be processed.
 	 */
 	private void wantCoffee(Command command) {
 		if (!command.hasSecondWord()) {
@@ -391,6 +384,7 @@ public class Game {
 	 * message
 	 * 
 	 * @param command
+	 *            The command to be processed.
 	 */
 	private void wantRead(Command command) {
 		if (!command.hasSecondWord()) {
@@ -410,6 +404,7 @@ public class Game {
 	 * Try to turn the lights on, if it's incomplete display an error message
 	 * 
 	 * @param command
+	 *            The command to be processed.
 	 */
 	private void goCorridor(Command command) {
 		if (!command.hasSecondWord()) {
@@ -428,6 +423,9 @@ public class Game {
 	/**
 	 * Try to in to one direction. If there is an exit, enter the new room,
 	 * otherwise print an error message.
+	 * 
+	 * @param command
+	 *            The command to be processed.
 	 */
 	private void goRoom(Command command) {
 		if (!command.hasSecondWord()) {
@@ -445,6 +443,26 @@ public class Game {
 		} else {
 			System.out.println(currentRoom.getLongDescription());
 		}
+	}
+
+	/**
+	 * Try to take the book in the library, if it's incomplete display an error
+	 * message
+	 * 
+	 * @param command
+	 *            The command to be processed.
+	 */
+	private void wantBook(Command command) {
+		if (!command.hasSecondWord()) {
+			// if there is no second word, we don't know where to go...
+			System.out.println(res.getString("game.take"));
+			return;
+		} else if (command.getSecondWord().equals("book")) {
+			((Library) currentRoom).takeBook(gamer);
+		} else {
+			System.out.println(currentRoom.getLongDescription());
+		}
+
 	}
 
 	/**

@@ -9,13 +9,21 @@ import java.util.Random;
 
 /**
  * @author Mathieu Molinengo
- * @version 20/11/2014
+ * @version 2014.11.30
+ * 
+ *          Class to create a Corridor which gives access to other room
  */
 public class Corridor extends Room {
 	private boolean lights, tablet, cheatsheet;
 	private Tablet tabletInTheCorridor;
 	private Cheatsheet cheatsheetInTheCorridor;
 
+	/***
+	 * 
+	 * Constructor to create a Corridor
+	 * @param description the description of the corridor
+	 * 
+	 ***/
 	public Corridor(String description) {
 		super(description);
 		Random randomLight = new Random();
@@ -25,6 +33,11 @@ public class Corridor extends Room {
 
 	}
 
+	/***
+	 * 
+	 * Method to randomize the apparition of tablet and cheatsheet
+	 * 
+	 ***/
 	public void appearObject() {
 		int chance1 = (int) (Math.random() * 20);
 		tablet = (chance1 > 14) ? true : false;
@@ -33,11 +46,25 @@ public class Corridor extends Room {
 
 	}
 
+	/***
+	 * 
+	 * Method to know if the student can enter in this corridor
+	 * @param student the student who wants to go in
+	 * @return true
+	 * 
+	 ***/
 	@Override
 	public boolean canEnter(Student student) {
 		return true;
 	}
 
+	/***
+	 * 
+	 * Method to enter in this corridor
+	 * @param student the student who wants to go in
+	 * @return true
+	 * 
+	 ***/
 	@Override
 	public boolean enter(Student student) {
 		if (isLights()) {
@@ -59,6 +86,12 @@ public class Corridor extends Room {
 		return true;
 	}
 
+	/***
+	 * 
+	 * Method to use tablet in this corridor
+	 * @param student the student who wants to use it
+	 * 
+	 ***/
 	public void useTablet(Student student) {
 		if(tablet){
 			tabletInTheCorridor.useObject(student);
@@ -69,6 +102,12 @@ public class Corridor extends Room {
 		System.out.println(this.getLongDescription());
 	}
 
+	/***
+	 * 
+	 * Method to use cheatsheet in this corridor
+	 * @param student the student who wants to use it
+	 * 
+	 ***/
 	public void useCheatsheet(Student student) {
 		if(cheatsheet){
 			cheatsheetInTheCorridor.useObject(student);
@@ -79,22 +118,11 @@ public class Corridor extends Room {
 		System.out.println(this.getLongDescription());
 	}
 
-	/**
-	 * Corridors which give access to some rooms. Switches turn lights on an
-	 * off. Things can't be seen in unlit corridors and so can't be picked up.
-	 *
-	 * Tablets. Reading a tablet opens (randomly): an on-line lecture or lab
-	 * session which allows you to pick up the equivalent lesson or lab session
-	 * without having to attend the class. But the course still has to come
-	 * before the lab session. a video game which makes the student forget one
-	 * (random) lecture. Unless the game is World of Zuul.
-	 *
-	 * Cheat sheets containing the answers to the exam questions (probably found
-	 * on a photocopier).
-	 *
-	 * TO DO : turnLightsOn(),
+	/***
+	 * 
+	 * Method to change the boolean lights to true
+	 * 
 	 */
-
 	public void turnLightsOn() {
 		lights = true;
 	}

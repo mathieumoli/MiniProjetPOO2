@@ -9,23 +9,43 @@ import java.util.List;
 
 /**
  * @author Lucas Martinez
- * @version 29/11/2014
+ * @version 2014.11.30
+ * 
+ *          Class to create an OOP Cheatsheet
  */
-public class Cheatsheet implements FoundObject{
-    private List<String> answers = new ArrayList<String>();
+public class Cheatsheet implements FoundObject {
+	private List<String> answers = new ArrayList<String>();
 
-    public Cheatsheet() {
-        addStuff();
-    }
+	/***
+	 * 
+	 * Default constructor to create a Cheatsheet
+	 * 
+	 ***/
+	public Cheatsheet() {
+		addStuff();
+	}
 
-    public void addStuff() {
-        for (int i = 1; i <= ExamRoom.NB_QUESTIONS; ++i) {
-            answers.add(Game.res.getString("OOP.exam.answer" + i));
-        }
-    }
+	/***
+	 * 
+	 * Add stuff in the answer ArrayList of a cheatsheet
+	 * 
+	 ***/
+	public void addStuff() {
+		for (int i = 1; i <= ExamRoom.NB_QUESTIONS; ++i) {
+			answers.add(Game.res.getString("OOP.exam.answer" + i));
+		}
+	}
 
-    public void useObject(Student student) {
-        System.out.println(answers);
-        student.decrementEnergy(20);
-    }
+	/***
+	 * 
+	 * Method to use the cheatsheet
+	 * 
+	 * @param student
+	 *            the student who use the cheatsheet
+	 * 
+	 ***/
+	public void useObject(Student student) {
+		System.out.println(answers);
+		student.decrementEnergy(20);
+	}
 }

@@ -6,11 +6,23 @@ import zuul.person.Student;
 
 /**
  * @author Mathieu Molinengo
- * @version 20/11/2014
+ * @version 2014.11.30
+ * 
+ *          Class to create a LabRoom
  */
 public class LectureRoom extends StudySpace {
 	private int nbRoom;
 
+	/***
+	 * 
+	 * Constructor to create a LectureRoom
+	 * 
+	 * @param description
+	 *            the description of the lectureroom
+	 * @param nbRoom
+	 *            the integer which defines the courses in this lectureroom
+	 * 
+	 ***/
 	public LectureRoom(String description, int nbRoom) {
 		super(description, nbRoom);
 		coursInThisRoom = new LectureItem();
@@ -22,17 +34,36 @@ public class LectureRoom extends StudySpace {
 	 * This function determines if the student can enter the lectureroom or not
 	 * 
 	 * @param student
-	 * @return
+	 *            who wants enter in the labroom
+	 * @return true if the student can enter and false if he can't
 	 */
 	@Override
 	public boolean canEnter(Student student) {
 		return true;
 	}
 
+	/**
+	 * This function determines if the student must enter in the lectureroom (if
+	 * the lectureroom contains an OOP lecture) or not the student may enter if
+	 * he wants
+	 * 
+	 * @param student
+	 *            the Student who wants enter in this LabRoom
+	 * @return true if the student must enter and false if he mustn't
+	 */
 	public boolean mustEnter(Student student) {
 		return super.mustEnter(student);
 	}
 
+	/***
+	 * 
+	 * Method to enter in this lectureroom
+	 * 
+	 * @param student
+	 *            the student who wants to go in
+	 * @return true if he can go in and false if he can't
+	 * 
+	 ***/
 	@Override
 	public boolean enter(Student student) {
 		randomizeCourses();
@@ -49,6 +80,11 @@ public class LectureRoom extends StudySpace {
 		return true;
 	}
 
+	/***
+	 * 
+	 * Method to randomize the lab in the lectureroom (it will have no lab too)
+	 * 
+	 ***/
 	@Override
 	public void randomizeCourses() {
 		if (nbRoom == 1)
@@ -68,6 +104,13 @@ public class LectureRoom extends StudySpace {
 
 	}
 
+	/***
+	 * 
+	 * Method to add the ecture of this lecture in the coursSuivi of the student
+	 * 
+	 * @param goodStudent
+	 *            the student who attends the lecture
+	 */
 	public void attendLecture(Student goodStudent) {
 		if (coursInThisRoom.getNumber() != 0) {
 			System.out.println(Game.res
@@ -108,7 +151,8 @@ public class LectureRoom extends StudySpace {
 	public String getLongDescription() {
 		if (coursInThisRoom.getNumber() == 0) {
 			return Game.res.getString("lectureroom.shortdescription")
-					+ Game.res.getString(coursInThisRoom.getBundleKey())+"\n"+ getExitString();
+					+ Game.res.getString(coursInThisRoom.getBundleKey()) + "\n"
+					+ getExitString();
 		} else if (isAttend) {
 			return getExitString();
 		} else

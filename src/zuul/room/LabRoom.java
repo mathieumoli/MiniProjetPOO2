@@ -7,10 +7,22 @@ import zuul.person.Student;
 
 /**
  * @author Mathieu Molinengo
- * @version 20/11/2014
+ * @version 2014.11.30
+ * 
+ *          Class to create a LabRoom
  */
 public class LabRoom extends StudySpace {
 
+	/***
+	 * 
+	 * Constructor to create a LabRoom
+	 * 
+	 * @param description
+	 *            the description of the labroom
+	 * @param nbRoom
+	 *            the integer which defines the courses in this labroom
+	 * 
+	 ***/
 	public LabRoom(String description, int nbRoom) {
 		super(description, nbRoom);
 		coursInThisRoom = new LabItem();
@@ -22,7 +34,8 @@ public class LabRoom extends StudySpace {
 	 * student can't enter if he didn't attend the respective lecture
 	 * 
 	 * @param student
-	 * @return
+	 *            who wants enter in the labroom
+	 * @return true if the student can enter and false if he can't
 	 */
 	@Override
 	public boolean canEnter(Student student) {
@@ -40,10 +53,29 @@ public class LabRoom extends StudySpace {
 		return true;
 	}
 
+	/**
+	 * This function determines if the student must enter in the labroom (if the
+	 * labroom contains an OOP lab and if the student learns the responsive
+	 * lecture) or not the student can't enter if he didn't attend the
+	 * respective lecture
+	 * 
+	 * @param student
+	 *            the Student who wants enter in this LabRoom
+	 * @return true if the student must enter and false if he mustn't
+	 */
 	public boolean mustEnter(Student student) {
 		return super.mustEnter(student);
 	}
 
+	/***
+	 * 
+	 * Method to enter in this examroom
+	 * 
+	 * @param student
+	 *            the Student who wants to go in
+	 * @return true if he can go in and false if he can't
+	 * 
+	 ***/
 	@Override
 	public boolean enter(Student student) {
 		randomizeCourses();
@@ -64,10 +96,16 @@ public class LabRoom extends StudySpace {
 			return false;
 	}
 
+	/***
+	 * 
+	 * Method to randomize the lab in the labroom (it will have no lab too)
+	 * 
+	 ***/
 	@Override
 	public void randomizeCourses() {
 		if (nbRoom == 1)
-			coursInThisRoom = Game.labs.get((int) (Math.random() * (3-0)+0));
+			coursInThisRoom = Game.labs
+					.get((int) (Math.random() * (3 - 0) + 0));
 		else if (nbRoom == 2)
 			coursInThisRoom = Game.labs
 					.get((int) (Math.random() * (6 - 3) + 3));
@@ -82,6 +120,13 @@ public class LabRoom extends StudySpace {
 		}
 	}
 
+	/***
+	 * 
+	 * Method to add the lab of this labroom in the labsSuivi of the student
+	 * 
+	 * @param goodStudent
+	 *            the sSudent who attends the lab
+	 */
 	public void attendLab(Student goodStudent) {
 		if (coursInThisRoom.getNumber() != 0) {
 			System.out.println(Game.res.getString("labroom.attendlab.part1")

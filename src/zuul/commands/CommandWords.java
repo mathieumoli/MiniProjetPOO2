@@ -7,15 +7,17 @@ package zuul.commands;
  * This class holds an enumeration of all command words known to the game.
  * It is used to recognise commands as they are typed in.
  *
- * @author  Michael Kölling and David J. Barnes
- * @version 2011.08.08
+ * @author  Michael Kölling, David J. Barnes (original version), Martinez Lucas and Molinengo Mathieu (updated version)
+ * @version 2014.11.30
  */
 
 public class CommandWords
 {
     // a constant array that holds all valid command words
     private static final String[] validCommands = {
-        "go", "quit", "help", "take", "lights", "attend", "read", "use", "search", "start"
+        "go", "quit", "help",
+        //update from Martinez Lucas and Molinengo Mathieu
+        "take", "lights", "attend", "read", "use", "search", "start"
     };
 
     /**
