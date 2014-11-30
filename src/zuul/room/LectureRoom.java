@@ -61,7 +61,7 @@ public class LectureRoom extends StudySpace {
 	 * 
 	 * @param student
 	 *            the student who wants to go in
-	 * @return true if he can go in and false if he can't
+	 * @return true 
 	 * 
 	 ***/
 	@Override
@@ -74,9 +74,7 @@ public class LectureRoom extends StudySpace {
 		} else {
 			System.out.println(getLongDescription());
 		}
-		if (!(coursInThisRoom.getNumber() == 0)) {
-			randomizeCourses();
-		}
+
 		return true;
 	}
 
