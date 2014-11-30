@@ -13,7 +13,8 @@ import zuul.course.LectureItem;
  * @version 20/11/2014
  */
 public class Student {
-
+	
+	private ArrayList<LectureItem> oopBook;
 	private int energy;
 	private String name;
 	private ArrayList<LectureItem> coursSuivi;
@@ -24,6 +25,7 @@ public class Student {
 		name = nameOfStudent;
 		coursSuivi = new ArrayList<LectureItem>();
 		labsSuivi = new ArrayList<LabItem>();
+		oopBook=new ArrayList<LectureItem>();
 	}
 
 	public void addItem(Item itemListened) {
@@ -89,6 +91,15 @@ public class Student {
 		return listened;
 
 	}
+	
+	public void readTakenBook(){
+		for(int i=0;i<oopBook.size();i++)
+		{
+			this.addItem(oopBook.get(i));
+			System.out.println(Game.res.getString(oopBook.get(i).getBundleKey()));
+		}
+		this.decrementEnergy(35);
+	}
 
 	public boolean alreadyListenedLecture(LectureItem theItem) {
 		boolean listened = false;
@@ -123,6 +134,20 @@ public class Student {
 
 	public ArrayList<LabItem> getLabsSuivi() {
 		return labsSuivi;
+	}
+	
+	/**
+	 * @return the oOPbook
+	 */
+	public ArrayList<LectureItem> getOOPbook() {
+		return oopBook;
+	}
+
+	/**
+	 * @param oOPbook the oOPbook to set
+	 */
+	public void setOOPbook(ArrayList<LectureItem> book) {
+		oopBook = book;
 	}
 
 	public void removeItem() {

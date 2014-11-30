@@ -69,5 +69,8 @@ new ending
 room without courses
 examroom verification
 
-#20work
+#20 work
 examroom empty okay
+
+#21 work
+you can take a book with you and read it later

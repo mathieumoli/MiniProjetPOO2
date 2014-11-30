@@ -229,9 +229,12 @@ public class Game {
 			goRoom(command);
 		} else if (commandWord.equals("quit")) {
 			wantToQuit = quit(command);
-		} else if (commandWord.equals("take")
-				&& (currentRoom instanceof Lunchroom)) {
-			wantCoffee(command);
+		} else if (commandWord.equals("take")) {
+			if (currentRoom instanceof Lunchroom) {
+				wantCoffee(command);
+			} else if (currentRoom instanceof Library) {
+				wantBook(command);
+			}
 		} else if (commandWord.equals("lights")
 				&& (currentRoom instanceof Corridor)) {
 			goCorridor(command);
@@ -239,9 +242,9 @@ public class Game {
 				&& (currentRoom instanceof StudySpace)) {
 			wantAttend(command);
 		} else if (commandWord.equals("read")
-				&& (currentRoom instanceof Library)) {
+				&& ((currentRoom instanceof Library))
+				|| (!(gamer.getOOPbook().isEmpty()))) {
 			wantRead(command);
-
 		} else if (commandWord.equals("use")
 				&& (currentRoom instanceof Corridor)) {
 			wantUse(command);
@@ -257,7 +260,18 @@ public class Game {
 		return wantToQuit;
 	}
 
-	// implementations of user commands:
+	private void wantBook(Command command) {
+		if (!command.hasSecondWord()) {
+			// if there is no second word, we don't know where to go...
+			System.out.println(res.getString("game.take"));
+			return;
+		} else if (command.getSecondWord().equals("book")) {
+			((Library) currentRoom).takeBook(gamer);
+		} else {
+			System.out.println(currentRoom.getLongDescription());
+		}
+
+	}
 
 	/**
 	 * Print out some help information. Here we print some stupid, cryptic
@@ -383,7 +397,11 @@ public class Game {
 			// if there is no second word, we don't know where to go...
 			System.out.println(res.getString("game.read"));
 		} else if (command.getSecondWord().equals("book")) {
-			((Library) currentRoom).learnPOO(gamer);
+			if (currentRoom instanceof Library) {
+				((Library) currentRoom).learnPOO(gamer);
+			} else {
+				gamer.readTakenBook();
+			}
 		}
 
 	}

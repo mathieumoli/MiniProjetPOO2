@@ -47,13 +47,11 @@ public class Library extends Room {
 	 */
 	public boolean enter(Student student){
 		if (canEnter(student)){
-			System.out.println(Game.res.getString("library.description"));
-			System.out.println();
+			System.out.println(Game.res.getString("library.description")+"\n"+getExitString());
 
 			return true;
 		}
 		System.out.println(Game.res.getString("library.closed"));
-		System.out.println();
 		return false;
 	}
     
@@ -64,6 +62,10 @@ public class Library extends Room {
 		return isOpen;
     }
 
+    public void takeBook(Student student){
+    	student.setOOPbook(poo2Book);
+    	System.out.println(Game.res.getString("library.takebook")+"\n"+getExitString());
+    }
 
 
 	public void learnPOO(Student goodStudent) {
