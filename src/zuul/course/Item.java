@@ -26,6 +26,7 @@ public class Item {
 	public Item() {
 		module = "default";
 		number = 0;
+		bundleKey="room.nothing";
 	}
 	
 	public Item(String themodule, int thenumber){

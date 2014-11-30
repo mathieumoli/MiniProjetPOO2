@@ -12,7 +12,7 @@ public class LectureRoom extends StudySpace {
 	private int nbRoom;
 
 	public LectureRoom(String description, int nbRoom) {
-		super(description,nbRoom);
+		super(description, nbRoom);
 		coursInThisRoom = new LectureItem();
 		this.nbRoom = nbRoom;
 
@@ -20,63 +20,82 @@ public class LectureRoom extends StudySpace {
 
 	/**
 	 * This function determines if the student can enter the lectureroom or not
+	 * 
 	 * @param student
 	 * @return
 	 */
 	@Override
-	public boolean canEnter(Student student){
+	public boolean canEnter(Student student) {
 		return true;
 	}
 
-	public boolean mustEnter(Student student){
+	public boolean mustEnter(Student student) {
 		return super.mustEnter(student);
 	}
 
 	@Override
-	public boolean enter(Student student){
+	public boolean enter(Student student) {
 		randomizeCourses();
 		isAttend = false;
-		if (mustEnter(student)){
+		if (mustEnter(student)) {
 			attendLecture(student);
 			System.out.println(getLongDescription());
 		} else {
 			System.out.println(getLongDescription());
 		}
-		randomizeCourses();
+		if (!(coursInThisRoom.getNumber() == 0)) {
+			randomizeCourses();
+		}
 		return true;
 	}
 
 	@Override
-	public void randomizeCourses(){
-		if (nbRoom == 1) coursInThisRoom = Game.lectures.get((int) (Math.random() * 2));
-		else if (nbRoom == 2) coursInThisRoom = Game.lectures.get((int)(Math.random() * (5-3) + 3));
+	public void randomizeCourses() {
+		if (nbRoom == 1)
+			coursInThisRoom = Game.lectures.get((int) (Math.random() * 2));
+		else if (nbRoom == 2)
+			coursInThisRoom = Game.lectures
+					.get((int) (Math.random() * (5 - 3) + 3));
 
-		else coursInThisRoom = Game.lectures.get((int)(Math.random() * (8-6) + 6));
+		else
+			coursInThisRoom = Game.lectures
+					.get((int) (Math.random() * (8 - 6) + 6));
+
+		int noCours = (int) (Math.random() * 9);
+		if (noCours > 6) {
+			coursInThisRoom = new LectureItem();
+		}
+
 	}
 
-	
-
-
 	public void attendLecture(Student goodStudent) {
-		System.out.println(Game.res.getString("lectureroom.attendlecture.part1")
-				+ coursInThisRoom.getModule()
-				+ Game.res.getString("room.attend.part2")
-				+ coursInThisRoom.getNumber()
-				+ Game.res.getString("room.attend.part3"));
-		try {
-			System.out.println(Game.res.getString("oop.lecture"));
-			Thread.sleep(3000);
-			System.out.println(Game.res.getString(coursInThisRoom.getBundleKey()));
-			Thread.sleep(3000);
-			System.out.println(Game.res.getString("oop.lectureend"));
+		if (coursInThisRoom.getNumber() != 0) {
+			System.out.println(Game.res
+					.getString("lectureroom.attendlecture.part1")
+					+ coursInThisRoom.getModule()
+					+ Game.res.getString("room.attend.part2")
+					+ coursInThisRoom.getNumber()
+					+ Game.res.getString("room.attend.part3"));
+			try {
+				System.out.println(Game.res.getString("oop.lecture"));
+				Thread.sleep(3000);
+				System.out.println(Game.res.getString(coursInThisRoom
+						.getBundleKey()));
+				Thread.sleep(3000);
+				System.out.println(Game.res.getString("oop.lectureend"));
 
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			isAttend = true;
+			System.out.println(Game.res
+					.getString("lectureroom.attendlecture.part4"));
+			goodStudent.decrementEnergy(10);
+			goodStudent.addItem(coursInThisRoom);
+		} else {
+			System.out.println(Game.res.getString(coursInThisRoom
+					.getBundleKey()));
 		}
-		isAttend = true;
-		System.out.println(Game.res.getString("lectureroom.attendlecture.part4"));
-		goodStudent.decrementEnergy(10);
-		goodStudent.addItem(coursInThisRoom);
 	}
 
 	/**
@@ -87,7 +106,10 @@ public class LectureRoom extends StudySpace {
 	 */
 	@Override
 	public String getLongDescription() {
-		if (isAttend) {
+		if (coursInThisRoom.getNumber() == 0) {
+			return Game.res.getString("lectureroom.shortdescription")
+					+ Game.res.getString(coursInThisRoom.getBundleKey())+"\n"+ getExitString();
+		} else if (isAttend) {
 			return getExitString();
 		} else
 			return description + coursInThisRoom.getModule() + " numero "
@@ -96,16 +118,4 @@ public class LectureRoom extends StudySpace {
 					+ getExitString();
 	}
 
-
-	/**
-	 * Classrooms where a lecture is being taught. If the lecture is on OOP, the
-	 * student must listen to the lecture. Listening to a lecture means not
-	 * being able to leave the room until the lecture is finished. If it's some
-	 * other course, the student may leave immediately :^)
-	 *
-	 * Listening to a lecture counts as picking up a lecture item.
-	 *
-	 *
-	 * TO DO : enter(),
-	 */
 }

@@ -64,3 +64,7 @@ corrections of some bugs
 all exams done
 no more error when choosing the language
 new ending
+
+#19 work
+room without courses
+examroom verification

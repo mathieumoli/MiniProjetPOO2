@@ -12,8 +12,11 @@ public class Zuul_en_US extends ListResourceBundle {
             {"lunchroom.description", "You are in the lunchroom. Why don't you take some of this Mocoffee drink,\n all natural coffee beans from the upper slopes of Mount Nicaragua,\n no artificial sweeteners! It will give you a few energy points.\n Type \"take coffee\" to drink a coffee"},
             {"lectureroom.description1", "You are in a classroom.\nYou can attend the lecture of "},
             {"lectureroom.description2", "Type \"attend lecture\" if you want \n" },
+            {"lectureroom.shortdescription", "You are in a classroom.\n"},
             {"labroom.description1", "You are in the computing lab.\nYou can attend the lab of "},
             {"labroom.description2", "Type \"attend lab\" if you want \n" },
+            {"labroom.shortdescription", "You are in the computing lab.\n"},
+
             {"corridor1.description", "You are in the first corridor"},
             {"corridor2.description", "You are in the second corridor"},
             {"corridor3.description", "You are in the third corridor"},
@@ -122,6 +125,7 @@ public class Zuul_en_US extends ListResourceBundle {
             {"tablet.zuul","Oh yes! You have seen \"World of Zuul\" on the tablet ... and now you launch the application !"},
         	{"tablet.on","$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$__$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$_______________$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$___________________$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$____$$$_________$$$____$$$$$$$$$$$$$\n$$$$$$$$$$$$$_____$$$_________$$$_____$$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$_____$$$____________________________$$$____$$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$______$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$$___$$$$____________________________$$$___$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\nThe Android Tablet is ON !"},
 
+        	{"room.nothing","Sorry but there aren't scheduled course in this room. Come back later !"},
             {"cheatsheet.description1", "You just found a paper, and there is something written on it..."},
             {"cheatsheet.description2", "Answers to the OOP exam : "}
 

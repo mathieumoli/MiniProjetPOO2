@@ -11,9 +11,12 @@ public class Zuul extends ListResourceBundle {
     	
             {"lunchroom.description", "Vous êtes dans la cafétéria. Pourquoi ne pas vous prendre un café Mocoffee?\n Mocoffee est un excellent café du Nicaragua, sans édulcorant de synthèse.\n Cela vous donnera un peu d'energie.\n Tapez \"take coffee\" pour prendre un café"},
             {"lectureroom.description1", "Vous êtes dans une salle de classe.\nVous pouvez assister au cours de "},
+            {"lectureroom.shortdescription", "Vous êtes dans une salle de classe.\n"},
             {"lectureroom.description2", "pour cela, tapez \"attend lecture\" \n" },
             {"labroom.description1", "Vous êtes dans la salle de TP.\nVous pouvez assister au cours de "},
             {"labroom.description2", "pour cela, tapez \"attend lab\" \n" },
+            {"labroom.shortdescription", "Vous êtes dans la salle de TP.\n"},
+
             {"corridor1.description", "Vous êtes dans le premier couloir"},
             {"corridor2.description", "Vous êtes dans le deuxième couloir"},
             {"corridor3.description", "Vous êtes dans le troisième couloir"},
@@ -114,7 +117,7 @@ public class Zuul extends ListResourceBundle {
             {"labroom.attendlab.part4","Merci d'avoir participé à ce lab !"},
             {"labroom.noattend1","Le professeur ne veut pas de vous car vous n'avez pas assisté au cours concernant le module de "},
             {"labroom.noattend2"," numéro "},
-            {"lunchroom.babyFoot","Tu es dans la cafétéria. Salah et Fanfan la tulipe t'attrapent au passage : C'est l'heure du baby ! Vous ne pouvez refuser."},
+            {"lunchroom.babyFoot","Vous êtes dans la cafétéria. Salah et Fanfan la tulipe vous attrapent au passage : C'est l'heure du baby ! Vous ne pouvez refuser."},
             {"examroom.cant", "Vous ne pouvez pas passer l'examen de POO dans ces conditions..."},
 
             {"tablet.lecture","Vous constatez que l'étudiant qui a laissé la tablette a enregistré un cours dessus. Pourquoi ne pas l'apprendre ?"},
@@ -122,6 +125,7 @@ public class Zuul extends ListResourceBundle {
             {"tablet.appli","Oh non! Vous avez vu \"Candy Crush - Oubliez vos cours et jouez avec moi\" sur la tablette. Vous vous lancez dans une partie..."},
         	{"tablet.on","$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$__$$$$$$$$$$$$$$_$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$_______________$$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$___________________$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$____$$$_________$$$____$$$$$$$$$$$$$\n$$$$$$$$$$$$$_____$$$_________$$$_____$$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n$$$$_____$$$____________________________$$$____$$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$______$$____________________________$$______$$\n$$$$_____$$$____________________________$$______$$\n$$$$$___$$$$____________________________$$$___$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$____________________________$$$$$$$$$$\n$$$$$$$$$$$$___________________________$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$______$$$$$$_____$$$$$$$$$$$$$$$$\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n La tablette Android est allumée!"},
 
+        	{"room.nothing","Désolé il n'y a pas de cours dans cette salle, Revenez plus tard"},
             {"cheatsheet.description1", "Vous venez de trouver une feuille avec quelque chose d'écrit dessus..."},
             {"cheatsheet.description2", "Réponses à l'examen de POO : "}
             

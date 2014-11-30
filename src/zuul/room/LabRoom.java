@@ -18,16 +18,18 @@ public class LabRoom extends StudySpace {
 	}
 
 	/**
-	 * This function determines if the student can enter the labroom or not
-	 * the student can't enter if he didn't attend the respective lecture
+	 * This function determines if the student can enter the labroom or not the
+	 * student can't enter if he didn't attend the respective lecture
 	 * 
 	 * @param student
 	 * @return
 	 */
 	@Override
 	public boolean canEnter(Student student) {
-		if (!student.alreadyListenedLecture(new LectureItem(coursInThisRoom
-				.getModule(), coursInThisRoom.getNumber()))) {
+		if (coursInThisRoom.getNumber() == 0) {
+			return true;
+		} else if (!student.alreadyListenedLecture(new LectureItem(
+				coursInThisRoom.getModule(), coursInThisRoom.getNumber()))) {
 			String string = new String(Game.res.getString("labroom.noattend1")
 					+ coursInThisRoom.getModule()
 					+ Game.res.getString("labroom.noattend2")
@@ -44,20 +46,19 @@ public class LabRoom extends StudySpace {
 
 	@Override
 	public boolean enter(Student student) {
-		if (nbRoom == 1)
-			coursInThisRoom = Game.labs.get(0);
-		else if (nbRoom == 2)
-			coursInThisRoom = Game.labs.get(3);
-		else
-			coursInThisRoom = Game.labs.get(6);
+		randomizeCourses();
 
 		isAttend = false;
+
 		if (canEnter(student)) {
+			if (coursInThisRoom.getNumber() == 0) {
+				System.out.println(getLongDescription());
+			}
 			if (mustEnter(student)) {
 				attendLab(student);
 				System.out.println(getLongDescription());
-
 			}
+
 			return true;
 		} else
 			return false;
@@ -65,29 +66,42 @@ public class LabRoom extends StudySpace {
 
 	@Override
 	public void randomizeCourses() {
-		int rand = (int) (Math.random() * Game.NB_COURSES);
+		if (nbRoom == 1)
+			coursInThisRoom = Game.labs.get((int) (Math.random() * (3-0)+0));
+		else if (nbRoom == 2)
+			coursInThisRoom = Game.labs
+					.get((int) (Math.random() * (6 - 3) + 3));
 
-		coursInThisRoom = Game.labs.get(rand);
+		else
+			coursInThisRoom = Game.labs
+					.get((int) (Math.random() * (9 - 6) + 6));
+
+		int noCours = (int) (Math.random() * 9);
+		if (noCours > 6) {
+			coursInThisRoom = new LectureItem();
+		}
 	}
 
 	public void attendLab(Student goodStudent) {
-		System.out.println(Game.res.getString("labroom.attendlab.part1")
-				+ coursInThisRoom.getModule()
-				+ Game.res.getString("room.attend.part2")
-				+ coursInThisRoom.getNumber()
-				+ Game.res.getString("room.attend.part3"));
-		try {
-			Thread.sleep(3000);
-			System.out.println("...");
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		if (coursInThisRoom.getNumber() != 0) {
+			System.out.println(Game.res.getString("labroom.attendlab.part1")
+					+ coursInThisRoom.getModule()
+					+ Game.res.getString("room.attend.part2")
+					+ coursInThisRoom.getNumber()
+					+ Game.res.getString("room.attend.part3"));
+			try {
+				Thread.sleep(3000);
+				System.out.println("...");
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 
-		isAttend = true;
-		System.out.println(Game.res.getString("labroom.attendlab.part4"));
-		goodStudent.decrementEnergy(10);
-		goodStudent.addItem(coursInThisRoom);
+			isAttend = true;
+			System.out.println(Game.res.getString("labroom.attendlab.part4"));
+			goodStudent.decrementEnergy(10);
+			goodStudent.addItem(coursInThisRoom);
+		}
 
 	}
 
@@ -99,7 +113,11 @@ public class LabRoom extends StudySpace {
 	 */
 	@Override
 	public String getLongDescription() {
-		if (isAttend) {
+		if (coursInThisRoom.getNumber() == 0) {
+			return Game.res.getString("labroom.shortdescription")
+					+ Game.res.getString(coursInThisRoom.getBundleKey()) + "\n"
+					+ getExitString();
+		} else if (isAttend) {
 			return getExitString();
 		} else
 			return description + coursInThisRoom.getModule() + " numero "
@@ -108,18 +126,4 @@ public class LabRoom extends StudySpace {
 					+ getExitString();
 	}
 
-	/**
-	 * Labs where lab sessions are running. If the lab is on OOP, the student
-	 * must do the the lab session. Doing a lab session means not being able to
-	 * leave the room until the lab session is finished. If it's some other
-	 * course, the student may leave immediately :^) .
-	 *
-	 * Doing a lab session counts as picking up a lab session item. However, a
-	 * lab session can only be done if the corresponding lecture has already
-	 * been picked up. Forgetting a lecture means forgetting the corresponding
-	 * lab session as well.
-	 *
-	 *
-	 * TO DO : enter()
-	 */
 }
