@@ -32,7 +32,9 @@ public class Game {
 	private Student gamer;
 	public static final int NB_COURSES = 3;
 	public static final String COURSES[] = { "OOP", "C", "ALGO" };
-	public static final String COURSESBUNDLEKEY[] = { "oop.lecture1", "oop.lecture2", "oop.lecture3","c.lecture1","c.lecture2","c.lecture3","algo.lecture1","algo.lecture2","algo.lecture3" };
+	public static final String COURSESBUNDLEKEY[] = { "oop.lecture1",
+			"oop.lecture2", "oop.lecture3", "c.lecture1", "c.lecture2",
+			"c.lecture3", "algo.lecture1", "algo.lecture2", "algo.lecture3" };
 	public static List<LabItem> labs = new ArrayList<LabItem>();
 	public static List<LectureItem> lectures = new ArrayList<LectureItem>();
 
@@ -49,8 +51,10 @@ public class Game {
 	 * Ask to the user his prefered language and set it
 	 */
 	private void getLanguage() {
-		System.out.println("Voulez-vous jouer en français ? Si oui, appuyez sur 1.");
-		System.out.println("Or do you prefer playing in English ? If so, press 2.");
+		System.out
+				.println("Voulez-vous jouer en français ? Si oui, appuyez sur 1.");
+		System.out
+				.println("Or do you prefer playing in English ? If so, press 2.");
 
 		Scanner scanner = new Scanner(System.in);
 		String choice = scanner.nextLine();
@@ -196,7 +200,8 @@ public class Game {
 			k = i;
 			for (int j = 0; j < COURSES.length; ++j) {
 				labs.add(new LabItem(COURSES[j], i + 1));
-				lectures.add(new LectureItem(COURSES[j], i + 1,COURSESBUNDLEKEY[k]));
+				lectures.add(new LectureItem(COURSES[j], i + 1,
+						COURSESBUNDLEKEY[k]));
 				k += 3;
 			}
 		}
@@ -268,6 +273,7 @@ public class Game {
 
 	/**
 	 * Try to start the exam, if it's incomplete, display an error message
+	 * 
 	 * @param command
 	 */
 	private void wantStart(Command command) {
@@ -277,13 +283,22 @@ public class Game {
 		} else if ((command.getSecondWord().equals("exam"))
 				&& (currentRoom instanceof ExamRoom)) {
 			((ExamRoom) currentRoom).startExam(gamer);
-			System.out.println(currentRoom.getLongDescription());
+			if (((ExamRoom) currentRoom).getExam().equals("noexam")) {
+				System.out.println(Game.res
+						.getString("examroom.shortdescription")
+						+ "\n"
+						+ Game.res.getString("examroom.noexam")
+						+ "\n"
+						+ currentRoom.getExitString());
+			} else
+				System.out.println(currentRoom.getLongDescription());
 
 		}
 	}
 
 	/**
 	 * Try to use the tablet, if it's incomplete display an error message
+	 * 
 	 * @param command
 	 */
 	private void wantUse(Command command) {
@@ -291,14 +306,15 @@ public class Game {
 			// if there is no second word, we don't know where to go...
 			System.out.println(res.getString("game.use"));
 		} else if (command.getSecondWord().equals("tablet")) {
-			((Corridor)currentRoom).useTablet(gamer);
+			((Corridor) currentRoom).useTablet(gamer);
 		}
-		
+
 	}
 
 	/**
-	 * Try to search near the printer, if it's incomplete display an error message
-	 * Then, display the answers available on the cheatsheet
+	 * Try to search near the printer, if it's incomplete display an error
+	 * message Then, display the answers available on the cheatsheet
+	 * 
 	 * @param command
 	 */
 	private void wantSearch(Command command) {
@@ -308,13 +324,15 @@ public class Game {
 		} else if (command.getSecondWord().equals("printer")) {
 			System.out.println(Game.res.getString("cheatsheet.description1"));
 			System.out.println(Game.res.getString("cheatsheet.description2"));
-			((Corridor)currentRoom).useCheatsheet(gamer);
+			((Corridor) currentRoom).useCheatsheet(gamer);
 		}
 
 	}
 
 	/**
-	 * Try to attend a lab or a lecture, if it's incomplete display an error message
+	 * Try to attend a lab or a lecture, if it's incomplete display an error
+	 * message
+	 * 
 	 * @param command
 	 */
 	private void wantAttend(Command command) {
@@ -334,7 +352,9 @@ public class Game {
 	}
 
 	/**
-	 * Try to take and drink a coffee, if it's incomplete display an error message
+	 * Try to take and drink a coffee, if it's incomplete display an error
+	 * message
+	 * 
 	 * @param command
 	 */
 	private void wantCoffee(Command command) {
@@ -353,7 +373,9 @@ public class Game {
 	}
 
 	/**
-	 * Try to read the book in the library, if it's incomplete display an error message
+	 * Try to read the book in the library, if it's incomplete display an error
+	 * message
+	 * 
 	 * @param command
 	 */
 	private void wantRead(Command command) {
@@ -368,6 +390,7 @@ public class Game {
 
 	/**
 	 * Try to turn the lights on, if it's incomplete display an error message
+	 * 
 	 * @param command
 	 */
 	private void goCorridor(Command command) {

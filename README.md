@@ -68,3 +68,6 @@ new ending
 #19 work
 room without courses
 examroom verification
+
+#20work
+examroom empty okay

@@ -28,6 +28,8 @@ public class Zuul_en_US extends ListResourceBundle {
             {"library.description", "You are in the library.In the library you can see the OOP2 book. This book contains all lecture you can learn about OOP2. If you want to read it, just type \"read book\""},
             
             {"examroom.description", "You are in the exam room. To answer, please type TRUE or FALSE."},
+            {"examroom.shortdescription", "You are in the exam room."},
+            {"examroom.noexam", "There aren't scheduled exam in this room. Come back later !"},
             {"corridor.dark","This corridor is very dark, you could switch the lights on to see clearly the room.\n Type \"lights on\" to switch the lights on !"},
             {"library.closed","The door is closed. The library is closed 7 out of 10 times... Come back later !"},
             {"lunchroom.coffee1","It's not the best coffee of my life but I'm feeling better !"},

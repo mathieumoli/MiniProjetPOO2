@@ -33,11 +33,12 @@ public class ExamRoom extends Room {
 	 */
 	@Override
 	public boolean canEnter(Student student) {
-		
 
-		if (student.getEnergy() >= 50) {
+		if (exam.equals("noexam")) {
+			return true;
+		} else if (student.getEnergy() >= 50) {
 			if (exam.equals("OOP")) {
-				if (doAllCourses(student) ) {
+				if (doAllCourses(student)) {
 					return true;
 				}
 			} else if (exam.equals("C")) {
@@ -63,10 +64,7 @@ public class ExamRoom extends Room {
 				&& student.getLabsSuivi().contains(labOOP.get(1)) && student
 				.getLabsSuivi().contains(labOOP.get(2)));
 
-		if (allCourses == true && allLabs == true)
-			return true;
-		else
-			return false;
+		return allCourses && allLabs;
 
 	}
 
@@ -74,15 +72,25 @@ public class ExamRoom extends Room {
 	public boolean enter(Student student) {
 		randomizeExams();
 		if (canEnter(student)) {
-			System.out.println(Game.res.getString("examroom.description"));
-			if (exam.equals("OOP")) {
-				System.out.println(Game.res.getString("OOP.exam.description"));
-				startExam(student);
-
+			if (exam.equals("noexam")) {
+				System.out.println(Game.res
+						.getString("examroom.shortdescription")
+						+ "\n"
+						+ Game.res.getString("examroom.noexam")
+						+ "\n"
+						+ getExitString());
 			} else {
-				System.out.println(Game.res.getString(exam
-						+ ".exam.description"));
-				System.out.println(getExitString());
+				System.out.println(Game.res.getString("examroom.description"));
+				if (exam.equals("OOP")) {
+					System.out.println(Game.res
+							.getString("OOP.exam.description"));
+					startExam(student);
+
+				} else {
+					System.out.println(Game.res.getString(exam
+							+ ".exam.description"));
+					System.out.println(getExitString());
+				}
 			}
 		} else {
 			System.out.println(Game.res.getString("examroom.cant"));
@@ -94,41 +102,66 @@ public class ExamRoom extends Room {
 	private void randomizeExams() {
 		int rand = (int) (Math.random() * Game.NB_COURSES);
 		exam = Game.COURSES[rand];
+
+		int noExam = (int) (Math.random() * 9);
+		if (noExam > 3) {
+			exam = "noexam";
+		}
+
 	}
 
 	public void startExam(Student student) {
-		int questionsRight = 0;
-		String answer;
-		Scanner scanner = new Scanner(System.in);
+		if (!exam.equals("noexam")) {
 
-		for (int i = 1; i <= NB_QUESTIONS; ++i) {
-			System.out.println(Game.res.getString(exam + ".exam.question" + i));
-			answer = scanner.nextLine();
-			String rightAnswer = Game.res.getString(exam + ".exam.answer" + i);
-			if (answer.toUpperCase().equals(rightAnswer)) {
-				++questionsRight;
+			int questionsRight = 0;
+			String answer;
+			Scanner scanner = new Scanner(System.in);
+
+			for (int i = 1; i <= NB_QUESTIONS; ++i) {
+				System.out.println(Game.res.getString(exam + ".exam.question"
+						+ i));
+				answer = scanner.nextLine();
+				String rightAnswer = Game.res.getString(exam + ".exam.answer"
+						+ i);
+				if (answer.toUpperCase().equals(rightAnswer)) {
+					++questionsRight;
+				}
+
+				System.out.println(Game.res.getString("exam.rightanswer")
+						+ rightAnswer);
+				System.out.println();
 			}
 
-			System.out.println(Game.res.getString("exam.rightanswer")
-					+ rightAnswer);
-			System.out.println();
-		}
-
-		System.out.println(Game.res.getString("student.youhave")
-				+ questionsRight + "/" + NB_QUESTIONS
-				+ Game.res.getString("student.answers"));
-		if (questionsRight > (NB_QUESTIONS / 2)) {
-			System.out.println(Game.res.getString("game.win") + exam + ".");
-			student.decrementEnergy(40);
-			if (exam.equals("OOP")) {
-				System.out.println(Game.res.getString("game.thankyou"));
-				System.exit(1);
+			System.out.println(Game.res.getString("student.youhave")
+					+ questionsRight + "/" + NB_QUESTIONS
+					+ Game.res.getString("student.answers"));
+			if (questionsRight > (NB_QUESTIONS / 2)) {
+				System.out.println(Game.res.getString("game.win") + exam + ".");
+				student.decrementEnergy(40);
+				if (exam.equals("OOP")) {
+					System.out.println(Game.res.getString("game.thankyou"));
+					System.exit(1);
+				}
+			} else {
+				System.out.println(Game.res.getString("game.lose") + exam
+						+ Game.res.getString("game.lose2"));
+				student.decrementEnergy(40);
+				System.out.println(getExitString());
 			}
-		} else {
-			System.out.println(Game.res.getString("game.lose") + exam
-					+ Game.res.getString("game.lose2"));
-			student.decrementEnergy(40);
-			System.out.println(getExitString());
 		}
+	}
+
+	/**
+	 * @return the exam
+	 */
+	public String getExam() {
+		return exam;
+	}
+
+	/**
+	 * @param exam the exam to set
+	 */
+	public void setExam(String exam) {
+		this.exam = exam;
 	}
 }

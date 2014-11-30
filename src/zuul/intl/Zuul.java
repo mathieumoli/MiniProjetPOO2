@@ -27,6 +27,8 @@ public class Zuul extends ListResourceBundle {
             {"corridor.nocheatsheet", "Quelle imprimante ?"},
             {"library.description", "Vous êtes dans la bibliothèque. Dans la bibliothèque, vous trouvez le livre de POO2 renfermant l'ensemble des cours de la matière.\n Pour lire le livre et acquérir l'ensemble des cours, tapez \"read book\""},
             {"examroom.description", "Vous êtes dans la salle d'examen. Pour répondre, veuillez taper VRAI ou FAUX."},
+            {"examroom.shortdescription", "Vous êtes dans la salle d'examen."},
+            {"examroom.noexam", "Il n'y a pas d'exament prévu pour le moment.Revenez plus tard ! "},
             {"corridor.dark","Ce couloir est d'une obscurité déconcertante, vous pourriez allumer la lumiere pour mieux y voir...\n Pour allumer la lumiere, tapez \"lights on\""},
             {"library.closed","La porte est fermée à clé. Il est vrai que la bibliothèque est fermée 7 fois sur 10. Revenez plus tard !"},
             {"lunchroom.coffee1","C'est pas le meilleur café de ma vie mais je me sens mieux !"},
