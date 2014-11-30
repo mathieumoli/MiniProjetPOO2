@@ -85,12 +85,12 @@ public class LabRoom extends StudySpace {
 		if (canEnter(student)) {
 			if (coursInThisRoom.getNumber() == 0) {
 				System.out.println(getLongDescription());
-			}
-			if (mustEnter(student)) {
+			} else if (mustEnter(student)) {
 				attendLab(student);
 				System.out.println(getLongDescription());
+			} else {
+				System.out.println(getLongDescription());
 			}
-
 			return true;
 		} else
 			return false;

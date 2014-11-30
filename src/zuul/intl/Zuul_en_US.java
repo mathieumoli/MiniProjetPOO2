@@ -103,6 +103,7 @@ public class Zuul_en_US extends ListResourceBundle {
 			{ "ALGO.exam.answer1", "TRUE" },
 			{ "ALGO.exam.answer2", "FALSE" },
 			{ "ALGO.exam.answer3", "TRUE" },
+			{"exam.rightanswer", "The answer is : "},
 
 			{ "OOP.exam.description",
 					"You are going to take an exam of OOP, please answer with TRUE or FALSE." },
