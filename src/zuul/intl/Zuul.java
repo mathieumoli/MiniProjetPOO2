@@ -78,7 +78,7 @@ public class Zuul extends ListResourceBundle {
             {"exam.rightanswer", "La réponse est : "},
 
             {"game.welcome", "Bienvenue dans Le Monde de Zuul!"},
-            {"game.boring", "Le Monde de Zuul est un nouveau jeu d'aventure incroyablement (un peu moins) chiant."},
+            {"game.boring", "Le Monde de Zuul est un nouveau jeu d'aventure incroyablement (un peu moins) ennuyant."},
             {"game.help", "Tapez 'help' si vous avez besoin d'aide."},
             {"game.idontknow", "Je ne comprends pas..."},
             {"game.use","Utiliser quoi ? une tablette peut être ?"},
@@ -95,8 +95,6 @@ public class Zuul extends ListResourceBundle {
             {"game.thankyou", "Merci d'avoir joué. Au revoir."},
             {"game.askname", "Quel est votre nom ?"},
             {"game.welcomename1", "Bienvenue "},
-            {"game.welcomename2", " ! Mais je trouve que ce prénom ne vous va pas très bien...je vais vous appeler "},
-            {"game.welcomename3", " la brutasse !"},
 			{"game.read","Lire quoi ? "},
             {"game.win", "Félicitations ! Vous avez réussi à passer l'examen final de "},
             {"game.lose", "Désolé, vous n'avez pas la moyenne à l'examen final de "},

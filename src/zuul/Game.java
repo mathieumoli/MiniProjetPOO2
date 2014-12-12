@@ -184,9 +184,7 @@ public class Game {
 	 */
 
 	private void printGamer() {
-		String string = new String(res.getString("game.welcomename1")
-				+ gamer.getName() + res.getString("game.welcomename2")
-				+ gamer.getName() + res.getString("game.welcomename3"));
+		String string = new String(res.getString("game.welcomename1") + gamer.getName() + " !");
 		System.out.println(string);
 		System.out.println();
 		System.out.println(currentRoom.getLongDescription());
